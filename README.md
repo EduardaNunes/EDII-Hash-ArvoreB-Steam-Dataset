@@ -3,4 +3,4 @@
 ## Trabalho Prático 
 
 ### Membros do Grupo
-Inserir: Nome/Matricula/E-mail
+Vanessa Palmeira Kelmer Trajano / 202376035 / vanessa.trajano@estudante.ufjf.br
