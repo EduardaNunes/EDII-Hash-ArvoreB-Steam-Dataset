@@ -3,4 +3,5 @@
 ## Trabalho Prático 
 
 ### Membros do Grupo
+Diego Pereira Betti / 202376037 / diego.pereira@estudante.ufjf.br
 Vanessa Palmeira Kelmer Trajano / 202376035 / vanessa.trajano@estudante.ufjf.br
