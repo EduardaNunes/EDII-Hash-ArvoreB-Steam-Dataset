@@ -3,17 +3,23 @@
 
 using namespace std;
 
-void Menu::showMenu() {
+void Menu::showMenu()
+{
     int opcao;
-    do {
+
+    do
+    {
         cout << "1 - Buscar jogador por ID" << endl;
         cout << "2 - Mostrar top N jogadores" << endl;
         cout << "0 - Sair" << endl;
         cin >> opcao;
 
-        switch(opcao) {
-            case 1: /* chama busca na hash */ break;
-            case 2: /* busca na árvore B */ break;
+        switch (opcao)
+        {
+        case 1: /* chama busca na hash */
+            break;
+        case 2: /* busca na árvore B */
+            break;
         }
-    } while(opcao != 0);
+    } while (opcao != 0);
 }

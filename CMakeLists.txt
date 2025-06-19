@@ -15,6 +15,7 @@ enable_testing()
 add_executable(meu_programa
     src/main.cpp
     src/Menu/menu.cpp
+    src/Hash/hash.cpp
 )
 
 set_target_properties(meu_programa PROPERTIES
