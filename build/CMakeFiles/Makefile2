@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-edua
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: CMakeFiles/meu_programa.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -98,6 +98,7 @@ clean: CMakeFiles/ContinuousTest.dir/clean
 clean: CMakeFiles/ContinuousCoverage.dir/clean
 clean: CMakeFiles/ContinuousMemCheck.dir/clean
 clean: CMakeFiles/ContinuousSubmit.dir/clean
+clean: CMakeFiles/meu_programa.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -827,6 +828,32 @@ ContinuousSubmit: CMakeFiles/ContinuousSubmit.dir/rule
 CMakeFiles/ContinuousSubmit.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousSubmit.dir\build.make CMakeFiles/ContinuousSubmit.dir/clean
 .PHONY : CMakeFiles/ContinuousSubmit.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/meu_programa.dir
+
+# All Build rule for target.
+CMakeFiles/meu_programa.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles --progress-num=1,2,3 "Built target meu_programa"
+.PHONY : CMakeFiles/meu_programa.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/meu_programa.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/meu_programa.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles 0
+.PHONY : CMakeFiles/meu_programa.dir/rule
+
+# Convenience name for target.
+meu_programa: CMakeFiles/meu_programa.dir/rule
+.PHONY : meu_programa
+
+# clean rule for target.
+CMakeFiles/meu_programa.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/clean
+.PHONY : CMakeFiles/meu_programa.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

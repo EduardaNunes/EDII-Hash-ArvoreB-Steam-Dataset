@@ -11,3 +11,14 @@ include(CTest)
 enable_testing()
 
 # incluir os demais comandos cmake abaixo...
+
+add_executable(meu_programa
+    src/main.cpp
+    src/Menu/menu.cpp
+)
+
+set_target_properties(meu_programa PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
+  RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}
+  RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}
+)

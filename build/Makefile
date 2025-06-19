@@ -489,6 +489,67 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousSubmit.dir\build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
+#=============================================================================
+# Target rules for targets named meu_programa
+
+# Build rule for target.
+meu_programa: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 meu_programa
+.PHONY : meu_programa
+
+# fast build rule for target.
+meu_programa/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/build
+.PHONY : meu_programa/fast
+
+src/Menu/menu.obj: src/Menu/menu.cpp.obj
+.PHONY : src/Menu/menu.obj
+
+# target to build an object file
+src/Menu/menu.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj
+.PHONY : src/Menu/menu.cpp.obj
+
+src/Menu/menu.i: src/Menu/menu.cpp.i
+.PHONY : src/Menu/menu.i
+
+# target to preprocess a source file
+src/Menu/menu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.i
+.PHONY : src/Menu/menu.cpp.i
+
+src/Menu/menu.s: src/Menu/menu.cpp.s
+.PHONY : src/Menu/menu.s
+
+# target to generate assembly for a file
+src/Menu/menu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.s
+.PHONY : src/Menu/menu.cpp.s
+
+src/main.obj: src/main.cpp.obj
+.PHONY : src/main.obj
+
+# target to build an object file
+src/main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/main.cpp.obj
+.PHONY : src/main.cpp.obj
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -526,6 +587,13 @@ help:
 	@echo ... NightlySubmit
 	@echo ... NightlyTest
 	@echo ... NightlyUpdate
+	@echo ... meu_programa
+	@echo ... src/Menu/menu.obj
+	@echo ... src/Menu/menu.i
+	@echo ... src/Menu/menu.s
+	@echo ... src/main.obj
+	@echo ... src/main.i
+	@echo ... src/main.s
 .PHONY : help
 
 

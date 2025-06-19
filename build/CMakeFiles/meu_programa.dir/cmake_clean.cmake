@@ -1,0 +1,15 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj"
+  "CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj.d"
+  "CMakeFiles/meu_programa.dir/src/main.cpp.obj"
+  "CMakeFiles/meu_programa.dir/src/main.cpp.obj.d"
+  "libmeu_programa.dll.a"
+  "meu_programa.exe"
+  "meu_programa.exe.manifest"
+  "meu_programa.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/meu_programa.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
