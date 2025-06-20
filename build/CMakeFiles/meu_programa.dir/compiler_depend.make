@@ -23,6 +23,7 @@ CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/include/w32api.h \
   c:/mingw/include/wchar.h \
   c:/mingw/include/wctype.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/array \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward/binders.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/alloc_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/allocator.h \
@@ -42,6 +43,8 @@ CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functexcept.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functional_hash.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hash_bytes.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable_policy.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/istream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/locale_classes.h \
@@ -67,11 +70,14 @@ CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_types.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_pair.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_relops.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_uninitialized.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_vector.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stringfwd.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unordered_map.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uses_allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/vector.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cctype \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cerrno \
@@ -84,6 +90,7 @@ CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/assertions.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/debug.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/exception \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/aligned_buffer.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/alloc_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/atomicity.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/new_allocator.h \
@@ -116,7 +123,10 @@ CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/streambuf \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/string \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/system_error \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/tuple \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/type_traits \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/unordered_map \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/utility \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/vector \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h \
@@ -124,6 +134,8 @@ CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/users/diego/onedrive/documentos/trab01-grupo-diego-eduarda-vanessa/src/config.h
 
 CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj: C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.cpp \
+  C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/Hash/hash.h \
+  C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/Hash/player.h \
   C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.h \
   c:/mingw/include/_mingw.h \
   c:/mingw/include/ctype.h \
@@ -144,6 +156,7 @@ CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/include/w32api.h \
   c:/mingw/include/wchar.h \
   c:/mingw/include/wctype.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/array \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward/binders.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/alloc_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/allocator.h \
@@ -161,6 +174,8 @@ CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functexcept.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functional_hash.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hash_bytes.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable_policy.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/istream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/locale_classes.h \
@@ -178,14 +193,22 @@ CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ptr_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/range_access.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_algobase.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_bvector.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_construct.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_function.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_types.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_pair.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_relops.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_uninitialized.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_vector.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stringfwd.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unordered_map.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uses_allocator.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/vector.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cctype \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cerrno \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/clocale \
@@ -197,6 +220,7 @@ CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/assertions.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/debug.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/exception \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/aligned_buffer.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/alloc_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/atomicity.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/new_allocator.h \
@@ -225,7 +249,11 @@ CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj: C:/Users/diego/OneDrive/Docum
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/streambuf \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/string \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/system_error \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/tuple \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/type_traits \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/unordered_map \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/utility \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/vector \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
@@ -253,6 +281,7 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/diego/OneDrive/Documentos
   c:/mingw/include/w32api.h \
   c:/mingw/include/wchar.h \
   c:/mingw/include/wctype.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/array \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward/binders.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/alloc_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/allocator.h \
@@ -270,6 +299,8 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/diego/OneDrive/Documentos
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functexcept.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functional_hash.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hash_bytes.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable_policy.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/istream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/locale_classes.h \
@@ -294,11 +325,14 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/diego/OneDrive/Documentos
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_types.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_pair.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_relops.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_uninitialized.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_vector.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stringfwd.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unordered_map.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uses_allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/vector.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cctype \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cerrno \
@@ -311,6 +345,7 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/diego/OneDrive/Documentos
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/assertions.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/debug.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/exception \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/aligned_buffer.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/alloc_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/atomicity.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/new_allocator.h \
@@ -339,7 +374,10 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/diego/OneDrive/Documentos
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/streambuf \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/string \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/system_error \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/tuple \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/type_traits \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/unordered_map \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/utility \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/vector \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h \
@@ -402,6 +440,8 @@ c:/mingw/include/stdint.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/memoryfwd.h:
 
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable.h:
+
 c:/mingw/include/stdio.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/localefwd.h:
@@ -421,6 +461,8 @@ c:/mingw/include/time.h:
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/ctype_base.h:
 
 c:/mingw/include/w32api.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/array:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/range_access.h:
 
@@ -448,21 +490,17 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/concept_check.h:
 
-c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h:
-
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/exception_ptr.h:
-
-c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/fstream.tcc:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functexcept.h:
 
-c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_types.h:
-
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functional_hash.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hash_bytes.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable_policy.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/istream.tcc:
 
@@ -494,7 +532,15 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_bvector.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_function.h:
 
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_types.h:
+
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_pair.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_relops.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_uninitialized.h:
 
@@ -504,7 +550,13 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf.tcc:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf_iterator.h:
 
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/unordered_map:
+
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stringfwd.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unordered_map.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uses_allocator.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cctype:
 
@@ -525,6 +577,8 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cwchar:
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cwctype:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/assertions.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/aligned_buffer.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/alloc_traits.h:
 
@@ -556,6 +610,8 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++locale.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/cpu_defines.h:
 
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/utility:
+
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/ctype_inline.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/gthr-default.h:
@@ -573,6 +629,8 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/sstream:
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/stdexcept:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/string:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/tuple:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/type_traits:
 

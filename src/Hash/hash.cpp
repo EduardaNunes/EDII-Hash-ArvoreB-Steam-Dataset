@@ -3,17 +3,14 @@
 #include <sstream>
 #include "hash.h"
 #include "../config.h"
-#include "player.h"
-#include <vector>
 
 using namespace std;
 
-vector<Player> Hash::readCSV(){
-    vector<Player> players;
+void Hash::loadPlayers() {
     ifstream file(CSV_PLAYERS_PATH);
     string line;
 
-    getline(file, line); 
+    getline(file, line);
 
     while (getline(file, line)) {
         stringstream ss(line);
@@ -24,15 +21,14 @@ vector<Player> Hash::readCSV(){
         getline(ss, created, ',');
 
         long long id = stoll(idStr);
-        players.emplace_back(id, country, created);
+        table[id] = Player(id, country, created);
     }
-
-    return players;
 }
 
-void Hash::showHash()
-{
-    vector<Player> list_Players = readCSV();
-
-    cout << list_Players[1] << endl;
+Player* Hash::searchById(long long id) {
+    auto it = table.find(id);
+    if (it != table.end()) {
+        return &(it->second);
+    }
+    return nullptr;
 }

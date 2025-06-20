@@ -6,6 +6,9 @@ project(Trabalho)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Adiciona a pasta src aos caminhos de include
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
 # Enable testing
 include(CTest)
 enable_testing()
