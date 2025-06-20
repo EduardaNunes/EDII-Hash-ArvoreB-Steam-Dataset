@@ -2,18 +2,42 @@
 #define HASH_H
 
 #include "player.h"
-#include <unordered_map>
+#include "linked_list.h"
+#include "hash_entry.h"
 #include <vector>
+#include <string>
 
 using namespace std;
 
-class Hash {
+enum CollisionMethod
+{
+    CHAINING,
+    LINEAR_PROBING
+};
+
+class Hash
+{
 private:
-    unordered_map<long long, Player> table;
+    int tableSize;
+    int numElements;
+    int numCollisions;
+    CollisionMethod method;
+
+    vector<LinkedList<Player>> chainTable;
+    vector<HashEntry> openTable;
+
+    int hashFunction(long long key) const;
 
 public:
-    void loadPlayers();
-    Player* searchById(long long id);
+    Hash(int size = 10007, CollisionMethod method = CHAINING);
+
+    void loadPlayers(const string &filePath);
+
+    void insert(Player p);
+    Player *searchById(long long id);
+    bool remove(long long id);
+
+    void printStats() const;
 };
 
 #endif

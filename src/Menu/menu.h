@@ -2,13 +2,10 @@
 #define MENU_H
 
 #include "Hash/hash.h"
+#include "../config.h"
 
-using namespace std;
-
-class Menu {
-private:
-    Hash hash;
-
+class Menu
+{
 public:
     void showMenu();
 };
