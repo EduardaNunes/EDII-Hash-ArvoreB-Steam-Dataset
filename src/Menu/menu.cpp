@@ -22,8 +22,9 @@ void Menu::showMenu()
     {
         cout << "\n=== MENU ===\n";
         cout << "1 - Buscar jogador por ID\n";
-        cout << "2 - Remover jogador por ID\n";
-        cout << "3 - Mostrar estatisticas\n";
+        cout << "2 - Inserir novo jogador\n";
+        cout << "3 - Remover jogador por ID\n";
+        cout << "4 - Mostrar estatisticas\n";
         cout << "0 - Sair\n";
         cout << "Escolha: ";
         cin >> opcao;
@@ -49,6 +50,23 @@ void Menu::showMenu()
         case 2:
         {
             long long id;
+            string country, created;
+            cout << "Digite o ID do jogador: ";
+            cin >> id;
+            cin.ignore(); 
+            cout << "Digite o pais: ";
+            getline(cin, country);
+            cout << "Digite a data de criacao (YYYY-MM-DD): ";
+            getline(cin, created);
+
+            Player novo(id, country, created);
+            hash.insert(novo);
+            cout << "Jogador inserido com sucesso!\n";
+            break;
+        }
+        case 3:
+        {
+            long long id;
             cout << "Digite o ID do jogador a remover: ";
             cin >> id;
             if (hash.remove(id))
@@ -61,7 +79,7 @@ void Menu::showMenu()
             }
             break;
         }
-        case 3:
+        case 4:
             hash.printStats();
             break;
         case 0:

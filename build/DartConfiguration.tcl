@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa
-BuildDirectory: C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/build
+SourceDirectory: C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa
+BuildDirectory: C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: Asus-Vanessa
+Site: DiegoPereira
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Win32-mingw32-make
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa"
+ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa"
 MakeCommand: C:/Program\ Files/CMake/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
