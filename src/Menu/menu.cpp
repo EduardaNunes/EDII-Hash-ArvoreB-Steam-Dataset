@@ -1,7 +1,22 @@
 #include <iostream>
+#include <fstream>
 #include "menu.h"
 
 using namespace std;
+
+int contarJogadoresCSV(const string& caminho) {
+    ifstream file(caminho);
+    string line;
+    int count = 0;
+
+    getline(file, line); 
+
+    while (getline(file, line)) {
+        if (!line.empty()) count++;
+    }
+
+    return count;
+}
 
 void Menu::showMenu()
 {
@@ -14,7 +29,10 @@ void Menu::showMenu()
 
     CollisionMethod metodoSelecionado = (metodo == 2) ? LINEAR_PROBING : CHAINING;
 
-    Hash hash(10007, metodoSelecionado);
+    int totalJogadores = contarJogadoresCSV(CSV_PLAYERS_PATH);
+    int tamanhoTabela = static_cast<int>(totalJogadores * 1.3);
+
+    Hash hash(tamanhoTabela, metodoSelecionado);
     hash.loadPlayers(CSV_PLAYERS_PATH);
 
     int opcao;
