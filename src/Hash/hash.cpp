@@ -5,30 +5,24 @@
 
 using namespace std;
 
-Hash::Hash(int size, CollisionMethod m)
-    : tableSize(size), numElements(0), numCollisions(0), method(m)
+PlayerHashTable::PlayerHashTable(int size, CollisionMethod method)
+    : tableSize(size), elementCount(0), collisionCount(0), collisionMethod(method),
+      chainingTable(method == CollisionMethod::CHAINING ? size : 0),
+      probingTable(method == CollisionMethod::LINEAR_PROBING ? size : 0)
 {
-    if (method == CHAINING)
-    {
-        chainTable.resize(tableSize);
-    }
-    else
-    {
-        openTable.resize(tableSize);
-    }
 }
 
-int Hash::hashFunction(long long key) const
+int PlayerHashTable::computeHashIndex(long long key) const
 {
     return key % tableSize;
 }
 
-void Hash::loadPlayers(const string &filePath)
+void PlayerHashTable::loadPlayersFromCSV(const string &filePath)
 {
     ifstream file(filePath);
     string line;
 
-    getline(file, line); // skip header
+    getline(file, line);
     while (getline(file, line))
     {
         stringstream ss(line);
@@ -40,114 +34,118 @@ void Hash::loadPlayers(const string &filePath)
         if (!idStr.empty())
         {
             long long id = stoll(idStr);
-            insert(Player(id, country, created));
+            insertPlayer(Player(id, country, created));
         }
     }
 }
 
-void Hash::insert(Player p)
+void PlayerHashTable::insertPlayer(Player p)
 {
-    int idx = hashFunction(p.playerId);
+    int index = computeHashIndex(p.playerId);
 
-    if (method == CHAINING)
+    if (collisionMethod == CollisionMethod::CHAINING)
     {
-        Player *existing = chainTable[idx].search(p.playerId);
+        Player *existing = chainingTable[index].search(p.playerId);
         if (existing)
         {
             *existing = p;
         }
         else
         {
-            if (chainTable[idx].search(p.playerId) != nullptr)
-                numCollisions++; // já existia outro jogador ali
-            chainTable[idx].insert(p);
-            numElements++;
+            if (!chainingTable[index].isEmpty())
+                collisionCount++;
+
+            chainingTable[index].insert(p);
+            elementCount++;
         }
     }
     else
     {
-        int startIdx = idx;
-        int probes = 0;
-        while (openTable[idx].state == OCCUPIED)
+        int startIndex = index;
+        int probeCount = 0;
+        while (probingTable[index].state == EntryState::OCCUPIED)
         {
-            if (openTable[idx].player.playerId == p.playerId)
+            if (probingTable[index].player.playerId == p.playerId)
             {
-                openTable[idx].player = p;
+                probingTable[index].player = p;
                 return;
             }
-            idx = (idx + 1) % tableSize;
-            probes++;
-            if (idx == startIdx)
+            index = (index + 1) % tableSize;
+            probeCount++;
+            if (index == startIndex)
                 return;
         }
 
-        openTable[idx].player = p;
-        openTable[idx].state = OCCUPIED;
-        numElements++;
+        probingTable[index].player = p;
+        probingTable[index].state = EntryState::OCCUPIED;
+        elementCount++;
 
-        if (probes > 0)
-            numCollisions++;
+        if (probeCount > 0)
+            collisionCount++;
     }
 }
 
-Player *Hash::searchById(long long id)
+Player *PlayerHashTable::findPlayerById(long long id)
 {
-    int idx = hashFunction(id);
-    if (method == CHAINING)
+    int index = computeHashIndex(id);
+    if (collisionMethod == CollisionMethod::CHAINING)
     {
-        return chainTable[idx].search(id);
+        return chainingTable[index].search(id);
     }
     else
     {
-        int startIdx = idx;
-        while (openTable[idx].state != EMPTY)
+        int startIndex = index;
+        while (probingTable[index].state != EntryState::EMPTY)
         {
-            if (openTable[idx].state == OCCUPIED && openTable[idx].player.playerId == id)
-                return &openTable[idx].player;
-
-            idx = (idx + 1) % tableSize;
-            if (idx == startIdx)
+            if (probingTable[index].state == EntryState::OCCUPIED &&
+                probingTable[index].player.playerId == id)
+            {
+                return &probingTable[index].player;
+            }
+            index = (index + 1) % tableSize;
+            if (index == startIndex)
                 break;
         }
         return nullptr;
     }
 }
 
-bool Hash::remove(long long id)
+bool PlayerHashTable::removePlayerById(long long id)
 {
-    int idx = hashFunction(id);
-    if (method == CHAINING)
+    int index = computeHashIndex(id);
+    if (collisionMethod == CollisionMethod::CHAINING)
     {
-        if (chainTable[idx].remove(id))
+        if (chainingTable[index].remove(id))
         {
-            numElements--;
+            elementCount--;
             return true;
         }
     }
     else
     {
-        int startIdx = idx;
-        while (openTable[idx].state != EMPTY)
+        int startIndex = index;
+        while (probingTable[index].state != EntryState::EMPTY)
         {
-            if (openTable[idx].state == OCCUPIED && openTable[idx].player.playerId == id)
+            if (probingTable[index].state == EntryState::OCCUPIED &&
+                probingTable[index].player.playerId == id)
             {
-                openTable[idx].state = DELETED;
-                numElements--;
+                probingTable[index].state = EntryState::DELETED;
+                elementCount--;
                 return true;
             }
-            idx = (idx + 1) % tableSize;
-            if (idx == startIdx)
+            index = (index + 1) % tableSize;
+            if (index == startIndex)
                 break;
         }
     }
     return false;
 }
 
-void Hash::printStats() const
+void PlayerHashTable::exibirEstatisticas() const
 {
     cout << "\n=== ESTATISTICAS ===" << endl;
     cout << "Tamanho da tabela: " << tableSize << endl;
-    cout << "Elementos armazenados: " << numElements << endl;
-    cout << "Fator de carga: " << (float)numElements / tableSize << endl;
-    cout << "Numero de colisoes: " << numCollisions << endl;
+    cout << "Elementos armazenados: " << elementCount << endl;
+    cout << "Fator de carga: " << (float)elementCount / tableSize << endl;
+    cout << "Numero de colisoes: " << collisionCount << endl;
 }

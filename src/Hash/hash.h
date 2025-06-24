@@ -1,43 +1,45 @@
-#ifndef HASH_H
-#define HASH_H
+#ifndef PLAYER_HASH_TABLE_H
+#define PLAYER_HASH_TABLE_H
 
 #include "player.h"
 #include "linked_list.h"
 #include "hash_entry.h"
 #include <vector>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 using namespace std;
 
-enum CollisionMethod
+enum class CollisionMethod
 {
     CHAINING,
     LINEAR_PROBING
 };
 
-class Hash
+class PlayerHashTable
 {
 private:
     int tableSize;
-    int numElements;
-    int numCollisions;
-    CollisionMethod method;
+    int elementCount;
+    int collisionCount;
+    CollisionMethod collisionMethod;
 
-    vector<LinkedList<Player>> chainTable;
-    vector<HashEntry> openTable;
-
-    int hashFunction(long long key) const;
+    vector<LinkedList<Player>> chainingTable;
+    vector<HashEntry> probingTable;
+    int computeHashIndex(long long key) const;
 
 public:
-    Hash(int size = 10007, CollisionMethod method = CHAINING);
+    PlayerHashTable(int size = 10007, CollisionMethod method = CollisionMethod::CHAINING);
 
-    void loadPlayers(const string &filePath);
+    void loadPlayersFromCSV(const string &filePath);
 
-    void insert(Player p);
-    Player *searchById(long long id);
-    bool remove(long long id);
+    void insertPlayer(Player p);
+    Player *findPlayerById(long long id);
+    bool removePlayerById(long long id);
 
-    void printStats() const;
+    void exibirEstatisticas() const;
 };
 
 #endif

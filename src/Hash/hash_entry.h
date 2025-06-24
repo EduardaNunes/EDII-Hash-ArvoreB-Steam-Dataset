@@ -3,7 +3,7 @@
 
 #include "player.h"
 
-enum EntryState
+enum class EntryState
 {
     EMPTY,
     OCCUPIED,
@@ -13,9 +13,9 @@ enum EntryState
 struct HashEntry
 {
     Player player;
-    EntryState state;
+    EntryState state = EntryState::EMPTY;
 
-    HashEntry() : player(), state(EMPTY) {}
+    HashEntry() = default;
 };
 
 #endif

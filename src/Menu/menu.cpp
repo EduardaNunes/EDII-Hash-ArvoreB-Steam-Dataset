@@ -4,15 +4,18 @@
 
 using namespace std;
 
-int contarJogadoresCSV(const string& caminho) {
+int contarJogadoresCSV(const string &caminho)
+{
     ifstream file(caminho);
     string line;
     int count = 0;
 
-    getline(file, line); 
+    getline(file, line);
 
-    while (getline(file, line)) {
-        if (!line.empty()) count++;
+    while (getline(file, line))
+    {
+        if (!line.empty())
+            count++;
     }
 
     return count;
@@ -20,22 +23,22 @@ int contarJogadoresCSV(const string& caminho) {
 
 void Menu::showMenu()
 {
-    int metodo;
+    int metodoColisao;
     cout << "Escolha o metodo de tratamento de colisao:\n";
     cout << "1 - Encadeamento (Chaining)\n";
     cout << "2 - Enderecamento Aberto (Sondagem Linear)\n";
     cout << "Opcao: ";
-    cin >> metodo;
+    cin >> metodoColisao;
 
-    CollisionMethod metodoSelecionado = (metodo == 2) ? LINEAR_PROBING : CHAINING;
+    CollisionMethod estrategiaDeColisao = (metodoColisao == 2) ? CollisionMethod::LINEAR_PROBING : CollisionMethod::CHAINING;
 
     int totalJogadores = contarJogadoresCSV(CSV_PLAYERS_PATH);
     int tamanhoTabela = static_cast<int>(totalJogadores * 1.3);
 
-    Hash hash(tamanhoTabela, metodoSelecionado);
-    hash.loadPlayers(CSV_PLAYERS_PATH);
+    PlayerHashTable tabelaJogadores(tamanhoTabela, estrategiaDeColisao);
+    tabelaJogadores.loadPlayersFromCSV(CSV_PLAYERS_PATH);
 
-    int opcao;
+    int opcaoMenu;
     do
     {
         cout << "\n=== MENU ===\n";
@@ -45,16 +48,16 @@ void Menu::showMenu()
         cout << "4 - Mostrar estatisticas\n";
         cout << "0 - Sair\n";
         cout << "Escolha: ";
-        cin >> opcao;
+        cin >> opcaoMenu;
 
-        switch (opcao)
+        switch (opcaoMenu)
         {
         case 1:
         {
             long long id;
             cout << "Digite o ID do jogador: ";
             cin >> id;
-            Player *p = hash.searchById(id);
+            Player *p = tabelaJogadores.findPlayerById(id);
             if (p)
             {
                 cout << *p << endl;
@@ -68,17 +71,17 @@ void Menu::showMenu()
         case 2:
         {
             long long id;
-            string country, created;
+            string pais, dataCriacao;
             cout << "Digite o ID do jogador: ";
             cin >> id;
-            cin.ignore(); 
+            cin.ignore();
             cout << "Digite o pais: ";
-            getline(cin, country);
+            getline(cin, pais);
             cout << "Digite a data de criacao (YYYY-MM-DD): ";
-            getline(cin, created);
+            getline(cin, dataCriacao);
 
-            Player novo(id, country, created);
-            hash.insert(novo);
+            Player novoJogador(id, pais, dataCriacao);
+            tabelaJogadores.insertPlayer(novoJogador);
             cout << "Jogador inserido com sucesso!\n";
             break;
         }
@@ -87,7 +90,7 @@ void Menu::showMenu()
             long long id;
             cout << "Digite o ID do jogador a remover: ";
             cin >> id;
-            if (hash.remove(id))
+            if (tabelaJogadores.removePlayerById(id))
             {
                 cout << "Jogador removido com sucesso.\n";
             }
@@ -98,7 +101,7 @@ void Menu::showMenu()
             break;
         }
         case 4:
-            hash.printStats();
+            tabelaJogadores.exibirEstatisticas();
             break;
         case 0:
             cout << "Saindo...\n";
@@ -107,5 +110,5 @@ void Menu::showMenu()
             cout << "Opcao invalida.\n";
         }
 
-    } while (opcao != 0);
+    } while (opcaoMenu != 0);
 }

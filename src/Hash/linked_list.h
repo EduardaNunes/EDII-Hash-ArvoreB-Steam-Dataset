@@ -38,7 +38,7 @@ public:
         head = node;
     }
 
-    T *search(long long id)
+    T *search(long long id) const
     {
         Node<T> *current = head;
         while (current)
@@ -48,6 +48,11 @@ public:
             current = current->next;
         }
         return nullptr;
+    }
+
+    bool isEmpty() const
+    {
+        return head == nullptr;
     }
 
     bool remove(long long id)
