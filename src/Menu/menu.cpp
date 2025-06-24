@@ -33,7 +33,7 @@ void Menu::showMenu()
     CollisionMethod estrategiaDeColisao = (metodoColisao == 2) ? CollisionMethod::LINEAR_PROBING : CollisionMethod::CHAINING;
 
     int totalJogadores = contarJogadoresCSV(CSV_PLAYERS_PATH);
-    int tamanhoTabela = static_cast<int>(totalJogadores * 1.3);
+    int tamanhoTabela = static_cast<int>(totalJogadores);
 
     PlayerHashTable tabelaJogadores(tamanhoTabela, estrategiaDeColisao);
     tabelaJogadores.loadPlayersFromCSV(CSV_PLAYERS_PATH);

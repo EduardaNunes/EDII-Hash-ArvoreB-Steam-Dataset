@@ -29,6 +29,9 @@ private:
     vector<LinkedList<Player>> chainingTable;
     vector<HashEntry> probingTable;
     int computeHashIndex(long long key) const;
+    void rehash();
+    bool isPrime(int number);
+    int nextPrime(int number);
 
 public:
     PlayerHashTable(int size = 10007, CollisionMethod method = CollisionMethod::CHAINING);

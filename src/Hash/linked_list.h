@@ -19,6 +19,10 @@ private:
 
 public:
     LinkedList() : head(nullptr) {}
+    Node<T> *getHead() const
+    {
+        return head;
+    }
 
     ~LinkedList()
     {

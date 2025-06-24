@@ -57,6 +57,10 @@ void PlayerHashTable::insertPlayer(Player p)
 
             chainingTable[index].insert(p);
             elementCount++;
+            if ((float)elementCount / tableSize > 0.7f)
+            {
+                rehash();
+            }
         }
     }
     else
@@ -79,6 +83,10 @@ void PlayerHashTable::insertPlayer(Player p)
         probingTable[index].player = p;
         probingTable[index].state = EntryState::OCCUPIED;
         elementCount++;
+        if ((float)elementCount / tableSize > 0.7f)
+        {
+            rehash();
+        }
 
         if (probeCount > 0)
             collisionCount++;
@@ -148,4 +156,51 @@ void PlayerHashTable::exibirEstatisticas() const
     cout << "Elementos armazenados: " << elementCount << endl;
     cout << "Fator de carga: " << (float)elementCount / tableSize << endl;
     cout << "Numero de colisoes: " << collisionCount << endl;
+}
+
+void PlayerHashTable::rehash() {
+    int newSize = nextPrime(tableSize * 2);
+
+    if (collisionMethod == CollisionMethod::CHAINING) {
+        vector<LinkedList<Player>> newTable(newSize);
+        for (auto &list : chainingTable) {
+            Node<Player>* current = list.getHead();
+            while (current) {
+                int newIndex = current->data.playerId % newSize;
+                newTable[newIndex].insert(current->data);
+                current = current->next;
+            }
+        }
+        chainingTable = move(newTable);
+    } else {
+        vector<HashEntry> newTable(newSize);
+        for (auto &entry : probingTable) {
+            if (entry.state == EntryState::OCCUPIED) {
+                int newIndex = entry.player.playerId % newSize;
+                while (newTable[newIndex].state == EntryState::OCCUPIED) {
+                    newIndex = (newIndex + 1) % newSize;
+                }
+                newTable[newIndex].player = entry.player;
+                newTable[newIndex].state = EntryState::OCCUPIED;
+            }
+        }
+        probingTable = move(newTable);
+    }
+
+    tableSize = newSize;
+    collisionCount = 0;  // Recalcular se necessário
+}
+
+bool PlayerHashTable::isPrime(int number) {
+    if (number <= 1) return false;
+    if (number == 2) return true;
+    if (number % 2 == 0) return false;
+    for (int i = 3; i * i <= number; i += 2)
+        if (number % i == 0) return false;
+    return true;
+}
+
+int PlayerHashTable::nextPrime(int number) {
+    while (!isPrime(number)) number++;
+    return number;
 }
