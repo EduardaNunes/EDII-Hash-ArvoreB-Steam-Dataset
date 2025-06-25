@@ -21,6 +21,14 @@ add_executable(meu_programa
     src/Hash/hash.cpp
 )
 
+add_executable(tests
+    src/tests/test_hash.cpp
+     src/Hash/hash.cpp
+)
+
+target_include_directories(tests PRIVATE src)
+add_test(NAME PlayerHashTests COMMAND tests)
+
 set_target_properties(meu_programa PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
   RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}

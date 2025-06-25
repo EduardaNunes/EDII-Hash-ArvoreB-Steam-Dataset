@@ -14,6 +14,9 @@ PlayerHashTable::PlayerHashTable(int size, CollisionMethod method)
 
 int PlayerHashTable::computeHashIndex(long long key) const
 {
+    if (key < 0)
+        throw invalid_argument("ID negativo não permitido.");
+
     return key % tableSize;
 }
 
@@ -41,6 +44,8 @@ void PlayerHashTable::loadPlayersFromCSV(const string &filePath)
 
 void PlayerHashTable::insertPlayer(Player p)
 {
+    if (p.playerId < 0)
+        return;
     int index = computeHashIndex(p.playerId);
 
     if (collisionMethod == CollisionMethod::CHAINING)
@@ -95,6 +100,8 @@ void PlayerHashTable::insertPlayer(Player p)
 
 Player *PlayerHashTable::findPlayerById(long long id)
 {
+    if (id < 0)
+        return nullptr;
     int index = computeHashIndex(id);
     if (collisionMethod == CollisionMethod::CHAINING)
     {
@@ -120,6 +127,8 @@ Player *PlayerHashTable::findPlayerById(long long id)
 
 bool PlayerHashTable::removePlayerById(long long id)
 {
+    if (id < 0)
+        return false;
     int index = computeHashIndex(id);
     if (collisionMethod == CollisionMethod::CHAINING)
     {
@@ -158,26 +167,35 @@ void PlayerHashTable::exibirEstatisticas() const
     cout << "Numero de colisoes: " << collisionCount << endl;
 }
 
-void PlayerHashTable::rehash() {
+void PlayerHashTable::rehash()
+{
     int newSize = nextPrime(tableSize * 2);
 
-    if (collisionMethod == CollisionMethod::CHAINING) {
+    if (collisionMethod == CollisionMethod::CHAINING)
+    {
         vector<LinkedList<Player>> newTable(newSize);
-        for (auto &list : chainingTable) {
-            Node<Player>* current = list.getHead();
-            while (current) {
+        for (auto &list : chainingTable)
+        {
+            Node<Player> *current = list.getHead();
+            while (current)
+            {
                 int newIndex = current->data.playerId % newSize;
                 newTable[newIndex].insert(current->data);
                 current = current->next;
             }
         }
         chainingTable = move(newTable);
-    } else {
+    }
+    else
+    {
         vector<HashEntry> newTable(newSize);
-        for (auto &entry : probingTable) {
-            if (entry.state == EntryState::OCCUPIED) {
+        for (auto &entry : probingTable)
+        {
+            if (entry.state == EntryState::OCCUPIED)
+            {
                 int newIndex = entry.player.playerId % newSize;
-                while (newTable[newIndex].state == EntryState::OCCUPIED) {
+                while (newTable[newIndex].state == EntryState::OCCUPIED)
+                {
                     newIndex = (newIndex + 1) % newSize;
                 }
                 newTable[newIndex].player = entry.player;
@@ -188,19 +206,26 @@ void PlayerHashTable::rehash() {
     }
 
     tableSize = newSize;
-    collisionCount = 0;  // Recalcular se necessário
+    collisionCount = 0; // Recalcular se necessário
 }
 
-bool PlayerHashTable::isPrime(int number) {
-    if (number <= 1) return false;
-    if (number == 2) return true;
-    if (number % 2 == 0) return false;
+bool PlayerHashTable::isPrime(int number)
+{
+    if (number <= 1)
+        return false;
+    if (number == 2)
+        return true;
+    if (number % 2 == 0)
+        return false;
     for (int i = 3; i * i <= number; i += 2)
-        if (number % i == 0) return false;
+        if (number % i == 0)
+            return false;
     return true;
 }
 
-int PlayerHashTable::nextPrime(int number) {
-    while (!isPrime(number)) number++;
+int PlayerHashTable::nextPrime(int number)
+{
+    while (!isPrime(number))
+        number++;
     return number;
 }

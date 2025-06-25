@@ -502,12 +502,26 @@ meu_programa/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/build
 .PHONY : meu_programa/fast
 
+#=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
 src/Hash/hash.obj: src/Hash/hash.cpp.obj
 .PHONY : src/Hash/hash.obj
 
 # target to build an object file
 src/Hash/hash.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/Hash/hash.cpp.obj
 .PHONY : src/Hash/hash.cpp.obj
 
 src/Hash/hash.i: src/Hash/hash.cpp.i
@@ -516,6 +530,7 @@ src/Hash/hash.i: src/Hash/hash.cpp.i
 # target to preprocess a source file
 src/Hash/hash.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/Hash/hash.cpp.i
 .PHONY : src/Hash/hash.cpp.i
 
 src/Hash/hash.s: src/Hash/hash.cpp.s
@@ -524,6 +539,7 @@ src/Hash/hash.s: src/Hash/hash.cpp.s
 # target to generate assembly for a file
 src/Hash/hash.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/Hash/hash.cpp.s
 .PHONY : src/Hash/hash.cpp.s
 
 src/Menu/menu.obj: src/Menu/menu.cpp.obj
@@ -574,6 +590,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/tests/test_hash.obj: src/tests/test_hash.cpp.obj
+.PHONY : src/tests/test_hash.obj
+
+# target to build an object file
+src/tests/test_hash.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/tests/test_hash.cpp.obj
+.PHONY : src/tests/test_hash.cpp.obj
+
+src/tests/test_hash.i: src/tests/test_hash.cpp.i
+.PHONY : src/tests/test_hash.i
+
+# target to preprocess a source file
+src/tests/test_hash.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/tests/test_hash.cpp.i
+.PHONY : src/tests/test_hash.cpp.i
+
+src/tests/test_hash.s: src/tests/test_hash.cpp.s
+.PHONY : src/tests/test_hash.s
+
+# target to generate assembly for a file
+src/tests/test_hash.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/tests/test_hash.cpp.s
+.PHONY : src/tests/test_hash.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -612,6 +652,7 @@ help:
 	@echo ... NightlyTest
 	@echo ... NightlyUpdate
 	@echo ... meu_programa
+	@echo ... tests
 	@echo ... src/Hash/hash.obj
 	@echo ... src/Hash/hash.i
 	@echo ... src/Hash/hash.s
@@ -621,6 +662,9 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/tests/test_hash.obj
+	@echo ... src/tests/test_hash.i
+	@echo ... src/tests/test_hash.s
 .PHONY : help
 
 

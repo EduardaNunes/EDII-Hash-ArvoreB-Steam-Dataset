@@ -1,0 +1,2 @@
+PlayerHashTests 6 0.0527927
+---
