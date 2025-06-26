@@ -41,3 +41,7 @@ vector<string> Jogo::getIdiomas(){
 string Jogo::getDataDeLancamento(){
     return dataDeLancamento;
 };
+
+void Jogo::adicionaConquista(Conquista novaConquista){
+
+}

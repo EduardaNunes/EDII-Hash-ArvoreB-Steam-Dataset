@@ -16,7 +16,7 @@ class Jogo{
         vector<Conquista> conquistas;
 
     public:
-        Jogo(int id, string titulo, vector<string> desenvolvedores, vector<string> publishers, vector<string> generos, vector<string> idiomas, string dataDeLancamento, vector<Conquista> conquistas);
+        Jogo(int id, string titulo, vector<string> desenvolvedores, vector<string> publishers, vector<string> generos, vector<string> idiomas, string dataDeLancamento);
 
         int getId();
         string getTitutlo();
@@ -27,5 +27,5 @@ class Jogo{
         string getDataDeLancamento();
         Conquista getConquistas();
 
-        void addConquista();
+        void adicionaConquista(Conquista novaConquista);
 };
