@@ -10,8 +10,8 @@ class Player{
         int id;
         string pais;
         string dataDeCriacao;
-        vector<Jogos> jogos;
-        vector<Conquistas> conquistas;
+        vector<Jogo> jogos;
+        vector<Conquista> conquistas;
 
     public:
         Player(int id, string pais, string dataDeCriacao);
@@ -19,7 +19,7 @@ class Player{
         int getId();
         string getPais();
         string getDataDeCriacao();
-        vector<Jogos> getJogos();
+        vector<Jogo> getJogos();
         vector<Conquista> getConquistas();
 
         void addConquista(Conquista novaConquista);
