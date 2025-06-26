@@ -7,7 +7,9 @@
 class Menu
 {
 public:
-    void showMenu();
+    void menuInicial();
+    void menuHash();
+    void menuArvoreB();
 };
 
 #endif
