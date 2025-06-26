@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "menu.h"
+#include "./ArvoreB/arvoreB.h"
 
 using namespace std;
 
@@ -21,8 +22,40 @@ int contarJogadoresCSV(const string &caminho)
     return count;
 }
 
-void Menu::showMenu()
-{
+void Menu::menuInicial(){
+
+    int opcao;
+    do{
+        cout << "=== Menu Hash ===" << endl;
+        cout << "1 - Hash" << endl;
+        cout << "2 - Arvore B" << endl;
+        cout << "0 - Sair" << endl;
+        cout << "Escolha: ";
+        cin >> opcao;
+
+        switch (opcao)
+        {
+        case 1:
+        {
+            menuHash();
+            break;
+        }
+        case 2:
+        {
+            menuArvoreB();
+            break;
+        }
+        case 0:
+            cout << "Saindo...\n";
+            break;
+        default:
+            cout << "Opcao invalida.\n";
+        }
+
+    } while (opcao != 0);
+}
+
+void Menu::menuHash(){
     int metodoColisao;
     cout << "Escolha o metodo de tratamento de colisao:\n";
     cout << "1 - Encadeamento (Chaining)\n";
@@ -111,4 +144,41 @@ void Menu::showMenu()
         }
 
     } while (opcaoMenu != 0);
+}
+
+void Menu::menuArvoreB(){
+
+    ArvoreB arvoreB;
+
+    int opcao;
+    do
+    {
+        cout << "=== Menu Arvore B ===" << endl;
+        cout << "1 - Indexar por conquistas" << endl;
+        cout << "2 - Indexar por jogos" << endl;
+        cout << "0 - Voltar" << endl;
+        cout << "Escolha: ";
+        cin >> opcao;
+
+        switch (opcao)
+        {
+        case 1:
+        {
+            arvoreB.indexarConquistas();
+            break;
+        }
+        case 2:
+        {
+            arvoreB.indexarJogos();
+            break;
+        }
+        case 0:
+            cout << "Voltando...\n";
+            Menu::menuInicial();
+            break;
+        default:
+            cout << "Opcao invalida.\n";
+        }
+
+    } while (opcao != 0); 
 }
