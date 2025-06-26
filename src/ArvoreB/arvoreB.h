@@ -4,14 +4,17 @@ using namespace std;
 
 class ArvoreB{
     private:
-        int m;
-        NoB* root;
+        int ordem;
+        NoB* raiz;
 
     public:
-        void insert();
-        void search();
+        void insere();
+        void busca();
         void remove();
 
-        void getOrder();
-        void getRoot();
+        int getOrdem();
+        NoB* getRaiz();
+
+        void indexarJogos();
+        void indexarConquistas();
 };
