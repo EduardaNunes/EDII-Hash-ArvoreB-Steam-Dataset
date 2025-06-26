@@ -1,0 +1,40 @@
+#include <string>
+#include <vector>
+#include "Player.h"
+
+using namespace std;
+
+Player::Player(int novoId, string novoPais, string novaDataDeCriacao){
+    id = novoId;
+    pais = novoPais;
+    dataDeCriacao = novaDataDeCriacao;
+}
+
+
+int Player::getId(){
+    return id;
+};
+
+string Player::getPais(){
+    return pais;
+};
+
+string Player::getDataDeCriacao(){
+    return dataDeCriacao;
+};
+
+vector<Jogos> Player::getJogos(){
+    return jogos;
+};
+
+vector<Conquista> Player::getConquistas(){
+    return conquistas;
+};
+
+void Player::addConquista(Conquista novaConquista){
+
+};
+
+void Player::addJogo(Jogo novoJogo){
+
+};

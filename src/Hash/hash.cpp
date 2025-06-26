@@ -28,7 +28,7 @@ void Hash::loadPlayers(const string &filePath)
     ifstream file(filePath);
     string line;
 
-    getline(file, line); // skip header
+    getline(file, line); // ignora o cabeçalho
     while (getline(file, line))
     {
         stringstream ss(line);
