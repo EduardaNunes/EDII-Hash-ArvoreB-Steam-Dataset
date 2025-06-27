@@ -26,7 +26,7 @@ void Menu::menuInicial(){
 
     int opcao;
     do{
-        cout << "=== Menu Hash ===" << endl;
+        cout << "=== Menu Inicial ===" << endl;
         cout << "1 - Hash" << endl;
         cout << "2 - Arvore B" << endl;
         cout << "0 - Sair" << endl;
@@ -74,7 +74,7 @@ void Menu::menuHash(){
     int opcaoMenu;
     do
     {
-        cout << "\n=== MENU ===\n";
+        cout << "\n=== MENU HASH ===\n";
         cout << "1 - Buscar jogador por ID\n";
         cout << "2 - Inserir novo jogador\n";
         cout << "3 - Remover jogador por ID\n";
