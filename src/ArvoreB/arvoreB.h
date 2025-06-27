@@ -8,7 +8,7 @@ class ArvoreB{
         NoB* raiz;
 
     public:
-        void busca();
+        bool busca(int chave);
         void insere();
         void remove();
 
