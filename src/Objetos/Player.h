@@ -9,14 +9,13 @@
 
 using namespace std;
 
-class Player
-{
-private:
-    int id;
-    string pais;
-    string dataDeCriacao;
-    vector<Jogo> jogos;
-    vector<Conquista> conquistas;
+class Player{
+    private:
+        int id;
+        string pais;
+        string dataDeCriacao;
+        vector<Jogo> jogos;
+        vector<Conquista> conquistas;
 
 public:
     Player(); 
