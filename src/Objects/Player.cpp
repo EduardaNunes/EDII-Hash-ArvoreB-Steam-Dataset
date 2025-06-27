@@ -10,14 +10,14 @@ Player::Player(){
     dataDeCriacao = "";
 }
 
-Player::Player(int novoId, string novoPais, string novaDataDeCriacao){
+Player::Player(long long  novoId, string novoPais, string novaDataDeCriacao){
     id = novoId;
     pais = novoPais;
     dataDeCriacao = novaDataDeCriacao;
 }
 
 
-int Player::getId(){
+long long Player::getId(){
     return id;
 };
 

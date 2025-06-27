@@ -12,7 +12,7 @@ using namespace std;
 class Player
 {
 private:
-    int id;
+    long long id;
     string pais;
     string dataDeCriacao;
     vector<Jogo> jogos;
@@ -20,9 +20,9 @@ private:
 
 public:
     Player(); 
-    Player(int id, string pais, string dataDeCriacao);
+    Player(long long id, string pais, string dataDeCriacao);
 
-    int getId();
+    long long getId();
     string getPais();
     string getDataDeCriacao();
     vector<Jogo> getJogos();
