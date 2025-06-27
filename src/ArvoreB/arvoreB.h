@@ -11,13 +11,16 @@ class ArvoreB{
         bool buscaAuxiliar(NoB* no, int chave);
 
     public:
+
+        ArvoreB(int ordem);
+
         bool busca(int chave);
-        void insere();
+        void insere(int chave);
         void remove();
 
         int getOrdem();
         NoB* getRaiz();
 
         void indexarJogos();
-        void indexarConquistas();
+        void indexarConquistas();;
 };

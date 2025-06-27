@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "ArvoreB.h"
 
 using namespace std;
 
@@ -13,13 +14,14 @@ class NoB {
     public:
         NoB(int ordemArvore, bool eFolha);
 
-        vector<int> getChaves();
-        vector<NoB*> getFilhos();
-        int getChavesPreenchidas();
-        bool getEFolha();
-
         void addChave(int novaChave);
         void addFilho(NoB* novoFilho);
-        void setChavesPreechidas(int novaChavesPreenchidas);
+
+        void removeChave();
+        void removeFilho();
+
         void setEFolha(bool novoEFolha);
+
+    friend class ArvoreB;
+
 };

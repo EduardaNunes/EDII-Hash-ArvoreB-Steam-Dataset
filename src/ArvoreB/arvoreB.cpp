@@ -5,6 +5,10 @@
 
 using namespace std;
 
+ArvoreB::ArvoreB(int ordem){
+    raiz = new NoB(ordem, true); 
+}
+
 void ArvoreB::indexarJogos(){
 
 }
@@ -13,14 +17,24 @@ void ArvoreB::indexarConquistas(){
     
 }
 
-void ArvoreB::insere(){
-    
+void ArvoreB::insere(int chave){
+
+    if(raiz->eFolha){
+        raiz->addChave(chave);
+        return;
+    }
+
+
+
+
+
+
 }
 
 // Mudar depois de bool para o tipo de informação que será retornada
 bool ArvoreB::busca(int chave){
 
-    if(raiz->getChavesPreenchidas() == 0){
+    if(raiz->chavesPreenchidas == 0){
         return false;
     }
 
@@ -30,18 +44,16 @@ bool ArvoreB::busca(int chave){
 bool ArvoreB::buscaAuxiliar(NoB* no, int chave){
 
     int i = 0;
-    vector<int> chaves = no->getChaves();
-    int chavesPreenchidas = no->getChavesPreenchidas();
     
-    while(i < chavesPreenchidas && chave > chaves[i]){
+    while(i < no->chavesPreenchidas && chave > no->chaves[i]){
         
-        if(chave == chaves[i]) return true;
+        if(chave == no->chaves[i]) return true;
         i++;
 
     }
 
-    if(no->getEFolha()) return false;
-    return buscaAuxiliar(no->getFilhos()[i], chave);
+    if(no->eFolha) return false;
+    return buscaAuxiliar(no->filhos[i], chave);
 }
 
 void ArvoreB::remove(){
