@@ -8,8 +8,8 @@ class ArvoreB{
         NoB* raiz;
 
     public:
-        void insere();
         void busca();
+        void insere();
         void remove();
 
         int getOrdem();

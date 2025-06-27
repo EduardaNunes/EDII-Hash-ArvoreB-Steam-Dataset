@@ -4,12 +4,11 @@ using namespace std;
 
 class NoB {
     private:
-        int m;
-        vector<int> keys;
-        vector <NoB*> children;
-        int filledKeys;
-        bool isLeaf;
+        vector<int> chaves;
+        vector <NoB*> filhos;
+        int chavesPreenchidas;
+        bool eFolha;
     
     public:
-        NoB(int m, bool isLeaf);
+        NoB(int ordemArvore, bool eFolha);
 };
