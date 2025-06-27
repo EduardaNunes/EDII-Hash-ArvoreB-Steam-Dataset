@@ -19,7 +19,7 @@ add_executable(meu_programa
     src/main.cpp
     src/Menu/menu.cpp
     src/Hash/hash.cpp
-    src/Objects/Player.cpp
+    src/Objetos/Player.cpp
     src/ArvoreB/arvoreB.cpp
     src/LeitorDePlanilha/leitorDePlanilha.cpp
 )
