@@ -62,6 +62,7 @@ void Menu::menuHash(){
     cout << "2 - Enderecamento Aberto (Sondagem Linear)\n";
     cout << "Opcao: ";
     cin >> metodoColisao;
+    cout << "Criando...\n";
 
     CollisionMethod estrategiaDeColisao = (metodoColisao == 2) ? CollisionMethod::LINEAR_PROBING : CollisionMethod::CHAINING;
 
@@ -74,7 +75,7 @@ void Menu::menuHash(){
     int opcaoMenu;
     do
     {
-        cout << "\n=== MENU HASH ===\n";
+        cout << "\n=== Menu Hash ===\n";
         cout << "1 - Buscar jogador por ID\n";
         cout << "2 - Inserir novo jogador\n";
         cout << "3 - Remover jogador por ID\n";
