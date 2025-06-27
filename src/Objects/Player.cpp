@@ -4,6 +4,12 @@
 
 using namespace std;
 
+Player::Player(){
+    id = 0;
+    pais = "";
+    dataDeCriacao = "";
+}
+
 Player::Player(int novoId, string novoPais, string novaDataDeCriacao){
     id = novoId;
     pais = novoPais;
@@ -23,7 +29,7 @@ string Player::getDataDeCriacao(){
     return dataDeCriacao;
 };
 
-vector<Jogos> Player::getJogos(){
+vector<Jogo> Player::getJogos(){
     return jogos;
 };
 

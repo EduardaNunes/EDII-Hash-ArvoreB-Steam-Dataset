@@ -1,3 +1,6 @@
+#ifndef CONQUISTA_H
+#define CONQUISTA_H
+
 #include <string>
 using namespace std;
 
@@ -16,3 +19,5 @@ class Conquista{
         string getTitulo();
         string getDescricao();
 };
+
+#endif 

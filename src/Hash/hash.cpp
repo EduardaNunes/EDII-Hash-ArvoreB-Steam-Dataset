@@ -1,4 +1,5 @@
 #include "hash.h"
+#include "../LeitorDePlanilha/leitorDePlanilha.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -22,35 +23,35 @@ int PlayerHashTable::computeHashIndex(long long key) const
 
 void PlayerHashTable::loadPlayersFromCSV(const string &filePath)
 {
-    ifstream file(filePath);
-    string line;
+    LeitorDePlanilha leitor;
+    vector<vector<string>> dados = leitor.lerCSV(filePath);
 
-    getline(file, line);
-    while (getline(file, line))
+    for (size_t i = 1; i < dados.size(); i++)
     {
-        stringstream ss(line);
-        string idStr, country, created;
-        getline(ss, idStr, ',');
-        getline(ss, country, ',');
-        getline(ss, created, ',');
-
-        if (!idStr.empty())
+        if (dados[i].size() >= 3)
         {
-            long long id = stoll(idStr);
-            insertPlayer(Player(id, country, created));
+            string idStr = dados[i][0];
+            string pais = dados[i][1];
+            string dataCriacao = dados[i][2];
+
+            if (!idStr.empty())
+            {
+                long long id = stoll(idStr);
+                insertPlayer(Player(id, pais, dataCriacao));
+            }
         }
     }
 }
 
 void PlayerHashTable::insertPlayer(Player p)
 {
-    if (p.playerId < 0)
+    if (p.getId() < 0)
         return;
-    int index = computeHashIndex(p.playerId);
+    int index = computeHashIndex(p.getId());
 
     if (collisionMethod == CollisionMethod::CHAINING)
     {
-        Player *existing = chainingTable[index].search(p.playerId);
+        Player *existing = chainingTable[index].search(p.getId());
         if (existing)
         {
             *existing = p;
@@ -74,7 +75,7 @@ void PlayerHashTable::insertPlayer(Player p)
         int probeCount = 0;
         while (probingTable[index].state == EntryState::OCCUPIED)
         {
-            if (probingTable[index].player.playerId == p.playerId)
+            if (probingTable[index].player.getId() == p.getId())
             {
                 probingTable[index].player = p;
                 return;
@@ -113,7 +114,7 @@ Player *PlayerHashTable::findPlayerById(long long id)
         while (probingTable[index].state != EntryState::EMPTY)
         {
             if (probingTable[index].state == EntryState::OCCUPIED &&
-                probingTable[index].player.playerId == id)
+                probingTable[index].player.getId() == id)
             {
                 return &probingTable[index].player;
             }
@@ -144,7 +145,7 @@ bool PlayerHashTable::removePlayerById(long long id)
         while (probingTable[index].state != EntryState::EMPTY)
         {
             if (probingTable[index].state == EntryState::OCCUPIED &&
-                probingTable[index].player.playerId == id)
+                probingTable[index].player.getId() == id)
             {
                 probingTable[index].state = EntryState::DELETED;
                 elementCount--;
@@ -179,7 +180,7 @@ void PlayerHashTable::rehash()
             Node<Player> *current = list.getHead();
             while (current)
             {
-                int newIndex = current->data.playerId % newSize;
+                int newIndex = current->data.getId() % newSize;
                 newTable[newIndex].insert(current->data);
                 current = current->next;
             }
@@ -193,7 +194,7 @@ void PlayerHashTable::rehash()
         {
             if (entry.state == EntryState::OCCUPIED)
             {
-                int newIndex = entry.player.playerId % newSize;
+                int newIndex = entry.player.getId() % newSize;
                 while (newTable[newIndex].state == EntryState::OCCUPIED)
                 {
                     newIndex = (newIndex + 1) % newSize;

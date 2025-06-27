@@ -47,7 +47,7 @@ public:
         Node<T> *current = head;
         while (current)
         {
-            if (current->data.playerId == id)
+            if (current->data.getId() == id)
                 return &current->data;
             current = current->next;
         }
@@ -66,7 +66,7 @@ public:
 
         while (current)
         {
-            if (current->data.playerId == id)
+            if (current->data.getId() == id)
             {
                 if (prev)
                     prev->next = current->next;

@@ -5,7 +5,6 @@ CMakeFiles/tests.dir/src/Hash/hash.cpp.obj: C:/Users/vanes/OneDrive/Documentos/c
   C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/hash.h \
   C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/hash_entry.h \
   C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/linked_list.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/player.h \
   c:/mingw/include/_mingw.h \
   c:/mingw/include/ctype.h \
   c:/mingw/include/direct.h \
@@ -122,7 +121,11 @@ CMakeFiles/tests.dir/src/Hash/hash.cpp.obj: C:/Users/vanes/OneDrive/Documentos/c
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/vector \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h \
-  c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/leitordeplanilha/leitordeplanilha.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Conquista.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Jogo.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/player.h
 
 CMakeFiles/tests.dir/src/tests/test_hash.cpp.obj: C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/tests/test_hash.cpp \
   c:/mingw/include/_mingw.h \
@@ -247,10 +250,14 @@ CMakeFiles/tests.dir/src/tests/test_hash.cpp.obj: C:/Users/vanes/OneDrive/Docume
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hash/hash.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hash/hash_entry.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hash/linked_list.h \
-  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hash/player.h
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Conquista.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Jogo.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/player.h
 
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ptr_traits.h:
+
+c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/player.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/exception_defines.h:
 
@@ -259,10 +266,6 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/exception:
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/cpp_type_traits.h:
 
 c:/mingw/include/direct.h:
-
-c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hash/player.h:
-
-C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/player.h:
 
 C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/hash.cpp:
 
@@ -370,6 +373,8 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/concept_check.h:
 
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h:
+
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/exception_ptr.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator.h:
@@ -403,8 +408,6 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/sstream.tcc:
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_bvector.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_function.h:
-
-c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_types.h:
 
@@ -501,6 +504,12 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h:
 c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h:
+
+c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/leitordeplanilha/leitordeplanilha.h:
+
+c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Conquista.h:
+
+c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Jogo.h:
 
 C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/tests/test_hash.cpp:
 

@@ -1,3 +1,6 @@
+#ifndef JOGO_H
+#define JOGO_H
+
 #include <string>
 #include <vector>
 #include "Conquista.h"
@@ -29,3 +32,5 @@ class Jogo{
 
         void adicionaConquista(Conquista novaConquista);
 };
+
+#endif 

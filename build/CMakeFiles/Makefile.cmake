@@ -93,5 +93,4 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ContinuousMemCheck.dir/DependInfo.cmake"
   "CMakeFiles/ContinuousSubmit.dir/DependInfo.cmake"
   "CMakeFiles/meu_programa.dir/DependInfo.cmake"
-  "CMakeFiles/tests.dir/DependInfo.cmake"
   )

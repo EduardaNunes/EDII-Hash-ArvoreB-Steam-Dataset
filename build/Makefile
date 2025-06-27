@@ -502,18 +502,29 @@ meu_programa/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/build
 .PHONY : meu_programa/fast
 
-#=============================================================================
-# Target rules for targets named tests
+src/ArvoreB/arvoreB.obj: src/ArvoreB/arvoreB.cpp.obj
+.PHONY : src/ArvoreB/arvoreB.obj
 
-# Build rule for target.
-tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests
-.PHONY : tests
+# target to build an object file
+src/ArvoreB/arvoreB.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.obj
+.PHONY : src/ArvoreB/arvoreB.cpp.obj
 
-# fast build rule for target.
-tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/build
-.PHONY : tests/fast
+src/ArvoreB/arvoreB.i: src/ArvoreB/arvoreB.cpp.i
+.PHONY : src/ArvoreB/arvoreB.i
+
+# target to preprocess a source file
+src/ArvoreB/arvoreB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.i
+.PHONY : src/ArvoreB/arvoreB.cpp.i
+
+src/ArvoreB/arvoreB.s: src/ArvoreB/arvoreB.cpp.s
+.PHONY : src/ArvoreB/arvoreB.s
+
+# target to generate assembly for a file
+src/ArvoreB/arvoreB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.s
+.PHONY : src/ArvoreB/arvoreB.cpp.s
 
 src/Hash/hash.obj: src/Hash/hash.cpp.obj
 .PHONY : src/Hash/hash.obj
@@ -521,7 +532,6 @@ src/Hash/hash.obj: src/Hash/hash.cpp.obj
 # target to build an object file
 src/Hash/hash.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/Hash/hash.cpp.obj
 .PHONY : src/Hash/hash.cpp.obj
 
 src/Hash/hash.i: src/Hash/hash.cpp.i
@@ -530,7 +540,6 @@ src/Hash/hash.i: src/Hash/hash.cpp.i
 # target to preprocess a source file
 src/Hash/hash.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/Hash/hash.cpp.i
 .PHONY : src/Hash/hash.cpp.i
 
 src/Hash/hash.s: src/Hash/hash.cpp.s
@@ -539,8 +548,31 @@ src/Hash/hash.s: src/Hash/hash.cpp.s
 # target to generate assembly for a file
 src/Hash/hash.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/Hash/hash.cpp.s
 .PHONY : src/Hash/hash.cpp.s
+
+src/LeitorDePlanilha/leitorDePlanilha.obj: src/LeitorDePlanilha/leitorDePlanilha.cpp.obj
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.obj
+
+# target to build an object file
+src/LeitorDePlanilha/leitorDePlanilha.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.cpp.obj
+
+src/LeitorDePlanilha/leitorDePlanilha.i: src/LeitorDePlanilha/leitorDePlanilha.cpp.i
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.i
+
+# target to preprocess a source file
+src/LeitorDePlanilha/leitorDePlanilha.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.i
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.cpp.i
+
+src/LeitorDePlanilha/leitorDePlanilha.s: src/LeitorDePlanilha/leitorDePlanilha.cpp.s
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.s
+
+# target to generate assembly for a file
+src/LeitorDePlanilha/leitorDePlanilha.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.s
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.cpp.s
 
 src/Menu/menu.obj: src/Menu/menu.cpp.obj
 .PHONY : src/Menu/menu.obj
@@ -566,6 +598,30 @@ src/Menu/menu.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.s
 .PHONY : src/Menu/menu.cpp.s
 
+src/Objects/Player.obj: src/Objects/Player.cpp.obj
+.PHONY : src/Objects/Player.obj
+
+# target to build an object file
+src/Objects/Player.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objects/Player.cpp.obj
+.PHONY : src/Objects/Player.cpp.obj
+
+src/Objects/Player.i: src/Objects/Player.cpp.i
+.PHONY : src/Objects/Player.i
+
+# target to preprocess a source file
+src/Objects/Player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objects/Player.cpp.i
+.PHONY : src/Objects/Player.cpp.i
+
+src/Objects/Player.s: src/Objects/Player.cpp.s
+.PHONY : src/Objects/Player.s
+
+# target to generate assembly for a file
+src/Objects/Player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objects/Player.cpp.s
+.PHONY : src/Objects/Player.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -589,30 +645,6 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
-
-src/tests/test_hash.obj: src/tests/test_hash.cpp.obj
-.PHONY : src/tests/test_hash.obj
-
-# target to build an object file
-src/tests/test_hash.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/tests/test_hash.cpp.obj
-.PHONY : src/tests/test_hash.cpp.obj
-
-src/tests/test_hash.i: src/tests/test_hash.cpp.i
-.PHONY : src/tests/test_hash.i
-
-# target to preprocess a source file
-src/tests/test_hash.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/tests/test_hash.cpp.i
-.PHONY : src/tests/test_hash.cpp.i
-
-src/tests/test_hash.s: src/tests/test_hash.cpp.s
-.PHONY : src/tests/test_hash.s
-
-# target to generate assembly for a file
-src/tests/test_hash.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\tests.dir\build.make CMakeFiles/tests.dir/src/tests/test_hash.cpp.s
-.PHONY : src/tests/test_hash.cpp.s
 
 # Help Target
 help:
@@ -652,19 +684,24 @@ help:
 	@echo ... NightlyTest
 	@echo ... NightlyUpdate
 	@echo ... meu_programa
-	@echo ... tests
+	@echo ... src/ArvoreB/arvoreB.obj
+	@echo ... src/ArvoreB/arvoreB.i
+	@echo ... src/ArvoreB/arvoreB.s
 	@echo ... src/Hash/hash.obj
 	@echo ... src/Hash/hash.i
 	@echo ... src/Hash/hash.s
+	@echo ... src/LeitorDePlanilha/leitorDePlanilha.obj
+	@echo ... src/LeitorDePlanilha/leitorDePlanilha.i
+	@echo ... src/LeitorDePlanilha/leitorDePlanilha.s
 	@echo ... src/Menu/menu.obj
 	@echo ... src/Menu/menu.i
 	@echo ... src/Menu/menu.s
+	@echo ... src/Objects/Player.obj
+	@echo ... src/Objects/Player.i
+	@echo ... src/Objects/Player.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
-	@echo ... src/tests/test_hash.obj
-	@echo ... src/tests/test_hash.i
-	@echo ... src/tests/test_hash.s
 .PHONY : help
 
 

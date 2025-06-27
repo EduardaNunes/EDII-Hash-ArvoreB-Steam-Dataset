@@ -6,7 +6,6 @@ CMakeFiles/tests.dir/src/Hash/hash.cpp.obj
  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/hash.h
  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/hash_entry.h
  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/linked_list.h
- C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Hash/player.h
  c:/mingw/include/_mingw.h
  c:/mingw/include/ctype.h
  c:/mingw/include/direct.h
@@ -124,6 +123,10 @@ CMakeFiles/tests.dir/src/Hash/hash.cpp.obj
  c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
+ c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/leitordeplanilha/leitordeplanilha.h
+ c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Conquista.h
+ c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Jogo.h
+ c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/player.h
 
 CMakeFiles/tests.dir/src/tests/test_hash.cpp.obj
  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/tests/test_hash.cpp
@@ -249,5 +252,7 @@ CMakeFiles/tests.dir/src/tests/test_hash.cpp.obj
  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hash/hash.h
  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hash/hash_entry.h
  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hash/linked_list.h
- c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hash/player.h
+ c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Conquista.h
+ c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/Jogo.h
+ c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objects/player.h
 
