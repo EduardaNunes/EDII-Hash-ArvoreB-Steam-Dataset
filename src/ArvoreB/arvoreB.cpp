@@ -17,6 +17,7 @@ void ArvoreB::insere(){
     
 }
 
+// Mudar depois de bool para o tipo de informação que será retornada
 bool ArvoreB::busca(int chave){
 
     if(raiz->getChavesPreenchidas() == 0){
@@ -26,7 +27,7 @@ bool ArvoreB::busca(int chave){
     return buscaAuxiliar(raiz, chave);
 }
 
-bool buscaAuxiliar(NoB* no, int chave){
+bool ArvoreB::buscaAuxiliar(NoB* no, int chave){
 
     int i = 0;
     vector<int> chaves = no->getChaves();
