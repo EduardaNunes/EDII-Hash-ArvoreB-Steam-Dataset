@@ -1,7 +1,7 @@
 #ifndef HASH_ENTRY_H
 #define HASH_ENTRY_H
 
-#include "../Objects/Player.h"
+#include "../Objetos/Player.h"
 
 enum class EntryState
 {

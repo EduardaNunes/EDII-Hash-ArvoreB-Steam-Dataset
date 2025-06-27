@@ -1,7 +1,7 @@
 #ifndef PLAYER_HASH_TABLE_H
 #define PLAYER_HASH_TABLE_H
 
-#include "../Objects/Player.h"
+#include "../Objetos/Player.h"
 #include "linked_list.h"
 #include "hash_entry.h"
 #include <vector>

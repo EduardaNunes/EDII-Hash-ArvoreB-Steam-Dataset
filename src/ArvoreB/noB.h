@@ -11,5 +11,5 @@ class NoB {
         bool isLeaf;
     
     public:
-        NoB(int m, int keys[], NoB* children[]);
+        NoB(int m, bool isLeaf);
 };
