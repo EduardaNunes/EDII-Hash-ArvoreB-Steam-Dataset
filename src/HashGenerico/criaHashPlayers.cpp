@@ -2,6 +2,7 @@
 
 #include "../LeitorDePlanilha/leitorDePlanilha.h"
 #include "../config.h"
+#include "../Utils/utils.h"
 
 #include "../Objetos/Player.h"
 #include "../Objetos/Conquista.h"
@@ -9,7 +10,7 @@
 
 using namespace std;
 
-void criaHashAuxiliar(){
+void criaHash(){
     
     LeitorDePlanilha leitor;
 
@@ -42,17 +43,17 @@ void adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores){
 void adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos){
     LeitorDePlanilha leitor;
     vector<vector<string>> dadosJogos = leitor.lerCSV(CSV_GAMES_TESTE_PATH);  
+    Utils utils;
     
     for (const auto& linha : dadosJogos) {
-        // gameid,title,developers,publishers,genres,supported_languages,release_date
-        
-        int id = stoll(linha[0]);
-        string titulo = (linha.size() > 1) ? linha[1] : "";
-        vector<string> desenvolvedores = (linha.size() > 2) ? linha[2] : "";
-        vector<string> publishers = (linha.size() > 3) ? linha[3] : "";
-        vector<string> generos = (linha.size() > 4) ? linha[4] : "";
-        vector<string> idiomas = (linha.size() > 5) ? linha[5] : "";
-        string dataDeLancamento = (linha.size() > 6) ? linha[6] : "";
+
+        int id                         = (linha.size() > 0 && !linha[0].empty()) ? stoi(linha[0]) : 0;
+        string titulo                  = (linha.size() > 1) ? linha[1] : "";
+        vector<string> desenvolvedores = (linha.size() > 2) ? utils.split(linha[2], ',') : vector<string>{};
+        vector<string> publishers      = (linha.size() > 3) ? utils.split(linha[3], ',') : vector<string>{};
+        vector<string> generos         = (linha.size() > 4) ? utils.split(linha[4], ',') : vector<string>{};
+        vector<string> idiomas         = (linha.size() > 5) ? utils.split(linha[5], ',') : vector<string>{};
+        string dataDeLancamento        = (linha.size() > 6) ? linha[6] : "";
 
         Jogo novoJogo(id, titulo, desenvolvedores, publishers, generos, idiomas, dataDeLancamento);
         tabelaJogos.insere(novoJogo);
