@@ -13,6 +13,9 @@ vector<vector<string>> LeitorDePlanilha::lerCSV(const string& caminhoArquivo) {
         throw runtime_error("Não foi possível abrir o arquivo: " + caminhoArquivo);
     }
 
+    // Pula o cabeçalho
+    getline(arquivo, linha);
+
     while (getline(arquivo, linha)) {
         vector<string> colunas;
         stringstream ss(linha);
