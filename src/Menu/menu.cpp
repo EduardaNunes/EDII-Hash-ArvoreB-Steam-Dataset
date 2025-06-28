@@ -2,6 +2,8 @@
 #include <fstream>
 #include "menu.h"
 #include "./ArvoreB/arvoreB.h"
+#include <stdexcept>
+#include <limits>
 
 using namespace std;
 
@@ -32,6 +34,12 @@ void Menu::menuInicial(){
         cout << "0 - Sair" << endl;
         cout << "Escolha: ";
         cin >> opcao;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "A opcao precisa ser numerica." << endl;
+            menuInicial(); 
+        }
 
         switch (opcao)
         {
@@ -62,6 +70,12 @@ void Menu::menuHash(){
     cout << "2 - Enderecamento Aberto (Sondagem Linear)\n";
     cout << "Opcao: ";
     cin >> metodoColisao;
+    if (cin.fail() || (metodoColisao != 1 && metodoColisao != 2)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Opcao invalida. Digite 1 ou 2.\n";
+        menuHash(); 
+    }
     cout << "Criando...\n";
 
     CollisionMethod estrategiaDeColisao = (metodoColisao == 2) ? CollisionMethod::LINEAR_PROBING : CollisionMethod::CHAINING;
@@ -83,6 +97,12 @@ void Menu::menuHash(){
         cout << "0 - Sair\n";
         cout << "Escolha: ";
         cin >> opcaoMenu;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "A opcao precisa ser numerica." << endl;
+            menuHash();
+        }
 
         switch (opcaoMenu)
         {
@@ -91,6 +111,12 @@ void Menu::menuHash(){
             long long id;
             cout << "Digite o ID do jogador: ";
             cin >> id;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "A opcao precisa ser numerica." << endl;
+                menuHash();
+            }         
             Player *p = tabelaJogadores.findPlayerById(id);
             if (p)
             {
@@ -108,6 +134,12 @@ void Menu::menuHash(){
             string pais, dataCriacao;
             cout << "Digite o ID do jogador: ";
             cin >> id;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "A opcao precisa ser numerica." << endl;
+                menuHash();
+            } 
             cin.ignore();
             cout << "Digite o pais: ";
             getline(cin, pais);
@@ -124,6 +156,12 @@ void Menu::menuHash(){
             long long id;
             cout << "Digite o ID do jogador a remover: ";
             cin >> id;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "A opcao precisa ser numerica." << endl;
+                menuHash();
+            }
             if (tabelaJogadores.removePlayerById(id))
             {
                 cout << "Jogador removido com sucesso.\n";
@@ -160,6 +198,12 @@ void Menu::menuArvoreB(){
         cout << "0 - Voltar" << endl;
         cout << "Escolha: ";
         cin >> opcao;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "A opcao precisa ser numerica." << endl;
+            menuArvoreB();
+        } 
 
         switch (opcao)
         {
