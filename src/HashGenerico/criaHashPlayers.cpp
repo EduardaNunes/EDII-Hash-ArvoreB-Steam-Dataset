@@ -10,9 +10,10 @@
 
 using namespace std;
 
-void criaHash(){
-    
-    LeitorDePlanilha leitor;
+LeitorDePlanilha leitor;
+ Utils utils;
+
+void criaHashDePlayers(){
 
     int totalJogadores = leitor.contarJogadoresCSV(CSV_PLAYERS_PATH);
     int tamanhoTabela = static_cast<int>(totalJogadores);
@@ -21,12 +22,11 @@ void criaHash(){
 
     adicionaPlayersNaHash(tabelaPlayers);
     adicionaJogosNosPlayers(tabelaPlayers);
-    adicionaConquistasNosPlayers(tabelaPlayers);
+    //adicionaConquistasNosPlayers(tabelaPlayers);
 }
 
 void adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores){
 
-    LeitorDePlanilha leitor;
     vector<vector<string>> dadosPlayer = leitor.lerCSV(CSV_PLAYERS_TESTE_PATH);
 
     for (const auto& linha : dadosPlayer) {
@@ -41,10 +41,9 @@ void adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores){
 }
 
 void adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos){
-    LeitorDePlanilha leitor;
+
     vector<vector<string>> dadosJogos = leitor.lerCSV(CSV_GAMES_TESTE_PATH);  
-    Utils utils;
-    
+   
     for (const auto& linha : dadosJogos) {
 
         int id                         = (linha.size() > 0 && !linha[0].empty()) ? stoi(linha[0]) : 0;
@@ -62,30 +61,52 @@ void adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos){
 
 void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores){
 
-    LeitorDePlanilha leitor;
-
     int totalJogos = leitor.contarJogadoresCSV(CSV_GAMES_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalJogos);
     TabelaHash<Jogo> tabelaJogos(tamanhoTabela, MetodoDeColisao::ENCADEAMENTO);
     
     adicionaJogosNaHash(tabelaJogos);
 
-      
+    vector<vector<string>> dadosCompras = leitor.lerCSV(CSV_PURCHASED_GAMES_TESTE_PATH); 
+
+    for (const auto& linha : dadosCompras) {
+
+        int idPlayer                    = (linha.size() > 0 && !linha[0].empty()) ? stoi(linha[0]) : 0;
+        vector<string> idJogosComprados = (linha.size() > 1) ? utils.split(linha[1], ',') : vector<string>{};
+
+        Player *player = tabelaJogadores.busca(idPlayer);
+        vector<Jogo> jogos;
+
+        for (const auto& idJogo : idJogosComprados) {
+
+            if (!idJogo.empty()) {
+
+                int id = stoi(idJogo);               
+                Jogo* jogo = tabelaJogos.busca(id);
+
+                if (jogo) {
+                    jogos.push_back(*jogo);          
+                }
+            }
+        }
+
+        player->setJogos(jogos);
+    }      
 }
 
-void adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores){
+// void adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores){
 
-    LeitorDePlanilha leitor;
-    vector<vector<string>> dadosConquistas = leitor.lerCSV(CSV_ACHIEVEMENTS_TESTE_PATH);  
+//     LeitorDePlanilha leitor;
+//     vector<vector<string>> dadosConquistas = leitor.lerCSV(CSV_ACHIEVEMENTS_TESTE_PATH);  
     
-    for (const auto& linha : dadosConquistas) {
+//     for (const auto& linha : dadosConquistas) {
 
-        long long id = stoll(linha[0]);
-        string pais = (linha.size() > 1) ? linha[1] : "";
-        string dataCriacao = (linha.size() > 2) ? linha[2] : "";
+//         long long id = stoll(linha[0]);
+//         string pais = (linha.size() > 1) ? linha[1] : "";
+//         string dataCriacao = (linha.size() > 2) ? linha[2] : "";
 
-        //Player novoJogador(id, pais, dataCriacao);
-        //tabelaJogadores.insertPlayer(novoJogador);
-    }
+//         //Player novoJogador(id, pais, dataCriacao);
+//         //tabelaJogadores.insertPlayer(novoJogador);
+//     }
 
-}
+// }

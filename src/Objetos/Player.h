@@ -28,7 +28,7 @@ public:
     vector<Conquista> getConquistas();
 
     void addConquista(Conquista novaConquista);
-    void addJogo(Jogo novoJogo);
+    void setJogos(vector<Jogo> novosJogos);
 
     friend ostream &operator<<(ostream &os, const Player &p)
     {

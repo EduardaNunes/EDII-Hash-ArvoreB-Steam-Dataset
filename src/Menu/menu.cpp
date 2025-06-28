@@ -168,7 +168,7 @@ void Menu::menuArvoreB(){
         {
             //arvoreB.indexarConquistas();
             LeitorDePlanilha leitor;
-            vector<vector<string>> dados = leitor.lerCSV(CSV_PLAYERS_TESTE_PATH);
+            vector<vector<string>> dados = leitor.lerCSV(CSV_PURCHASED_GAMES_TESTE_PATH);
             int linhaNum = 1;
             for (const auto& linha : dados) {
                 cout << linhaNum++ << ": ";

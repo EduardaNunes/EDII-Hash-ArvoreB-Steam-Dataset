@@ -12,3 +12,8 @@ cd build
 cmake .. -G "MinGW Makefiles"
 cmake --build .
 meu_programa.exe
+
+# To-Do (Controle interno Devs)
+[  ] Arrumar verificação de entrada de input
+[  ] Averiguar erro no armazenamento de Players na hash
+[  ] Colocar testes para leitura de cada planilha
