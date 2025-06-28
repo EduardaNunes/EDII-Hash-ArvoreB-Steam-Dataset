@@ -1,7 +1,8 @@
 #pragma once
-#include "noB.h"
-
+#include <vector>
 using namespace std;
+
+class NoB;
 
 class ArvoreB{
     private:
@@ -9,6 +10,8 @@ class ArvoreB{
         NoB* raiz;
 
         bool buscaAuxiliar(NoB* no, int chave);
+        void inserirNaoCheio(NoB* no, int chave);
+        void dividirFilho(NoB* pai, int i, NoB* y);
 
     public:
 
