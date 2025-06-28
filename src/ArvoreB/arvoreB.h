@@ -1,8 +1,5 @@
 #pragma once
 #include <vector>
-#include "../HashGenerico/hash.h"
-#include "../Objetos/Player.h"
-
 using namespace std;
 
 class NoB;
@@ -16,10 +13,6 @@ class ArvoreB{
         void inserirNaoCheio(NoB* no, int chave);
         void dividirFilho(NoB* pai, int i, NoB* y);
 
-        void adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores);
-        void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores);
-        void adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores);
-
     public:
 
         ArvoreB(int ordem);
@@ -32,7 +25,5 @@ class ArvoreB{
         NoB* getRaiz();
 
         void indexarJogos();
-        void indexarConquistas();
-
-        void criaHashAuxiliar();
+        void indexarConquistas();;
 };
