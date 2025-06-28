@@ -27,3 +27,19 @@ vector<vector<string>> LeitorDePlanilha::lerCSV(const string& caminhoArquivo) {
 
     return dados;
 }
+
+int LeitorDePlanilha::contarJogadoresCSV(const string &caminho) {
+    ifstream file(caminho);
+    string line;
+    int count = 0;
+
+    getline(file, line);
+
+    while (getline(file, line))
+    {
+        if (!line.empty())
+            count++;
+    }
+
+    return count;
+}
