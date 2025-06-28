@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+
 #include "arvoreB.h"
 #include "noB.h"
 
@@ -14,7 +15,7 @@ void ArvoreB::indexarJogos(){
 }
 
 void ArvoreB::indexarConquistas(){
-    
+
 }
 
 void ArvoreB::insere(int chave){

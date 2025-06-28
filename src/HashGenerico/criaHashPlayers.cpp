@@ -1,0 +1,90 @@
+#include "../HashGenerico/hash.h"
+
+#include "../LeitorDePlanilha/leitorDePlanilha.h"
+#include "../config.h"
+
+#include "../Objetos/Player.h"
+#include "../Objetos/Conquista.h"
+#include "../Objetos/Jogo.h"
+
+using namespace std;
+
+void criaHashAuxiliar(){
+    
+    LeitorDePlanilha leitor;
+
+    int totalJogadores = leitor.contarJogadoresCSV(CSV_PLAYERS_PATH);
+    int tamanhoTabela = static_cast<int>(totalJogadores);
+
+    TabelaHash<Player> tabelaPlayers(tamanhoTabela, MetodoDeColisao::ENCADEAMENTO);
+
+    adicionaPlayersNaHash(tabelaPlayers);
+    adicionaJogosNosPlayers(tabelaPlayers);
+    adicionaConquistasNosPlayers(tabelaPlayers);
+}
+
+void adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores){
+
+    LeitorDePlanilha leitor;
+    vector<vector<string>> dadosPlayer = leitor.lerCSV(CSV_PLAYERS_TESTE_PATH);
+
+    for (const auto& linha : dadosPlayer) {
+
+        long long id = stoll(linha[0]);
+        string pais = (linha.size() > 1) ? linha[1] : "";
+        string dataCriacao = (linha.size() > 2) ? linha[2] : "";
+
+        Player p(id, pais, dataCriacao);
+        tabelaJogadores.insere(p);
+    }
+}
+
+void adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos){
+    LeitorDePlanilha leitor;
+    vector<vector<string>> dadosJogos = leitor.lerCSV(CSV_GAMES_TESTE_PATH);  
+    
+    for (const auto& linha : dadosJogos) {
+        // gameid,title,developers,publishers,genres,supported_languages,release_date
+        
+        int id = stoll(linha[0]);
+        string titulo = (linha.size() > 1) ? linha[1] : "";
+        vector<string> desenvolvedores = (linha.size() > 2) ? linha[2] : "";
+        vector<string> publishers = (linha.size() > 3) ? linha[3] : "";
+        vector<string> generos = (linha.size() > 4) ? linha[4] : "";
+        vector<string> idiomas = (linha.size() > 5) ? linha[5] : "";
+        string dataDeLancamento = (linha.size() > 6) ? linha[6] : "";
+
+        Jogo novoJogo(id, titulo, desenvolvedores, publishers, generos, idiomas, dataDeLancamento);
+        tabelaJogos.insere(novoJogo);
+    }  
+}
+
+void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores){
+
+    LeitorDePlanilha leitor;
+
+    int totalJogos = leitor.contarJogadoresCSV(CSV_GAMES_TESTE_PATH);
+    int tamanhoTabela = static_cast<int>(totalJogos);
+    TabelaHash<Jogo> tabelaJogos(tamanhoTabela, MetodoDeColisao::ENCADEAMENTO);
+    
+    adicionaJogosNaHash(tabelaJogos);
+
+      
+}
+
+void adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores){
+
+    LeitorDePlanilha leitor;
+    vector<vector<string>> dadosConquistas = leitor.lerCSV(CSV_ACHIEVEMENTS_TESTE_PATH);  
+    
+    for (const auto& linha : dadosConquistas) {
+
+        long long id = stoll(linha[0]);
+        string pais = (linha.size() > 1) ? linha[1] : "";
+        string dataCriacao = (linha.size() > 2) ? linha[2] : "";
+
+        //Player novoJogador(id, pais, dataCriacao);
+        //tabelaJogadores.insertPlayer(novoJogador);
+    }
+
+}
