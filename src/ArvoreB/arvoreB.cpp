@@ -1,7 +1,17 @@
 #include <vector>
 #include <string>
+
 #include "arvoreB.h"
 #include "noB.h"
+
+#include "../HashGenerico/hash.h"
+
+#include "../LeitorDePlanilha/leitorDePlanilha.h"
+#include "../config.h"
+
+#include "../Objetos/Player.h"
+#include "../Objetos/Conquista.h"
+#include "../Objetos/Jogo.h"
 
 using namespace std;
 
@@ -9,12 +19,74 @@ ArvoreB::ArvoreB(int ordem){
     raiz = new NoB(ordem, true); 
 }
 
+void ArvoreB::criaHashAuxiliar(){
+    
+    LeitorDePlanilha leitor;
+
+    int totalJogadores = leitor.contarJogadoresCSV(CSV_PLAYERS_PATH);
+    int tamanhoTabela = static_cast<int>(totalJogadores);
+
+    TabelaHash<Player> tabela(tamanhoTabela, CollisionMethod::CHAINING);
+
+    Player p(123456, "Brasil", "2022-01-01");
+    tabela.insere(p);
+}
+
+void ArvoreB::adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores){
+
+    LeitorDePlanilha leitor;
+    vector<vector<string>> dadosPlayer = leitor.lerCSV(CSV_PLAYERS_TESTE_PATH);
+
+    for (const auto& linha : dadosPlayer) {
+
+        long long id = stoll(linha[0]);
+        string pais = (linha.size() > 1) ? linha[1] : "";
+        string dataCriacao = (linha.size() > 2) ? linha[2] : "";
+
+        Player novoJogador(id, pais, dataCriacao);
+        tabelaJogadores.insertPlayer(novoJogador);
+    }
+}
+
+void ArvoreB::adicionaJogosNosPlayers(PlayerHashTable tabelaJogadores){
+
+    LeitorDePlanilha leitor;
+    vector<vector<string>> dadosJogos = leitor.lerCSV(CSV_JOGOS_TESTE_PATH);  
+    
+    for (const auto& linha : dadosJogos) {
+
+        long long id = stoll(linha[0]);
+        string pais = (linha.size() > 1) ? linha[1] : "";
+        string dataCriacao = (linha.size() > 2) ? linha[2] : "";
+
+        //Player novoJogador(id, pais, dataCriacao);
+        //tabelaJogadores.insertPlayer(novoJogador);
+    }    
+}
+
+void ArvoreB::adicionaConquistasNosPlayers(PlayerHashTable tabelaJogadores){
+
+    LeitorDePlanilha leitor;
+    vector<vector<string>> dadosConquistas = leitor.lerCSV(CSV_CONQUISTAS_TESTE_PATH);  
+    
+    for (const auto& linha : dadosConquistas) {
+
+        long long id = stoll(linha[0]);
+        string pais = (linha.size() > 1) ? linha[1] : "";
+        string dataCriacao = (linha.size() > 2) ? linha[2] : "";
+
+        //Player novoJogador(id, pais, dataCriacao);
+        //tabelaJogadores.insertPlayer(novoJogador);
+    }
+
+}
+
 void ArvoreB::indexarJogos(){
 
 }
 
 void ArvoreB::indexarConquistas(){
-    
+
 }
 
 void ArvoreB::insere(int chave){
