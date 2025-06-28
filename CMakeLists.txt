@@ -21,6 +21,7 @@ add_executable(meu_programa
     src/Hash/hash.cpp
     src/Objetos/Player.cpp
     src/ArvoreB/arvoreB.cpp
+    src/ArvoreB/noB.cpp
     src/LeitorDePlanilha/leitorDePlanilha.cpp
 )
 

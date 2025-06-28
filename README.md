@@ -6,3 +6,8 @@
 Diego Pereira Betti / 202376037 / diego.pereira@estudante.ufjf.br
 Vanessa Palmeira Kelmer Trajano / 202376035 / vanessa.trajano@estudante.ufjf.br
 Eduarda Pereira Mourão Nunes / 202376015 / eduarda.nunes@estudante.ufjf.br
+
+cd build
+cmake .. -G "MinGW Makefiles"
+cmake --build .
+meu_programa.exe

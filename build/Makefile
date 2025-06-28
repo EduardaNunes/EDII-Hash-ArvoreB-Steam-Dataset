@@ -526,6 +526,30 @@ src/ArvoreB/arvoreB.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.s
 .PHONY : src/ArvoreB/arvoreB.cpp.s
 
+src/ArvoreB/noB.obj: src/ArvoreB/noB.cpp.obj
+.PHONY : src/ArvoreB/noB.obj
+
+# target to build an object file
+src/ArvoreB/noB.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj
+.PHONY : src/ArvoreB/noB.cpp.obj
+
+src/ArvoreB/noB.i: src/ArvoreB/noB.cpp.i
+.PHONY : src/ArvoreB/noB.i
+
+# target to preprocess a source file
+src/ArvoreB/noB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.i
+.PHONY : src/ArvoreB/noB.cpp.i
+
+src/ArvoreB/noB.s: src/ArvoreB/noB.cpp.s
+.PHONY : src/ArvoreB/noB.s
+
+# target to generate assembly for a file
+src/ArvoreB/noB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.s
+.PHONY : src/ArvoreB/noB.cpp.s
+
 src/Hash/hash.obj: src/Hash/hash.cpp.obj
 .PHONY : src/Hash/hash.obj
 
@@ -687,6 +711,9 @@ help:
 	@echo ... src/ArvoreB/arvoreB.obj
 	@echo ... src/ArvoreB/arvoreB.i
 	@echo ... src/ArvoreB/arvoreB.s
+	@echo ... src/ArvoreB/noB.obj
+	@echo ... src/ArvoreB/noB.i
+	@echo ... src/ArvoreB/noB.s
 	@echo ... src/Hash/hash.obj
 	@echo ... src/Hash/hash.i
 	@echo ... src/Hash/hash.s

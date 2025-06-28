@@ -143,11 +143,26 @@ CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.s"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\src\ArvoreB\arvoreB.cpp -o CMakeFiles\meu_programa.dir\src\ArvoreB\arvoreB.cpp.s
 
+CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj: CMakeFiles/meu_programa.dir/flags.make
+CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj: CMakeFiles/meu_programa.dir/includes_CXX.rsp
+CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj: C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/ArvoreB/noB.cpp
+CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj: CMakeFiles/meu_programa.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj -MF CMakeFiles\meu_programa.dir\src\ArvoreB\noB.cpp.obj.d -o CMakeFiles\meu_programa.dir\src\ArvoreB\noB.cpp.obj -c C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\src\ArvoreB\noB.cpp
+
+CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.i"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\src\ArvoreB\noB.cpp > CMakeFiles\meu_programa.dir\src\ArvoreB\noB.cpp.i
+
+CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.s"
+	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\src\ArvoreB\noB.cpp -o CMakeFiles\meu_programa.dir\src\ArvoreB\noB.cpp.s
+
 CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj: CMakeFiles/meu_programa.dir/flags.make
 CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj: CMakeFiles/meu_programa.dir/includes_CXX.rsp
 CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj: C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/LeitorDePlanilha/leitorDePlanilha.cpp
 CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj: CMakeFiles/meu_programa.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj"
 	C:\msys64\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj -MF CMakeFiles\meu_programa.dir\src\LeitorDePlanilha\leitorDePlanilha.cpp.obj.d -o CMakeFiles\meu_programa.dir\src\LeitorDePlanilha\leitorDePlanilha.cpp.obj -c C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\src\LeitorDePlanilha\leitorDePlanilha.cpp
 
 CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.i: cmake_force
@@ -165,6 +180,7 @@ meu_programa_OBJECTS = \
 "CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj" \
 "CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj" \
 "CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.obj" \
+"CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj" \
 "CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj"
 
 # External object files for target meu_programa
@@ -175,12 +191,13 @@ meu_programa.exe: CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj
 meu_programa.exe: CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.obj
 meu_programa.exe: CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj
 meu_programa.exe: CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.obj
+meu_programa.exe: CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj
 meu_programa.exe: CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj
 meu_programa.exe: CMakeFiles/meu_programa.dir/build.make
 meu_programa.exe: CMakeFiles/meu_programa.dir/linkLibs.rsp
 meu_programa.exe: CMakeFiles/meu_programa.dir/objects1.rsp
 meu_programa.exe: CMakeFiles/meu_programa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable meu_programa.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\MeuPawDeAsa\Documents\Github\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable meu_programa.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\meu_programa.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

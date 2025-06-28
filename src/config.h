@@ -4,3 +4,4 @@
 #define CSV_PLAYERS_PATH "../steam/players.csv"
 #define CSV_PRICES_PATH "../steam/prices.csv"
 #define CSV_PURCHASED_GAMES_PATH "../steam/purchased_games.csv"
+#define CSV_PLAYERS_TESTE_PATH "../steam/players copy.csv"

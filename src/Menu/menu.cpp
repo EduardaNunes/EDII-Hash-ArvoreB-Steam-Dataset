@@ -2,6 +2,8 @@
 #include <fstream>
 #include "menu.h"
 #include "./ArvoreB/arvoreB.h"
+#include "./LeitorDePlanilha/leitorDePlanilha.h"
+#include "./config.h"
 
 using namespace std;
 
@@ -148,7 +150,7 @@ void Menu::menuHash(){
 
 void Menu::menuArvoreB(){
 
-    ArvoreB arvoreB;
+    ArvoreB arvoreB(64);
 
     int opcao;
     do
@@ -164,7 +166,17 @@ void Menu::menuArvoreB(){
         {
         case 1:
         {
-            arvoreB.indexarConquistas();
+            //arvoreB.indexarConquistas();
+            LeitorDePlanilha leitor;
+            vector<vector<string>> dados = leitor.lerCSV(CSV_PLAYERS_TESTE_PATH);
+            int linhaNum = 1;
+            for (const auto& linha : dados) {
+                cout << linhaNum++ << ": ";
+                for (const auto& valor : linha) {
+                    cout << valor << " | ";
+                }
+                cout << "\n";
+            }
             break;
         }
         case 2:
