@@ -109,7 +109,7 @@ void TabelaHash<T>::insere(const T& obj) {
     int index = calculaIndexDaHash(obj.getId());
 
     if (metodoDeColisao == MetodoDeColisao::ENCADEAMENTO) {
-        T* existe = encadeamento[index].search(obj.getId());
+        T* existe = encadeamento[index].busca(obj.getId());
         if (existe) {
             *existe = obj;
         } else {
@@ -151,7 +151,7 @@ T* TabelaHash<T>::busca(long long id) {
     int index = calculaIndexDaHash(id);
 
     if (metodoDeColisao == MetodoDeColisao::ENCADEAMENTO) {
-        return encadeamento[index].search(id);
+        return encadeamento[index].busca(id);
     } else {
         int indexInicial = index;
         while (sondagemLinear[index].state != EntryState::VAZIO) {

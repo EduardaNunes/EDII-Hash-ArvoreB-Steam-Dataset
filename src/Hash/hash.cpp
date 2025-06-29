@@ -51,17 +51,17 @@ void PlayerHashTable::insertPlayer(Player p)
 
     if (collisionMethod == CollisionMethod::CHAINING)
     {
-        Player *existing = chainingTable[index].search(p.getId());
+        Player *existing = chainingTable[index].busca(p.getId());
         if (existing)
         {
             *existing = p;
         }
         else
         {
-            if (!chainingTable[index].isEmpty())
+            if (!chainingTable[index].eVazio())
                 collisionCount++;
 
-            chainingTable[index].insert(p);
+            chainingTable[index].insere(p);
             elementCount++;
             if ((float)elementCount / tableSize > 0.7f)
             {
@@ -73,11 +73,11 @@ void PlayerHashTable::insertPlayer(Player p)
     {
         int startIndex = index;
         int probeCount = 0;
-        while (probingTable[index].state == EntryState::OCCUPIED)
+        while (probingTable[index].state == EntryState::OCUPADO)
         {
-            if (probingTable[index].player.getId() == p.getId())
+            if (probingTable[index].data.getId() == p.getId())
             {
-                probingTable[index].player = p;
+                probingTable[index].data = p;
                 return;
             }
             index = (index + 1) % tableSize;
@@ -86,8 +86,8 @@ void PlayerHashTable::insertPlayer(Player p)
                 return;
         }
 
-        probingTable[index].player = p;
-        probingTable[index].state = EntryState::OCCUPIED;
+        probingTable[index].data = p;
+        probingTable[index].state = EntryState::OCUPADO;
         elementCount++;
         if ((float)elementCount / tableSize > 0.7f)
         {
@@ -106,17 +106,17 @@ Player *PlayerHashTable::findPlayerById(long long id)
     int index = computeHashIndex(id);
     if (collisionMethod == CollisionMethod::CHAINING)
     {
-        return chainingTable[index].search(id);
+        return chainingTable[index].busca(id);
     }
     else
     {
         int startIndex = index;
-        while (probingTable[index].state != EntryState::EMPTY)
+        while (probingTable[index].state != EntryState::VAZIO)
         {
-            if (probingTable[index].state == EntryState::OCCUPIED &&
-                probingTable[index].player.getId() == id)
+            if (probingTable[index].state == EntryState::OCUPADO &&
+                probingTable[index].data.getId() == id)
             {
-                return &probingTable[index].player;
+                return &probingTable[index].data;
             }
             index = (index + 1) % tableSize;
             if (index == startIndex)
@@ -142,12 +142,12 @@ bool PlayerHashTable::removePlayerById(long long id)
     else
     {
         int startIndex = index;
-        while (probingTable[index].state != EntryState::EMPTY)
+        while (probingTable[index].state != EntryState::VAZIO)
         {
-            if (probingTable[index].state == EntryState::OCCUPIED &&
-                probingTable[index].player.getId() == id)
+            if (probingTable[index].state == EntryState::OCUPADO &&
+                probingTable[index].data.getId() == id)
             {
-                probingTable[index].state = EntryState::DELETED;
+                probingTable[index].state = EntryState::REMOVIDO;
                 elementCount--;
                 return true;
             }
@@ -181,26 +181,26 @@ void PlayerHashTable::rehash()
             while (current)
             {
                 int newIndex = current->data.getId() % newSize;
-                newTable[newIndex].insert(current->data);
-                current = current->next;
+                newTable[newIndex].insere(current->data);
+                current = current->proximo;
             }
         }
         chainingTable = move(newTable);
     }
     else
     {
-        vector<HashEntry> newTable(newSize);
+        vector<HashEntry<Player>> newTable(newSize);
         for (auto &entry : probingTable)
         {
-            if (entry.state == EntryState::OCCUPIED)
+            if (entry.state == EntryState::OCUPADO)
             {
-                int newIndex = entry.player.getId() % newSize;
-                while (newTable[newIndex].state == EntryState::OCCUPIED)
+                int newIndex = entry.data.getId() % newSize;
+                while (newTable[newIndex].state == EntryState::OCUPADO)
                 {
                     newIndex = (newIndex + 1) % newSize;
                 }
-                newTable[newIndex].player = entry.player;
-                newTable[newIndex].state = EntryState::OCCUPIED;
+                newTable[newIndex].data = entry.data;
+                newTable[newIndex].state = EntryState::OCUPADO;
             }
         }
         probingTable = move(newTable);

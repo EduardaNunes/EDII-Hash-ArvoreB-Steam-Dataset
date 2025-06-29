@@ -2,8 +2,8 @@
 #define PLAYER_HASH_TABLE_H
 
 #include "../Objetos/Player.h"
-#include "linked_list.h"
-#include "hash_entry.h"
+#include "../HashGenerico/linked_list.h"
+#include "../HashGenerico/hash_entry.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -27,7 +27,8 @@ private:
     CollisionMethod collisionMethod;
 
     vector<LinkedList<Player>> chainingTable;
-    vector<HashEntry> probingTable;
+    vector<HashEntry<Player>> probingTable;  // <-- Usar template HashEntry<Player>
+    
     int computeHashIndex(long long key) const;
     void rehash();
     bool isPrime(int number);
