@@ -19,7 +19,19 @@ add_executable(meu_programa
     src/main.cpp
     src/Menu/menu.cpp
     src/Hash/hash.cpp
+    src/Objetos/Player.cpp
+    src/ArvoreB/arvoreB.cpp
+    src/ArvoreB/noB.cpp
+    src/LeitorDePlanilha/leitorDePlanilha.cpp
 )
+
+#add_executable(tests
+#    src/tests/test_hash.cpp
+#     src/Hash/hash.cpp
+#)
+
+#target_include_directories(tests PRIVATE src)
+#add_test(NAME PlayerHashTests COMMAND tests)
 
 set_target_properties(meu_programa PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}

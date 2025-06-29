@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa
+CMAKE_SOURCE_DIR = C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa\build
+CMAKE_BINARY_DIR = C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa\build
 
 # Utility rule file for NightlyCoverage.
 
@@ -84,6 +84,6 @@ CMakeFiles/NightlyCoverage.dir/clean:
 .PHONY : CMakeFiles/NightlyCoverage.dir/clean
 
 CMakeFiles/NightlyCoverage.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa\build C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa\build C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles\NightlyCoverage.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa\build C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa\build C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles\NightlyCoverage.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/NightlyCoverage.dir/depend
 

@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa
+CMAKE_SOURCE_DIR = C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa\build
+CMAKE_BINARY_DIR = C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -96,9 +96,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\diego\OneDrive\Documentos\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\vanes\OneDrive\Documentos\codigos\faculdade\c++\ED2\trab01-grupo-diego-eduarda-vanessa\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -502,6 +502,54 @@ meu_programa/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/build
 .PHONY : meu_programa/fast
 
+src/ArvoreB/arvoreB.obj: src/ArvoreB/arvoreB.cpp.obj
+.PHONY : src/ArvoreB/arvoreB.obj
+
+# target to build an object file
+src/ArvoreB/arvoreB.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.obj
+.PHONY : src/ArvoreB/arvoreB.cpp.obj
+
+src/ArvoreB/arvoreB.i: src/ArvoreB/arvoreB.cpp.i
+.PHONY : src/ArvoreB/arvoreB.i
+
+# target to preprocess a source file
+src/ArvoreB/arvoreB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.i
+.PHONY : src/ArvoreB/arvoreB.cpp.i
+
+src/ArvoreB/arvoreB.s: src/ArvoreB/arvoreB.cpp.s
+.PHONY : src/ArvoreB/arvoreB.s
+
+# target to generate assembly for a file
+src/ArvoreB/arvoreB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.s
+.PHONY : src/ArvoreB/arvoreB.cpp.s
+
+src/ArvoreB/noB.obj: src/ArvoreB/noB.cpp.obj
+.PHONY : src/ArvoreB/noB.obj
+
+# target to build an object file
+src/ArvoreB/noB.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj
+.PHONY : src/ArvoreB/noB.cpp.obj
+
+src/ArvoreB/noB.i: src/ArvoreB/noB.cpp.i
+.PHONY : src/ArvoreB/noB.i
+
+# target to preprocess a source file
+src/ArvoreB/noB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.i
+.PHONY : src/ArvoreB/noB.cpp.i
+
+src/ArvoreB/noB.s: src/ArvoreB/noB.cpp.s
+.PHONY : src/ArvoreB/noB.s
+
+# target to generate assembly for a file
+src/ArvoreB/noB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.s
+.PHONY : src/ArvoreB/noB.cpp.s
+
 src/Hash/hash.obj: src/Hash/hash.cpp.obj
 .PHONY : src/Hash/hash.obj
 
@@ -526,6 +574,30 @@ src/Hash/hash.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Hash/hash.cpp.s
 .PHONY : src/Hash/hash.cpp.s
 
+src/LeitorDePlanilha/leitorDePlanilha.obj: src/LeitorDePlanilha/leitorDePlanilha.cpp.obj
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.obj
+
+# target to build an object file
+src/LeitorDePlanilha/leitorDePlanilha.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.cpp.obj
+
+src/LeitorDePlanilha/leitorDePlanilha.i: src/LeitorDePlanilha/leitorDePlanilha.cpp.i
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.i
+
+# target to preprocess a source file
+src/LeitorDePlanilha/leitorDePlanilha.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.i
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.cpp.i
+
+src/LeitorDePlanilha/leitorDePlanilha.s: src/LeitorDePlanilha/leitorDePlanilha.cpp.s
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.s
+
+# target to generate assembly for a file
+src/LeitorDePlanilha/leitorDePlanilha.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.s
+.PHONY : src/LeitorDePlanilha/leitorDePlanilha.cpp.s
+
 src/Menu/menu.obj: src/Menu/menu.cpp.obj
 .PHONY : src/Menu/menu.obj
 
@@ -549,6 +621,30 @@ src/Menu/menu.s: src/Menu/menu.cpp.s
 src/Menu/menu.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.s
 .PHONY : src/Menu/menu.cpp.s
+
+src/Objetos/Player.obj: src/Objetos/Player.cpp.obj
+.PHONY : src/Objetos/Player.obj
+
+# target to build an object file
+src/Objetos/Player.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj
+.PHONY : src/Objetos/Player.cpp.obj
+
+src/Objetos/Player.i: src/Objetos/Player.cpp.i
+.PHONY : src/Objetos/Player.i
+
+# target to preprocess a source file
+src/Objetos/Player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.i
+.PHONY : src/Objetos/Player.cpp.i
+
+src/Objetos/Player.s: src/Objetos/Player.cpp.s
+.PHONY : src/Objetos/Player.s
+
+# target to generate assembly for a file
+src/Objetos/Player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.s
+.PHONY : src/Objetos/Player.cpp.s
 
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
@@ -612,12 +708,24 @@ help:
 	@echo ... NightlyTest
 	@echo ... NightlyUpdate
 	@echo ... meu_programa
+	@echo ... src/ArvoreB/arvoreB.obj
+	@echo ... src/ArvoreB/arvoreB.i
+	@echo ... src/ArvoreB/arvoreB.s
+	@echo ... src/ArvoreB/noB.obj
+	@echo ... src/ArvoreB/noB.i
+	@echo ... src/ArvoreB/noB.s
 	@echo ... src/Hash/hash.obj
 	@echo ... src/Hash/hash.i
 	@echo ... src/Hash/hash.s
+	@echo ... src/LeitorDePlanilha/leitorDePlanilha.obj
+	@echo ... src/LeitorDePlanilha/leitorDePlanilha.i
+	@echo ... src/LeitorDePlanilha/leitorDePlanilha.s
 	@echo ... src/Menu/menu.obj
 	@echo ... src/Menu/menu.i
 	@echo ... src/Menu/menu.s
+	@echo ... src/Objetos/Player.obj
+	@echo ... src/Objetos/Player.i
+	@echo ... src/Objetos/Player.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

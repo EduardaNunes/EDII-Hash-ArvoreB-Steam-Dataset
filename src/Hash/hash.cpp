@@ -1,153 +1,232 @@
 #include "hash.h"
+#include "../LeitorDePlanilha/leitorDePlanilha.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
 
 using namespace std;
 
-Hash::Hash(int size, CollisionMethod m)
-    : tableSize(size), numElements(0), numCollisions(0), method(m)
+PlayerHashTable::PlayerHashTable(int size, CollisionMethod method)
+    : tableSize(size), elementCount(0), collisionCount(0), collisionMethod(method),
+      chainingTable(method == CollisionMethod::CHAINING ? size : 0),
+      probingTable(method == CollisionMethod::LINEAR_PROBING ? size : 0)
 {
-    if (method == CHAINING)
-    {
-        chainTable.resize(tableSize);
-    }
-    else
-    {
-        openTable.resize(tableSize);
-    }
 }
 
-int Hash::hashFunction(long long key) const
+int PlayerHashTable::computeHashIndex(long long key) const
 {
+    if (key < 0)
+        throw invalid_argument("ID negativo não permitido.");
+
     return key % tableSize;
 }
 
-void Hash::loadPlayers(const string &filePath)
+void PlayerHashTable::loadPlayersFromCSV(const string &filePath)
 {
-    ifstream file(filePath);
-    string line;
+    LeitorDePlanilha leitor;
+    vector<vector<string>> dados = leitor.lerCSV(filePath);
 
-    getline(file, line); // skip header
-    while (getline(file, line))
+    for (size_t i = 1; i < dados.size(); i++)
     {
-        stringstream ss(line);
-        string idStr, country, created;
-        getline(ss, idStr, ',');
-        getline(ss, country, ',');
-        getline(ss, created, ',');
-
-        if (!idStr.empty())
+        if (dados[i].size() >= 3)
         {
-            long long id = stoll(idStr);
-            insert(Player(id, country, created));
+            string idStr = dados[i][0];
+            string pais = dados[i][1];
+            string dataCriacao = dados[i][2];
+
+            if (!idStr.empty())
+            {
+                long long id = stoll(idStr);
+                insertPlayer(Player(id, pais, dataCriacao));
+            }
         }
     }
 }
 
-void Hash::insert(Player p)
+void PlayerHashTable::insertPlayer(Player p)
 {
-    int idx = hashFunction(p.playerId);
+    if (p.getId() < 0)
+        return;
+    int index = computeHashIndex(p.getId());
 
-    if (method == CHAINING)
+    if (collisionMethod == CollisionMethod::CHAINING)
     {
-        Player *existing = chainTable[idx].search(p.playerId);
+        Player *existing = chainingTable[index].busca(p.getId());
         if (existing)
         {
             *existing = p;
         }
         else
         {
-            if (chainTable[idx].search(p.playerId) != nullptr)
-                numCollisions++; // já existia outro jogador ali
-            chainTable[idx].insert(p);
-            numElements++;
+            if (!chainingTable[index].eVazio())
+                collisionCount++;
+
+            chainingTable[index].insere(p);
+            elementCount++;
+            if ((float)elementCount / tableSize > 0.7f)
+            {
+                rehash();
+            }
         }
     }
     else
     {
-        int startIdx = idx;
-        int probes = 0;
-        while (openTable[idx].state == OCCUPIED)
+        int startIndex = index;
+        int probeCount = 0;
+        while (probingTable[index].state == EntryState::OCUPADO)
         {
-            if (openTable[idx].player.playerId == p.playerId)
+            if (probingTable[index].data.getId() == p.getId())
             {
-                openTable[idx].player = p;
+                probingTable[index].data = p;
                 return;
             }
-            idx = (idx + 1) % tableSize;
-            probes++;
-            if (idx == startIdx)
+            index = (index + 1) % tableSize;
+            probeCount++;
+            if (index == startIndex)
                 return;
         }
 
-        openTable[idx].player = p;
-        openTable[idx].state = OCCUPIED;
-        numElements++;
+        probingTable[index].data = p;
+        probingTable[index].state = EntryState::OCUPADO;
+        elementCount++;
+        if ((float)elementCount / tableSize > 0.7f)
+        {
+            rehash();
+        }
 
-        if (probes > 0)
-            numCollisions++;
+        if (probeCount > 0)
+            collisionCount++;
     }
 }
 
-Player *Hash::searchById(long long id)
+Player *PlayerHashTable::findPlayerById(long long id)
 {
-    int idx = hashFunction(id);
-    if (method == CHAINING)
+    if (id < 0)
+        return nullptr;
+    int index = computeHashIndex(id);
+    if (collisionMethod == CollisionMethod::CHAINING)
     {
-        return chainTable[idx].search(id);
+        return chainingTable[index].busca(id);
     }
     else
     {
-        int startIdx = idx;
-        while (openTable[idx].state != EMPTY)
+        int startIndex = index;
+        while (probingTable[index].state != EntryState::VAZIO)
         {
-            if (openTable[idx].state == OCCUPIED && openTable[idx].player.playerId == id)
-                return &openTable[idx].player;
-
-            idx = (idx + 1) % tableSize;
-            if (idx == startIdx)
+            if (probingTable[index].state == EntryState::OCUPADO &&
+                probingTable[index].data.getId() == id)
+            {
+                return &probingTable[index].data;
+            }
+            index = (index + 1) % tableSize;
+            if (index == startIndex)
                 break;
         }
         return nullptr;
     }
 }
 
-bool Hash::remove(long long id)
+bool PlayerHashTable::removePlayerById(long long id)
 {
-    int idx = hashFunction(id);
-    if (method == CHAINING)
+    if (id < 0)
+        return false;
+    int index = computeHashIndex(id);
+    if (collisionMethod == CollisionMethod::CHAINING)
     {
-        if (chainTable[idx].remove(id))
+        if (chainingTable[index].remove(id))
         {
-            numElements--;
+            elementCount--;
             return true;
         }
     }
     else
     {
-        int startIdx = idx;
-        while (openTable[idx].state != EMPTY)
+        int startIndex = index;
+        while (probingTable[index].state != EntryState::VAZIO)
         {
-            if (openTable[idx].state == OCCUPIED && openTable[idx].player.playerId == id)
+            if (probingTable[index].state == EntryState::OCUPADO &&
+                probingTable[index].data.getId() == id)
             {
-                openTable[idx].state = DELETED;
-                numElements--;
+                probingTable[index].state = EntryState::REMOVIDO;
+                elementCount--;
                 return true;
             }
-            idx = (idx + 1) % tableSize;
-            if (idx == startIdx)
+            index = (index + 1) % tableSize;
+            if (index == startIndex)
                 break;
         }
     }
     return false;
 }
 
-void Hash::printStats() const
+void PlayerHashTable::exibirEstatisticas() const
 {
     cout << "\n=== ESTATISTICAS ===" << endl;
     cout << "Tamanho da tabela: " << tableSize << endl;
-    cout << "Elementos armazenados: " << numElements << endl;
-    cout << "Fator de carga: " << (float)numElements / tableSize << endl;
-    cout << "Numero de colisoes: " << numCollisions << endl;
+    cout << "Elementos armazenados: " << elementCount << endl;
+    cout << "Fator de carga: " << (float)elementCount / tableSize << endl;
+    cout << "Numero de colisoes: " << collisionCount << endl;
+}
+
+void PlayerHashTable::rehash()
+{
+    int newSize = nextPrime(tableSize * 2);
+
+    if (collisionMethod == CollisionMethod::CHAINING)
+    {
+        vector<LinkedList<Player>> newTable(newSize);
+        for (auto &list : chainingTable)
+        {
+            Node<Player> *current = list.getHead();
+            while (current)
+            {
+                int newIndex = current->data.getId() % newSize;
+                newTable[newIndex].insere(current->data);
+                current = current->proximo;
+            }
+        }
+        chainingTable = move(newTable);
+    }
+    else
+    {
+        vector<HashEntry<Player>> newTable(newSize);
+        for (auto &entry : probingTable)
+        {
+            if (entry.state == EntryState::OCUPADO)
+            {
+                int newIndex = entry.data.getId() % newSize;
+                while (newTable[newIndex].state == EntryState::OCUPADO)
+                {
+                    newIndex = (newIndex + 1) % newSize;
+                }
+                newTable[newIndex].data = entry.data;
+                newTable[newIndex].state = EntryState::OCUPADO;
+            }
+        }
+        probingTable = move(newTable);
+    }
+
+    tableSize = newSize;
+    collisionCount = 0; // Recalcular se necessário
+}
+
+bool PlayerHashTable::isPrime(int number)
+{
+    if (number <= 1)
+        return false;
+    if (number == 2)
+        return true;
+    if (number % 2 == 0)
+        return false;
+    for (int i = 3; i * i <= number; i += 2)
+        if (number % i == 0)
+            return false;
+    return true;
+}
+
+int PlayerHashTable::nextPrime(int number)
+{
+    while (!isPrime(number))
+        number++;
+    return number;
 }

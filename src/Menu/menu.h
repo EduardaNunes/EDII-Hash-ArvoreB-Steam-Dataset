@@ -7,7 +7,10 @@
 class Menu
 {
 public:
-    void showMenu();
+    void menuInicial();
+    PlayerHashTable hashColisoes();
+    void menuHash(PlayerHashTable tabelaJogadores);
+    void menuArvoreB();
 };
 
 #endif

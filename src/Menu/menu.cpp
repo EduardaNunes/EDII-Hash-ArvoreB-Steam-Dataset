@@ -1,60 +1,144 @@
 #include <iostream>
 #include <fstream>
+#include <stdexcept>
+#include <limits>
+#include <cmath>
+
 #include "menu.h"
+#include "./ArvoreB/arvoreB.h"
+#include "./LeitorDePlanilha/leitorDePlanilha.h"
+#include "./config.h"
 
 using namespace std;
 
-int contarJogadoresCSV(const string& caminho) {
+int contarJogadoresCSV(const string &caminho)
+{
     ifstream file(caminho);
     string line;
     int count = 0;
 
-    getline(file, line); 
+    getline(file, line);
 
-    while (getline(file, line)) {
-        if (!line.empty()) count++;
+    while (getline(file, line))
+    {
+        if (!line.empty())
+            count++;
     }
 
     return count;
 }
 
-void Menu::showMenu()
+void Menu::menuInicial()
 {
-    int metodo;
-    cout << "Escolha o metodo de tratamento de colisao:\n";
-    cout << "1 - Encadeamento (Chaining)\n";
-    cout << "2 - Enderecamento Aberto (Sondagem Linear)\n";
-    cout << "Opcao: ";
-    cin >> metodo;
-
-    CollisionMethod metodoSelecionado = (metodo == 2) ? LINEAR_PROBING : CHAINING;
-
-    int totalJogadores = contarJogadoresCSV(CSV_PLAYERS_PATH);
-    int tamanhoTabela = static_cast<int>(totalJogadores * 1.3);
-
-    Hash hash(tamanhoTabela, metodoSelecionado);
-    hash.loadPlayers(CSV_PLAYERS_PATH);
 
     int opcao;
     do
     {
-        cout << "\n=== MENU ===\n";
+        cout << "=== Menu Inicial ===" << endl;
+        cout << "1 - Hash" << endl;
+        cout << "2 - Arvore B" << endl;
+        cout << "0 - Sair" << endl;
+        cout << "Escolha: ";
+        cin >> opcao;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "A opcao precisa ser numerica." << endl;
+            continue;
+        }
+
+        switch (opcao)
+        {
+        case 1:
+        {
+            menuHash(hashColisoes());
+            break;
+        }
+        case 2:
+        {
+            menuArvoreB();
+            break;
+        }
+        case 0:
+            cout << "Saindo...\n";
+            break;
+        default:
+            cout << "Opcao invalida.\n";
+        }
+
+    } while (opcao != 0);
+}
+
+PlayerHashTable Menu::hashColisoes()
+{
+    int metodoColisao;
+    while (true)
+    {
+        cout << "Escolha o metodo de tratamento de colisao:\n";
+        cout << "1 - Encadeamento (Chaining)\n";
+        cout << "2 - Enderecamento Aberto (Sondagem Linear)\n";
+        cout << "Opcao: ";
+        cin >> metodoColisao;
+
+        if (!cin.fail() && (metodoColisao == 1 || metodoColisao == 2))
+            break;
+
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Opcao invalida. Digite 1 ou 2.\n";
+    }
+    cout << "Criando...\n";
+
+    CollisionMethod estrategiaDeColisao = (metodoColisao == 2) ? CollisionMethod::LINEAR_PROBING : CollisionMethod::CHAINING;
+
+    int totalJogadores = contarJogadoresCSV(CSV_PLAYERS_PATH);
+    int tamanhoTabela = static_cast<int>(totalJogadores);
+    tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
+
+    PlayerHashTable tabelaJogadores(tamanhoTabela, estrategiaDeColisao);
+    tabelaJogadores.loadPlayersFromCSV(CSV_PLAYERS_PATH);
+
+    return tabelaJogadores;
+}
+
+void Menu::menuHash(PlayerHashTable tabelaJogadores)
+{
+
+    int opcaoMenu;
+    do
+    {
+        cout << "\n=== Menu Hash ===\n";
         cout << "1 - Buscar jogador por ID\n";
         cout << "2 - Inserir novo jogador\n";
         cout << "3 - Remover jogador por ID\n";
         cout << "4 - Mostrar estatisticas\n";
         cout << "0 - Sair\n";
         cout << "Escolha: ";
-        cin >> opcao;
+        cin >> opcaoMenu;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "A opcao precisa ser numerica." << endl;
+            continue;
+        }
 
-        switch (opcao)
+        switch (opcaoMenu)
         {
         case 1:
         {
             long long id;
             cout << "Digite o ID do jogador: ";
             cin >> id;
-            Player *p = hash.searchById(id);
+            if (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "A opcao precisa ser numerica." << endl;
+                continue;
+            }
+            Player *p = tabelaJogadores.findPlayerById(id);
             if (p)
             {
                 cout << *p << endl;
@@ -68,17 +152,24 @@ void Menu::showMenu()
         case 2:
         {
             long long id;
-            string country, created;
+            string pais, dataCriacao;
             cout << "Digite o ID do jogador: ";
             cin >> id;
-            cin.ignore(); 
+            if (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "A opcao precisa ser numerica." << endl;
+                continue;
+            }
+            cin.ignore();
             cout << "Digite o pais: ";
-            getline(cin, country);
+            getline(cin, pais);
             cout << "Digite a data de criacao (YYYY-MM-DD): ";
-            getline(cin, created);
+            getline(cin, dataCriacao);
 
-            Player novo(id, country, created);
-            hash.insert(novo);
+            Player novoJogador(id, pais, dataCriacao);
+            tabelaJogadores.insertPlayer(novoJogador);
             cout << "Jogador inserido com sucesso!\n";
             break;
         }
@@ -87,7 +178,14 @@ void Menu::showMenu()
             long long id;
             cout << "Digite o ID do jogador a remover: ";
             cin >> id;
-            if (hash.remove(id))
+            if (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "A opcao precisa ser numerica." << endl;
+                continue;
+            }
+            if (tabelaJogadores.removePlayerById(id))
             {
                 cout << "Jogador removido com sucesso.\n";
             }
@@ -98,10 +196,65 @@ void Menu::showMenu()
             break;
         }
         case 4:
-            hash.printStats();
+            tabelaJogadores.exibirEstatisticas();
             break;
         case 0:
             cout << "Saindo...\n";
+            break;
+        default:
+            cout << "Opcao invalida.\n";
+        }
+
+    } while (opcaoMenu != 0);
+}
+
+void Menu::menuArvoreB()
+{
+
+    ArvoreB arvoreB(64);
+
+    int opcao;
+    do
+    {
+        cout << "=== Menu Arvore B ===" << endl;
+        cout << "1 - Indexar por conquistas" << endl;
+        cout << "2 - Indexar por jogos" << endl;
+        cout << "0 - Voltar" << endl;
+        cout << "Escolha: ";
+        cin >> opcao;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "A opcao precisa ser numerica." << endl;
+            continue;
+        }
+
+        switch (opcao)
+        {
+        case 1:
+        {
+            //arvoreB.indexarConquistas();
+            LeitorDePlanilha leitor;
+            vector<vector<string>> dados = leitor.lerCSV(CSV_PURCHASED_GAMES_TESTE_PATH);
+            int linhaNum = 1;
+            for (const auto& linha : dados) {
+                cout << linhaNum++ << ": ";
+                for (const auto& valor : linha) {
+                    cout << valor << " | ";
+                }
+                cout << "\n";
+            }
+            break;
+        }
+        case 2:
+        {
+            arvoreB.indexarJogos();
+            break;
+        }
+        case 0:
+            cout << "Voltando...\n";
+            Menu::menuInicial();
             break;
         default:
             cout << "Opcao invalida.\n";
