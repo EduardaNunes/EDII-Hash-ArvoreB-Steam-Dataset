@@ -8,7 +8,8 @@ class Menu
 {
 public:
     void menuInicial();
-    void menuHash();
+    PlayerHashTable hashColisoes();
+    void menuHash(PlayerHashTable tabelaJogadores);
     void menuArvoreB();
 };
 
