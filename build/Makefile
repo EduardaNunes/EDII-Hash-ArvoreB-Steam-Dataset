@@ -526,6 +526,30 @@ src/ArvoreB/arvoreB.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.s
 .PHONY : src/ArvoreB/arvoreB.cpp.s
 
+src/ArvoreB/noB.obj: src/ArvoreB/noB.cpp.obj
+.PHONY : src/ArvoreB/noB.obj
+
+# target to build an object file
+src/ArvoreB/noB.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj
+.PHONY : src/ArvoreB/noB.cpp.obj
+
+src/ArvoreB/noB.i: src/ArvoreB/noB.cpp.i
+.PHONY : src/ArvoreB/noB.i
+
+# target to preprocess a source file
+src/ArvoreB/noB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.i
+.PHONY : src/ArvoreB/noB.cpp.i
+
+src/ArvoreB/noB.s: src/ArvoreB/noB.cpp.s
+.PHONY : src/ArvoreB/noB.s
+
+# target to generate assembly for a file
+src/ArvoreB/noB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.s
+.PHONY : src/ArvoreB/noB.cpp.s
+
 src/Hash/hash.obj: src/Hash/hash.cpp.obj
 .PHONY : src/Hash/hash.obj
 
@@ -598,29 +622,29 @@ src/Menu/menu.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.s
 .PHONY : src/Menu/menu.cpp.s
 
-src/Objects/Player.obj: src/Objects/Player.cpp.obj
-.PHONY : src/Objects/Player.obj
+src/Objetos/Player.obj: src/Objetos/Player.cpp.obj
+.PHONY : src/Objetos/Player.obj
 
 # target to build an object file
-src/Objects/Player.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objects/Player.cpp.obj
-.PHONY : src/Objects/Player.cpp.obj
+src/Objetos/Player.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj
+.PHONY : src/Objetos/Player.cpp.obj
 
-src/Objects/Player.i: src/Objects/Player.cpp.i
-.PHONY : src/Objects/Player.i
+src/Objetos/Player.i: src/Objetos/Player.cpp.i
+.PHONY : src/Objetos/Player.i
 
 # target to preprocess a source file
-src/Objects/Player.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objects/Player.cpp.i
-.PHONY : src/Objects/Player.cpp.i
+src/Objetos/Player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.i
+.PHONY : src/Objetos/Player.cpp.i
 
-src/Objects/Player.s: src/Objects/Player.cpp.s
-.PHONY : src/Objects/Player.s
+src/Objetos/Player.s: src/Objetos/Player.cpp.s
+.PHONY : src/Objetos/Player.s
 
 # target to generate assembly for a file
-src/Objects/Player.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objects/Player.cpp.s
-.PHONY : src/Objects/Player.cpp.s
+src/Objetos/Player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.s
+.PHONY : src/Objetos/Player.cpp.s
 
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
@@ -687,6 +711,9 @@ help:
 	@echo ... src/ArvoreB/arvoreB.obj
 	@echo ... src/ArvoreB/arvoreB.i
 	@echo ... src/ArvoreB/arvoreB.s
+	@echo ... src/ArvoreB/noB.obj
+	@echo ... src/ArvoreB/noB.i
+	@echo ... src/ArvoreB/noB.s
 	@echo ... src/Hash/hash.obj
 	@echo ... src/Hash/hash.i
 	@echo ... src/Hash/hash.s
@@ -696,9 +723,9 @@ help:
 	@echo ... src/Menu/menu.obj
 	@echo ... src/Menu/menu.i
 	@echo ... src/Menu/menu.s
-	@echo ... src/Objects/Player.obj
-	@echo ... src/Objects/Player.i
-	@echo ... src/Objects/Player.s
+	@echo ... src/Objetos/Player.obj
+	@echo ... src/Objetos/Player.i
+	@echo ... src/Objetos/Player.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

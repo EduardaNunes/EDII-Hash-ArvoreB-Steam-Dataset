@@ -41,6 +41,6 @@ void Player::addConquista(Conquista novaConquista){
 
 };
 
-void Player::addJogo(Jogo novoJogo){
-
+void Player::setJogos(vector<Jogo> novosJogos){
+    jogos = novosJogos;
 };
