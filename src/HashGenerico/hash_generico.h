@@ -37,7 +37,6 @@ public:
 
     void insere(const T& obj);
     T* busca(long long id);
-    bool remove(long long id);
     void exibirEstatisticas() const;
 };
 
@@ -165,33 +164,6 @@ T* TabelaHash<T>::busca(long long id) {
         }
         return nullptr;
     }
-}
-
-template<typename T>
-bool TabelaHash<T>::remove(long long id) {
-    int index = calculaIndexDaHash(id);
-
-    if (metodoDeColisao == MetodoDeColisao::ENCADEAMENTO) {
-        if (encadeamento[index].remove(id)) {
-            numeroDeElementos--;
-            return true;
-        }
-    } else {
-        int indexInicial = index;
-        while (sondagemLinear[index].state != EntryState::VAZIO) {
-            if (sondagemLinear[index].state == EntryState::OCUPADO &&
-                sondagemLinear[index].data.getId() == id) {
-                sondagemLinear[index].state = EntryState::REMOVIDO;
-                numeroDeElementos--;
-                return true;
-            }
-            index = (index + 1) % tamanho;
-            if (index == indexInicial)
-                break;
-        }
-    }
-
-    return false;
 }
 
 template<typename T>

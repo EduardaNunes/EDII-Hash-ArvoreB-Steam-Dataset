@@ -93,8 +93,7 @@ void Menu::menuHash(PlayerHashTable tabelaJogadores)
         cout << "\n=== Menu Hash ===\n";
         cout << "1 - Buscar jogador por ID\n";
         cout << "2 - Inserir novo jogador\n";
-        cout << "3 - Remover jogador por ID\n";
-        cout << "4 - Mostrar estatisticas\n";
+        cout << "3 - Mostrar estatisticas\n";
         cout << "0 - Sair\n";
         cout << "Escolha: ";
         cin >> opcaoMenu;
@@ -156,28 +155,6 @@ void Menu::menuHash(PlayerHashTable tabelaJogadores)
             break;
         }
         case 3:
-        {
-            long long id;
-            cout << "Digite o ID do jogador a remover: ";
-            cin >> id;
-            if (cin.fail())
-            {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "A opcao precisa ser numerica." << endl;
-                continue;
-            }
-            if (tabelaJogadores.removePlayerById(id))
-            {
-                cout << "Jogador removido com sucesso.\n";
-            }
-            else
-            {
-                cout << "Jogador nao encontrado.\n";
-            }
-            break;
-        }
-        case 4:
             tabelaJogadores.exibirEstatisticas();
             break;
         case 0:

@@ -41,7 +41,6 @@ public:
 
     void insertPlayer(Player p);
     Player *findPlayerById(long long id);
-    bool removePlayerById(long long id);
 
     void exibirEstatisticas() const;
 };

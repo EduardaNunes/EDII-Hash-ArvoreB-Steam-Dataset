@@ -126,39 +126,6 @@ Player *PlayerHashTable::findPlayerById(long long id)
     }
 }
 
-bool PlayerHashTable::removePlayerById(long long id)
-{
-    if (id < 0)
-        return false;
-    int index = computeHashIndex(id);
-    if (collisionMethod == CollisionMethod::CHAINING)
-    {
-        if (chainingTable[index].remove(id))
-        {
-            elementCount--;
-            return true;
-        }
-    }
-    else
-    {
-        int startIndex = index;
-        while (probingTable[index].state != EntryState::VAZIO)
-        {
-            if (probingTable[index].state == EntryState::OCUPADO &&
-                probingTable[index].data.getId() == id)
-            {
-                probingTable[index].state = EntryState::REMOVIDO;
-                elementCount--;
-                return true;
-            }
-            index = (index + 1) % tableSize;
-            if (index == startIndex)
-                break;
-        }
-    }
-    return false;
-}
-
 void PlayerHashTable::exibirEstatisticas() const
 {
     cout << "\n=== ESTATISTICAS ===" << endl;
