@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../HashGenerico/hash.h"
+#include "../HashGenerico/hash_generico.h"
 #include "../Objetos/Player.h"
 
 using namespace std;

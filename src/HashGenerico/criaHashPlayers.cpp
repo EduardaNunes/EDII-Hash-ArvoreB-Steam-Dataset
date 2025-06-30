@@ -1,9 +1,9 @@
-#include "../HashGenerico/hash.h"
+#include <cmath>
 
+#include "../HashGenerico/hash_generico.h"
 #include "../LeitorDePlanilha/leitorDePlanilha.h"
 #include "../config.h"
 #include "../Utils/utils.h"
-
 #include "../Objetos/Player.h"
 #include "../Objetos/Conquista.h"
 #include "../Objetos/Jogo.h"
@@ -17,6 +17,7 @@ void criaHashDePlayers(){
 
     int totalJogadores = leitor.contarJogadoresCSV(CSV_PLAYERS_PATH);
     int tamanhoTabela = static_cast<int>(totalJogadores);
+    tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
     TabelaHash<Player> tabelaPlayers(tamanhoTabela, MetodoDeColisao::ENCADEAMENTO);
 
@@ -63,6 +64,8 @@ void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores){
 
     int totalJogos = leitor.contarJogadoresCSV(CSV_GAMES_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalJogos);
+    tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
+
     TabelaHash<Jogo> tabelaJogos(tamanhoTabela, MetodoDeColisao::ENCADEAMENTO);
     
     adicionaJogosNaHash(tabelaJogos);
