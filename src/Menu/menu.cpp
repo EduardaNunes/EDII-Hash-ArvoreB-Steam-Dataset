@@ -7,26 +7,8 @@
 #include "menu.h"
 #include "./ArvoreB/arvoreB.h"
 #include "./LeitorDePlanilha/leitorDePlanilha.h"
-#include "./config.h"
 
 using namespace std;
-
-int contarJogadoresCSV(const string &caminho)
-{
-    ifstream file(caminho);
-    string line;
-    int count = 0;
-
-    getline(file, line);
-
-    while (getline(file, line))
-    {
-        if (!line.empty())
-            count++;
-    }
-
-    return count;
-}
 
 void Menu::menuInicial()
 {
@@ -91,8 +73,8 @@ PlayerHashTable Menu::hashColisoes()
     cout << "Criando...\n";
 
     CollisionMethod estrategiaDeColisao = (metodoColisao == 2) ? CollisionMethod::LINEAR_PROBING : CollisionMethod::CHAINING;
-
-    int totalJogadores = contarJogadoresCSV(CSV_PLAYERS_PATH);
+    LeitorDePlanilha leitor;
+    int totalJogadores = leitor.contarJogadoresCSV(CSV_PLAYERS_PATH);
     int tamanhoTabela = static_cast<int>(totalJogadores);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
