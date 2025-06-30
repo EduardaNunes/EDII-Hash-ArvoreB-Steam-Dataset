@@ -6,15 +6,15 @@ using namespace std;
 
 class Conquista{
     private:
-        int id;
+        string id;
         int idJogo;
         string titulo;
         string descricao;
 
     public:
-        Conquista(int id, int idJogo, string titulo, string descricao);
+        Conquista(string id, int idJogo, string titulo, string descricao);
 
-        int getId();
+        string getId();
         int getIdJogo();
         string getTitulo();
         string getDescricao();

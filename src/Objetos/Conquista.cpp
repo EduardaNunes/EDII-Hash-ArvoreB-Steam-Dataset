@@ -3,14 +3,14 @@
 
 using namespace std;
 
-Conquista::Conquista(int novoId, int novoIdJogo, string novoTitulo, string novaDescricao){
+Conquista::Conquista(string novoId, int novoIdJogo, string novoTitulo, string novaDescricao){
     id = novoId;
     idJogo = novoIdJogo;
     titulo = novoTitulo;
     descricao = novaDescricao;
 }
 
-int Conquista::getId(){
+string Conquista::getId(){
     return id;
 }
 
