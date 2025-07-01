@@ -25,11 +25,6 @@ add_executable(meu_programa
     src/LeitorDePlanilha/leitorDePlanilha.cpp
 )
 
-#add_executable(tests
-#    src/tests/test_hash.cpp
-#     src/Hash/hash.cpp
-#)
-
 #target_include_directories(tests PRIVATE src)
 #add_test(NAME PlayerHashTests COMMAND tests)
 
