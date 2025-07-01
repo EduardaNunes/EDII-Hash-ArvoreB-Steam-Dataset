@@ -63,7 +63,7 @@ vector<vector<string>> LeitorDePlanilha::lerCSV(const string& caminhoArquivo) {
     return dados;
 }
 
-int LeitorDePlanilha::contarJogadoresCSV(const string &caminho) {
+int LeitorDePlanilha::contadorCSV(const string &caminho) {
     ifstream file(caminho);
     string line;
     int count = 0;

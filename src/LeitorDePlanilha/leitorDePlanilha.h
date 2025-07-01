@@ -7,5 +7,5 @@ class LeitorDePlanilha {
     public:
         vector<vector<string>> lerCSV(const string& caminhoArquivo);
         string limparCampoCSV(const string &campo);
-        int contarJogadoresCSV(const string &caminho);
+        int contadorCSV(const string &caminho);
 };

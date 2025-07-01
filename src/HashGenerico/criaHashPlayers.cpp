@@ -16,7 +16,7 @@ Utils utils;
 void criaHashDePlayers()
 {
 
-    int totalJogadores = leitor.contarJogadoresCSV(CSV_PLAYERS_PATH);
+    int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_PATH);
     int tamanhoTabela = static_cast<int>(totalJogadores);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
@@ -68,7 +68,7 @@ void adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos)
 void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores)
 {
 
-    int totalJogos = leitor.contarJogadoresCSV(CSV_GAMES_TESTE_PATH);
+    int totalJogos = leitor.contadorCSV(CSV_GAMES_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalJogos);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
@@ -125,7 +125,7 @@ void adicionaConquistasNaHash(TabelaHash<Conquista> tabelaConquistas)
 }
 
 void adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores){
-    int totalConquistas = leitor.contarJogadoresCSV(CSV_ACHIEVEMENTS_TESTE_PATH);
+    int totalConquistas = leitor.contadorCSV(CSV_ACHIEVEMENTS_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalConquistas);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 

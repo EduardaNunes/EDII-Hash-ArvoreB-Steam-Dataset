@@ -74,7 +74,7 @@ PlayerHashTable Menu::hashColisoes()
 
     CollisionMethod estrategiaDeColisao = (metodoColisao == 2) ? CollisionMethod::LINEAR_PROBING : CollisionMethod::CHAINING;
     LeitorDePlanilha leitor;
-    int totalJogadores = leitor.contarJogadoresCSV(CSV_PLAYERS_PATH);
+    int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_PATH);
     int tamanhoTabela = static_cast<int>(totalJogadores);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
