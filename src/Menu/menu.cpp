@@ -92,7 +92,7 @@ void Menu::menuHash(PlayerHashTable& tabelaJogadores)
     int opcaoMenu;
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    
+
     do
     {
         cout << "\n=== Menu Hash ===\n";
@@ -174,10 +174,13 @@ void Menu::menuHash(PlayerHashTable& tabelaJogadores)
 
 void Menu::menuArvoreB()
 {
-
     ArvoreB arvoreB(64);
 
+    string entrada;
     int opcao;
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
     do
     {
         cout << "=== Menu Arvore B ===" << endl;
@@ -185,11 +188,11 @@ void Menu::menuArvoreB()
         cout << "2 - Indexar por jogos" << endl;
         cout << "0 - Voltar" << endl;
         cout << "Escolha: ";
-        cin >> opcao;
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        string entrada;
+        getline(cin, entrada);
+        try {
+            opcao = stoi(entrada);
+        } catch (...) {
             cout << "A opcao precisa ser numerica." << endl;
             continue;
         }
@@ -218,7 +221,6 @@ void Menu::menuArvoreB()
         }
         case 0:
             cout << "Voltando...\n";
-            Menu::menuInicial();
             break;
         default:
             cout << "Opcao invalida.\n";
