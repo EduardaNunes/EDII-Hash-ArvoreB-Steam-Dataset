@@ -11,7 +11,7 @@ using namespace std;
 
 class Player{
     private:
-        int id;
+        long long id;
         string pais;
         string dataDeCriacao;
         vector<Jogo> jogos;

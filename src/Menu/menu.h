@@ -9,11 +9,14 @@ class Menu
 private:
     PlayerHashTable tabelaHash;
 
-public:
+public: 
     void menuInicial();
     PlayerHashTable hashColisoes();
-    void menuHash(PlayerHashTable& tabelaJogadores);
+    void menuHash();
     void menuArvoreB();
+
+    void menuBuscaHash();
+    void menuInsercaoHash();
 };
 
 #endif
