@@ -34,7 +34,8 @@ void Menu::menuInicial()
         {
         case 1:
         {
-            menuHash(hashColisoes());
+            tabelaHash = hashColisoes(); 
+            menuHash(tabelaHash);
             break;
         }
         case 2:
@@ -84,10 +85,14 @@ PlayerHashTable Menu::hashColisoes()
     return tabelaJogadores;
 }
 
-void Menu::menuHash(PlayerHashTable tabelaJogadores)
+void Menu::menuHash(PlayerHashTable& tabelaJogadores)
 {
 
+    string entrada;
     int opcaoMenu;
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    
     do
     {
         cout << "\n=== Menu Hash ===\n";
@@ -96,11 +101,11 @@ void Menu::menuHash(PlayerHashTable tabelaJogadores)
         cout << "3 - Mostrar estatisticas\n";
         cout << "0 - Sair\n";
         cout << "Escolha: ";
-        cin >> opcaoMenu;
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, entrada);
+
+        try {
+            opcaoMenu = stoi(entrada);
+        } catch (...) {
             cout << "A opcao precisa ser numerica." << endl;
             continue;
         }

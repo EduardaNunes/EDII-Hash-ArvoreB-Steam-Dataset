@@ -6,10 +6,13 @@
 
 class Menu
 {
+private:
+    PlayerHashTable tabelaHash;
+
 public:
     void menuInicial();
     PlayerHashTable hashColisoes();
-    void menuHash(PlayerHashTable tabelaJogadores);
+    void menuHash(PlayerHashTable& tabelaJogadores);
     void menuArvoreB();
 };
 
