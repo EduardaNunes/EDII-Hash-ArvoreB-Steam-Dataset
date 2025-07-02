@@ -63,7 +63,8 @@ PlayerHashTable Menu::hashColisoes()
         cout << "2 - Enderecamento Aberto (Sondagem Linear)\n";
         cout << "Opcao: ";
         cin >> metodoColisao;
-
+        cout << "Criando... \n";
+        
         if (!cin.fail() && (metodoColisao == 1 || metodoColisao == 2))
             break;
 
