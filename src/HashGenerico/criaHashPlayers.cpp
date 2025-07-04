@@ -13,18 +13,18 @@ using namespace std;
 LeitorDePlanilha leitor;
 Utils utils;
 
-void criaHashDePlayers()
+void criaHashDePlayers(MetodoDeColisao metodoDeColisao)
 {
 
     int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_PATH);
     int tamanhoTabela = static_cast<int>(totalJogadores);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
-    TabelaHash<Player> tabelaPlayers(tamanhoTabela, MetodoDeColisao::ENCADEAMENTO);
+    TabelaHash<Player> tabelaPlayers(tamanhoTabela, metodoDeColisao);
 
     adicionaPlayersNaHash(tabelaPlayers);
-    adicionaJogosNosPlayers(tabelaPlayers);
-    // adicionaConquistasNosPlayers(tabelaPlayers);
+    adicionaJogosNosPlayers(tabelaPlayers, metodoDeColisao);
+    // adicionaConquistasNosPlayers(tabelaPlayers, metodoDeColisao);
 }
 
 void adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores)
@@ -65,14 +65,14 @@ void adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos)
     }
 }
 
-void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores)
+void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao)
 {
 
     int totalJogos = leitor.contadorCSV(CSV_GAMES_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalJogos);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
-    TabelaHash<Jogo> tabelaJogos(tamanhoTabela, MetodoDeColisao::ENCADEAMENTO);
+    TabelaHash<Jogo> tabelaJogos(tamanhoTabela, metodoDeColisao);
 
     adicionaJogosNaHash(tabelaJogos);
 
@@ -124,12 +124,12 @@ void adicionaConquistasNaHash(TabelaHash<Conquista> tabelaConquistas)
     }
 }
 
-void adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores){
+void adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao){
     int totalConquistas = leitor.contadorCSV(CSV_ACHIEVEMENTS_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalConquistas);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
-    TabelaHash<Conquista> tabelaConquistas(tamanhoTabela, MetodoDeColisao::ENCADEAMENTO);
+    TabelaHash<Conquista> tabelaConquistas(tamanhoTabela, metodoDeColisao);
 
     adicionaConquistasNaHash(tabelaConquistas);
 
