@@ -27,9 +27,9 @@ private:
     CollisionMethod collisionMethod;
 
     vector<LinkedList<Player>> chainingTable;
-    vector<HashEntry<Player>> probingTable;  // <-- Usar template HashEntry<Player>
-    
-    int computeHashIndex(long long key) const;
+    vector<HashEntry<Player>> probingTable;
+
+    int computeHashIndex(const string& key) const;  // ✅ string agora
     void rehash();
     bool isPrime(int number);
     int nextPrime(int number);
@@ -40,7 +40,7 @@ public:
     void loadPlayersFromCSV(const string &filePath);
 
     void insertPlayer(Player p);
-    Player *findPlayerById(long long id);
+    Player *findPlayerById(const string& id);  // ✅ string agora
 
     void exibirEstatisticas() const;
 };

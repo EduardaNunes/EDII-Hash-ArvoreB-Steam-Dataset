@@ -4,6 +4,8 @@
 #include <vector>
 #include <stdexcept>
 #include <iostream>
+#include <string>
+#include <functional>  // std::hash
 #include "linked_list.h"
 #include "hash_entry.h"
 
@@ -13,8 +15,6 @@ enum class MetodoDeColisao {
     ENCADEAMENTO,
     SONDAGEM_LINEAR
 };
-
-// --------------------- DECLARAÇÃO ----------------------
 
 template<typename T>
 class TabelaHash {
@@ -27,7 +27,7 @@ private:
     vector<LinkedList<T>> encadeamento;
     vector<HashEntry<T>> sondagemLinear;
 
-    int calculaIndexDaHash(long long chave) const;
+    int calculaIndexDaHash(const string& chave) const;
     bool ePrimo(int n);
     int proximoPrimo(int n);
     void rehash();
@@ -36,7 +36,7 @@ public:
     TabelaHash(int size, MetodoDeColisao metodo);
 
     void insere(const T& obj);
-    T* busca(long long id);
+    T* busca(const string& id);
     void exibirEstatisticas() const;
 };
 
@@ -49,9 +49,9 @@ TabelaHash<T>::TabelaHash(int size, MetodoDeColisao metodo)
       sondagemLinear(metodo == MetodoDeColisao::SONDAGEM_LINEAR ? size : 0) {}
 
 template<typename T>
-int TabelaHash<T>::calculaIndexDaHash(long long chave) const {
-    if (chave < 0) throw invalid_argument("Chave negativa não permitida.");
-    return chave % tamanho;
+int TabelaHash<T>::calculaIndexDaHash(const string& chave) const {
+    size_t hashValue = hash<string>{}(chave);
+    return static_cast<int>(hashValue % tamanho);
 }
 
 template<typename T>
@@ -78,7 +78,7 @@ void TabelaHash<T>::rehash() {
         for (auto &list : encadeamento) {
             Node<T> *atual = list.getHead();
             while (atual) {
-                int novoIndex = atual->data.getId() % novoTamanho;
+                int novoIndex = calculaIndexDaHash(atual->data.getId());
                 novaTabela[novoIndex].insere(atual->data);
                 atual = atual->next;
             }
@@ -88,7 +88,7 @@ void TabelaHash<T>::rehash() {
         vector<HashEntry<T>> novaTabela(novoTamanho);
         for (auto &entry : sondagemLinear) {
             if (entry.state == EntryState::OCUPADO) {
-                int novoIndex = entry.data.getId() % novoTamanho;
+                int novoIndex = calculaIndexDaHash(entry.data.getId());
                 while (novaTabela[novoIndex].state == EntryState::OCUPADO)
                     novoIndex = (novoIndex + 1) % novoTamanho;
 
@@ -146,7 +146,7 @@ void TabelaHash<T>::insere(const T& obj) {
 }
 
 template<typename T>
-T* TabelaHash<T>::busca(long long id) {
+T* TabelaHash<T>::busca(const string& id) {
     int index = calculaIndexDaHash(id);
 
     if (metodoDeColisao == MetodoDeColisao::ENCADEAMENTO) {

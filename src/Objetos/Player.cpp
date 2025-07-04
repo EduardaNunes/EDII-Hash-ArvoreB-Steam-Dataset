@@ -4,43 +4,51 @@
 
 using namespace std;
 
-Player::Player(){
-    id = 0;
+Player::Player()
+{
+    id = "";
     pais = "";
     dataDeCriacao = "";
 }
 
-Player::Player(long long  novoId, string novoPais, string novaDataDeCriacao){
+Player::Player(string novoId, string novoPais, string novaDataDeCriacao)
+{
     id = novoId;
     pais = novoPais;
     dataDeCriacao = novaDataDeCriacao;
 }
 
-
-long long Player::getId(){
+string Player::getId()
+{
     return id;
-};
+}
 
-string Player::getPais(){
+string Player::getPais()
+{
     return pais;
-};
+}
 
-string Player::getDataDeCriacao(){
+string Player::getDataDeCriacao()
+{
     return dataDeCriacao;
-};
+}
 
-vector<Jogo> Player::getJogos(){
+vector<Jogo> Player::getJogos()
+{
     return jogos;
-};
+}
 
-vector<Conquista> Player::getConquistas(){
+vector<Conquista> Player::getConquistas()
+{
     return conquistas;
-};
+}
 
-void Player::addConquista(Conquista novaConquista){
+void Player::addConquista(Conquista novaConquista)
+{
+    conquistas.push_back(novaConquista);
+}
 
-};
-
-void Player::setJogos(vector<Jogo> novosJogos){
+void Player::setJogos(vector<Jogo> novosJogos)
+{
     jogos = novosJogos;
-};
+}

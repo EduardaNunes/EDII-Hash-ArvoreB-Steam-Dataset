@@ -2,6 +2,7 @@
 #define LINKED_LIST_H
 
 #include <iostream>
+#include <string>
 
 template <typename T>
 struct Node
@@ -19,6 +20,7 @@ private:
 
 public:
     LinkedList() : head(nullptr) {}
+    
     Node<T> *getHead() const
     {
         return head;
@@ -42,7 +44,7 @@ public:
         head = node;
     }
 
-    T *busca(long long id) const
+    T *busca(const std::string& id) const
     {
         Node<T> *atual = head;
         while (atual)
@@ -59,7 +61,7 @@ public:
         return head == nullptr;
     }
 
-    bool remove(long long id)
+    bool remove(const std::string& id)  // ✅ ID agora é string
     {
         Node<T> *atual = head;
         Node<T> *prev = nullptr;

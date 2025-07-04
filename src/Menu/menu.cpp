@@ -188,19 +188,11 @@ void Menu::menuArvoreB()
 
 void Menu::menuBuscaHash()
 {
-    string entrada;
-    long long id;
+    string id;
 
     cout << "\n=== Buscar Jogador ===\n";
     cout << "Digite o ID do jogador: ";
-    getline(cin, entrada);
-
-    try {
-        id = stoll(entrada);
-    } catch (...) {
-        cout << "A opcao precisa ser numerica." << endl;
-        return;
-    }
+    getline(cin, id);
 
     Player* p = tabelaHash.findPlayerById(id);
     if (p) {
@@ -210,22 +202,15 @@ void Menu::menuBuscaHash()
     }
 }
 
+
 void Menu::menuInsercaoHash()
 {
-    string entrada;
-    long long id;
+    string id;
     string pais, dataCriacao;
 
     cout << "\n=== Inserir Jogador ===\n";
     cout << "Digite o ID do jogador: ";
-    getline(cin, entrada);
-
-    try {
-        id = stoll(entrada);
-    } catch (...) {
-        cout << "A opcao precisa ser numerica." << endl;
-        return;
-    }
+    getline(cin, id);
 
     cout << "Digite o pais: ";
     getline(cin, pais);

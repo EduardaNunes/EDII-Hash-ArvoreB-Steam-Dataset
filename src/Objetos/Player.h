@@ -9,19 +9,20 @@
 
 using namespace std;
 
-class Player{
-    private:
-        long long id;
-        string pais;
-        string dataDeCriacao;
-        vector<Jogo> jogos;
-        vector<Conquista> conquistas;
+class Player
+{
+private:
+    string id;
+    string pais;
+    string dataDeCriacao;
+    vector<Jogo> jogos;
+    vector<Conquista> conquistas;
 
 public:
-    Player(); 
-    Player(long long id, string pais, string dataDeCriacao);
+    Player();
+    Player(string id, string pais, string dataDeCriacao);
 
-    long long getId();
+    string getId();
     string getPais();
     string getDataDeCriacao();
     vector<Jogo> getJogos();
