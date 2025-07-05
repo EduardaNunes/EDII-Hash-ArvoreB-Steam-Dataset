@@ -7,19 +7,16 @@ using namespace std;
 LeitorDePlanilha leitor;
 Utils utils;
 
-TabelaHash<Player> HashPlayers::criaHashDePlayers(MetodoDeColisao metodoDeColisao)
+void HashPlayers::populaTabelaComPlayers(TabelaHash<Player>& tabelaAlvo, MetodoDeColisao metodoDeColisao)
 {
-    int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_TESTE_PATH);
-    //int tamanhoTabela = static_cast<int>(totalJogadores);
-    int tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
+    cout << "Populando tabela com jogadores...\n";
+    adicionaPlayersNaHash(tabelaAlvo);
 
-    TabelaHash<Player> tabelaPlayers(tamanhoTabela, metodoDeColisao);
+    cout << "Adicionando jogos aos jogadores...\n";
+    adicionaJogosNosPlayers(tabelaAlvo, metodoDeColisao);
 
-    adicionaPlayersNaHash(tabelaPlayers);
-    adicionaJogosNosPlayers(tabelaPlayers, metodoDeColisao);
-    adicionaConquistasNosPlayers(tabelaPlayers, metodoDeColisao);
-
-    return tabelaPlayers;
+    cout << "Adicionando conquistas aos jogadores...\n";
+    adicionaConquistasNosPlayers(tabelaAlvo, metodoDeColisao);
 }
 
 void HashPlayers::adicionaPlayersNaHash(TabelaHash<Player> &tabelaJogadores)
@@ -56,14 +53,12 @@ void HashPlayers::adicionaJogosNaHash(TabelaHash<Jogo> &tabelaJogos)
     }
 }
 
-void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> &tabelaJogadores, MetodoDeColisao metodoDeColisao)
+void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player>& tabelaJogadores, MetodoDeColisao metodoDeColisao)
 {
     int totalJogos = leitor.contadorCSV(CSV_GAMES_TESTE_PATH);
-    int tamanhoTabela = static_cast<int>(totalJogos);
-    tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
+    int tamanhoTabela = static_cast<int>(ceil(static_cast<double>(totalJogos) / 0.7));
 
     TabelaHash<Jogo> tabelaJogos(tamanhoTabela, metodoDeColisao);
-
     adicionaJogosNaHash(tabelaJogos);
 
     vector<vector<string>> dadosCompras = leitor.lerCSV(CSV_PURCHASED_GAMES_TESTE_PATH);

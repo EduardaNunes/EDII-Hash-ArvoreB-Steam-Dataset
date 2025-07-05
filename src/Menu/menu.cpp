@@ -170,8 +170,9 @@ void Menu::inicializarTabelaHash()
     //         this->tabelaHash.insere(p);
     //     }
     // }
-    HashPlayers tabelaPlayers;
-    this->tabelaHash = tabelaPlayers.criaHashDePlayers(estrategia);
+    HashPlayers geradorDePlayers;
+    
+    geradorDePlayers.populaTabelaComPlayers(this->tabelaHash, estrategia);
     cout << "Tabela criada e jogadores carregados!\n";
 }
 
