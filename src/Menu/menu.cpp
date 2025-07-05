@@ -306,27 +306,35 @@ void Menu::menuBuscaHash()
 void Menu::menuInsercaoHash()
 {
     string id, pais;
+    Utils utils;
 
     cout << "\n=== Inserir Jogador ===\n";
-    cout << "Digite o ID do jogador: ";
-    getline(cin, id);
 
-    Utils utils;
-    if (!utils.verificaIdJogador(id))
+    while (true) 
     {
-        cout << "ID de jogador invalido! \n E preciso que ele tenha 17 digitos numericos" << endl;
-        menuInsercaoHash();
-    }
-    else if (tabelaHash.busca(id) != nullptr)
-    {
-        cout << "Jogador ja existente!" << endl;
-        menuInsercaoHash();
+        cout << "Digite o ID do jogador: ";
+        getline(cin, id);
+
+        if (!utils.verificaIdJogador(id))
+        {
+            cout << "ID de jogador invalido! E preciso que ele tenha 17 digitos numericos.\n";
+            continue;
+        }
+        
+        if (tabelaHash.busca(id) != nullptr)
+        {
+            cout << "Jogador com este ID ja existe!\n";
+            continue;
+        }
+
+        break; 
     }
 
     cout << "Digite o pais: ";
     getline(cin, pais);
-    
+
     Player novoJogador(id, pais);
+    
     tabelaHash.insere(novoJogador);
     cout << "Jogador inserido com sucesso!\n";
 }

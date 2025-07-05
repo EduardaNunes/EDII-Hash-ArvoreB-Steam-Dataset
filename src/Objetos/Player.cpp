@@ -24,14 +24,14 @@ Player::Player(string novoId, string novoPais)
     id = novoId;
     pais = novoPais;
 
-    char buffer[11];
+    char buffer[20]; 
     time_t tempoBruto;
     time(&tempoBruto);
     struct tm *infoTempo = localtime(&tempoBruto);
 
-    strftime(buffer, sizeof(buffer), "%Y-%m-%d", infoTempo);
+    strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", infoTempo);
     
-    dataDeCriacao = string(buffer); 
+    dataDeCriacao = string(buffer);
 }
 
 string Player::getId() const
