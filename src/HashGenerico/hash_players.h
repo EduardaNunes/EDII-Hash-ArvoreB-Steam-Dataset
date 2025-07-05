@@ -1,0 +1,21 @@
+#include "../HashGenerico/hash_generico.h"
+
+#include "../Objetos/Player.h"
+#include "../Objetos/Conquista.h"
+#include "../Objetos/Jogo.h"
+
+using namespace std;
+
+class HashPlayers
+{
+    private:
+        void adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores);
+        void adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos);
+        void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao);
+        void adicionaConquistasNaHash(TabelaHash<Conquista> tabelaConquistas);
+        void adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao);
+
+    public:
+        HashPlayers(){}
+        TabelaHash<Player> criaHashDePlayers(MetodoDeColisao metodoDeColisao);
+};

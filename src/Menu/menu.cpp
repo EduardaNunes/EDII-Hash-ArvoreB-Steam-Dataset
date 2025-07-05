@@ -76,21 +76,21 @@ void Menu::inicializarTabelaHash()
 
     MetodoDeColisao estrategia = (metodoColisao == 1) ? MetodoDeColisao::ENCADEAMENTO : MetodoDeColisao::SONDAGEM_LINEAR;
 
-    LeitorDePlanilha leitor;
-    int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_PATH);
-    int tamanhoTabela = static_cast<int>(ceil(totalJogadores / 0.7));
+    // LeitorDePlanilha leitor;
+    // int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_PATH);
+    // int tamanhoTabela = static_cast<int>(ceil(totalJogadores / 0.7));
 
-    this->tabelaHash = TabelaHash<Player>(tamanhoTabela, estrategia);
+    // this->tabelaHash = TabelaHash<Player>(tamanhoTabela, estrategia);
 
-    vector<vector<string>> dados = leitor.lerCSV(CSV_PLAYERS_PATH);
-    for (size_t i = 1; i < dados.size(); i++)
-    {
-        if (dados[i].size() >= 3 && !dados[i][0].empty())
-        {
-            Player p(dados[i][0], dados[i][1], dados[i][2]);
-            this->tabelaHash.insere(p);
-        }
-    }
+    // vector<vector<string>> dados = leitor.lerCSV(CSV_PLAYERS_PATH);
+    // for (size_t i = 1; i < dados.size(); i++)
+    // {
+    //     if (dados[i].size() >= 3 && !dados[i][0].empty())
+    //     {
+    //         Player p(dados[i][0], dados[i][1], dados[i][2]);
+    //         this->tabelaHash.insere(p);
+    //     }
+    // }
     cout << "Tabela criada e jogadores carregados!\n";
     
 }

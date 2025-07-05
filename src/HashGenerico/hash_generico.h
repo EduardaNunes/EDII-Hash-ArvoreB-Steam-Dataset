@@ -33,7 +33,7 @@ private:
     void rehash();
 
 public:
-    TabelaHash(int size, MetodoDeColisao metodo);
+    TabelaHash(int tam, MetodoDeColisao metodo);
 
     void insere(const T& obj);
     T* busca(const string& id);
@@ -41,15 +41,15 @@ public:
 };
 
 template<typename T>
-TabelaHash<T>::TabelaHash(int size, MetodoDeColisao metodo)
-    : tamanho(size), numeroDeElementos(0), numeroDeColisoes(0), metodoDeColisao(metodo),
-      encadeamento(metodo == MetodoDeColisao::ENCADEAMENTO ? size : 0),
-      sondagemLinear(metodo == MetodoDeColisao::SONDAGEM_LINEAR ? size : 0) {}
+TabelaHash<T>::TabelaHash(int tam, MetodoDeColisao metodo)
+    : tamanho(tam), numeroDeElementos(0), numeroDeColisoes(0), metodoDeColisao(metodo),
+      encadeamento(metodo == MetodoDeColisao::ENCADEAMENTO ? tam : 0),
+      sondagemLinear(metodo == MetodoDeColisao::SONDAGEM_LINEAR ? tam : 0) {}
 
 template<typename T>
 int TabelaHash<T>::calculaIndexDaHash(const string& chave) const {
-    size_t hashValue = hash<string>{}(chave);
-    return static_cast<int>(hashValue % tamanho);
+    tam_t valorHash = hash<string>{}(chave);
+    return static_cast<int>(valorHash % tamanho);
 }
 
 template<typename T>

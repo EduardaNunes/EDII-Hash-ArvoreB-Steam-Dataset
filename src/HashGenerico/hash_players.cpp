@@ -1,6 +1,7 @@
 #include <cmath>
 
-#include "../HashGenerico/hash_generico.h"
+#include "./hash_players.h"
+#include "./hash_generico.h"
 #include "../LeitorDePlanilha/leitorDePlanilha.h"
 #include "../config.h"
 #include "../Utils/utils.h"
@@ -13,7 +14,7 @@ using namespace std;
 LeitorDePlanilha leitor;
 Utils utils;
 
-void criaHashDePlayers(MetodoDeColisao metodoDeColisao)
+TabelaHash<Player> HashPlayers::criaHashDePlayers(MetodoDeColisao metodoDeColisao)
 {
     int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_PATH);
     int tamanhoTabela = static_cast<int>(totalJogadores);
@@ -23,10 +24,12 @@ void criaHashDePlayers(MetodoDeColisao metodoDeColisao)
 
     adicionaPlayersNaHash(tabelaPlayers);
     adicionaJogosNosPlayers(tabelaPlayers, metodoDeColisao);
-    // adicionaConquistasNosPlayers(tabelaPlayers, metodoDeColisao);
+    adicionaConquistasNosPlayers(tabelaPlayers, metodoDeColisao);
+
+    return tabelaPlayers;
 }
 
-void adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores)
+void HashPlayers::adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores)
 {
     vector<vector<string>> dadosPlayer = leitor.lerCSV(CSV_PLAYERS_TESTE_PATH);
 
@@ -41,7 +44,7 @@ void adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores)
     }
 }
 
-void adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos)
+void HashPlayers::adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos)
 {
     vector<vector<string>> dadosJogos = leitor.lerCSV(CSV_GAMES_TESTE_PATH);
 
@@ -60,7 +63,7 @@ void adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos)
     }
 }
 
-void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao)
+void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao)
 {
     int totalJogos = leitor.contadorCSV(CSV_GAMES_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalJogos);
@@ -98,7 +101,7 @@ void adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao
     }
 }
 
-void adicionaConquistasNaHash(TabelaHash<Conquista> tabelaConquistas)
+void HashPlayers::adicionaConquistasNaHash(TabelaHash<Conquista> tabelaConquistas)
 {
     vector<vector<string>> dadosConquistas = leitor.lerCSV(CSV_ACHIEVEMENTS_TESTE_PATH);
 
@@ -114,7 +117,7 @@ void adicionaConquistasNaHash(TabelaHash<Conquista> tabelaConquistas)
     }
 }
 
-void adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao)
+void HashPlayers::adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao)
 {
     int totalConquistas = leitor.contadorCSV(CSV_ACHIEVEMENTS_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalConquistas);

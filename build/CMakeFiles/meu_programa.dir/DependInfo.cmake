@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/ArvoreB/arvoreB.cpp" "CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.obj.d"
-  "C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/ArvoreB/noB.cpp" "CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj.d"
-  "C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/LeitorDePlanilha/leitorDePlanilha.cpp" "CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj.d"
-  "C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.cpp" "CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj.d"
-  "C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Player.cpp" "CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj.d"
-  "C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/main.cpp" "CMakeFiles/meu_programa.dir/src/main.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/main.cpp.obj.d"
+  "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/ArvoreB/arvoreB.cpp" "CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.obj.d"
+  "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/ArvoreB/noB.cpp" "CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj.d"
+  "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/LeitorDePlanilha/leitorDePlanilha.cpp" "CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj.d"
+  "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.cpp" "CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj.d"
+  "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Player.cpp" "CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj.d"
+  "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/main.cpp" "CMakeFiles/meu_programa.dir/src/main.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
