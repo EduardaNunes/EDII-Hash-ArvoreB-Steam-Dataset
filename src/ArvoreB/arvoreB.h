@@ -2,6 +2,7 @@
 #include <vector>
 #include "../HashGenerico/hash_generico.h"
 #include "../Objetos/Player.h"
+#include "noB.h"
 
 using namespace std;
 

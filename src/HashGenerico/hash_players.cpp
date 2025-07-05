@@ -1,13 +1,6 @@
 #include <cmath>
 
 #include "./hash_players.h"
-#include "./hash_generico.h"
-#include "../LeitorDePlanilha/leitorDePlanilha.h"
-#include "../config.h"
-#include "../Utils/utils.h"
-#include "../Objetos/Player.h"
-#include "../Objetos/Conquista.h"
-#include "../Objetos/Jogo.h"
 
 using namespace std;
 

@@ -1,3 +1,6 @@
+#ifndef LEITORDEPLANILHA_H
+#define LEITORDEPLANILHA_H
+
 #include <vector>
 #include <string>
 
@@ -9,3 +12,5 @@ class LeitorDePlanilha {
         string limparCampoCSV(const string &campo);
         int contadorCSV(const string &caminho);
 };
+
+#endif 

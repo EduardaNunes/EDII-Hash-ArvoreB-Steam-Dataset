@@ -526,12 +526,6 @@ CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj: C:/Us
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
 
 CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj: C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.cpp \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/hash_entry.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/hash_generico.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/linked_list.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Conquista.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Jogo.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Player.h \
   C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.h \
   c:/mingw/include/_mingw.h \
   c:/mingw/include/ctype.h \
@@ -667,10 +661,15 @@ CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj: C:/Users/vanes/OneDrive/Docum
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/arvoreb/arvoreb.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/arvoreb/noB.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/config.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hashgenerico/hash_entry.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hashgenerico/hash_generico.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hashgenerico/hash_players.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hashgenerico/linked_list.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/leitordeplanilha/leitordeplanilha.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/Conquista.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/Jogo.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/conquista.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/jogo.h \
   c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/player.h \
@@ -969,12 +968,6 @@ CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj: C:/Users/vanes/OneDrive/
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
 
 CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/main.cpp \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/hash_entry.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/hash_generico.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/linked_list.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Conquista.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Jogo.h \
-  C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Player.h \
   C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.h \
   c:/mingw/include/_mingw.h \
   c:/mingw/include/ctype.h \
@@ -995,8 +988,10 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/vanes/OneDrive/Documentos
   c:/mingw/include/w32api.h \
   c:/mingw/include/wchar.h \
   c:/mingw/include/wctype.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/algorithm \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/array \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward/binders.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/algorithmfwd.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/alloc_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/atomic_lockfree_defines.h \
@@ -1029,20 +1024,25 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/vanes/OneDrive/Documentos
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/predefined_ops.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ptr_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/range_access.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/sstream.tcc \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_algo.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_algobase.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_bvector.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_construct.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_function.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_heap.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_types.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_pair.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_relops.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_tempbuf.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_uninitialized.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_vector.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stringfwd.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uniform_int_dist.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uses_allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/vector.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cctype \
@@ -1068,6 +1068,7 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/vanes/OneDrive/Documentos
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/iosfwd \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/iostream \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/istream \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/limits \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/atomic_word.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++config.h \
@@ -1081,6 +1082,7 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/vanes/OneDrive/Documentos
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/os_defines.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/new \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ostream \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/sstream \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/stdexcept \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/streambuf \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/string \
@@ -1093,7 +1095,20 @@ CMakeFiles/meu_programa.dir/src/main.cpp.obj: C:/Users/vanes/OneDrive/Documentos
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h \
-  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/config.h
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/arvoreb/arvoreb.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/arvoreb/noB.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/config.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hashgenerico/hash_entry.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hashgenerico/hash_generico.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hashgenerico/hash_players.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/hashgenerico/linked_list.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/leitordeplanilha/leitordeplanilha.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/Conquista.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/Jogo.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/conquista.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/jogo.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/objetos/player.h \
+  c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/utils/utils.h
 
 
 c:/mingw/include/ctype.h:
@@ -1286,8 +1301,6 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cerrno:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/clocale:
 
-C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/hash_generico.h:
-
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cstdint:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cstdio:
@@ -1414,11 +1427,9 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++io.h:
 
 C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.cpp:
 
-C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/hash_entry.h:
-
-C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/linked_list.h:
-
 C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.h:
+
+c:/users/vanes/onedrive/documentos/codigos/faculdade/c++/ed2/trab01-grupo-diego-eduarda-vanessa/src/arvoreb/noB.h:
 
 C:/Users/vanes/OneDrive/Documentos/codigos/faculdade/c++/ED2/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Jogo.cpp:
 

@@ -1,7 +1,8 @@
 #include <fstream>
 #include <sstream>
-#include "leitorDePlanilha.h"
 #include <algorithm>
+
+#include "leitorDePlanilha.h"
 
 using namespace std;
 

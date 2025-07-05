@@ -1,3 +1,6 @@
+#ifndef UTILS_H
+#define UTILS_H
+
 #include <vector>
 #include <string>
 #include <sstream>
@@ -34,3 +37,5 @@ public:
         return s.length() == 17 && all_of(s.begin(), s.end(), ::isdigit);
     }
 };
+
+#endif 

@@ -1,8 +1,10 @@
-#include "../HashGenerico/hash_generico.h"
-
-#include "../Objetos/Player.h"
+#include "../LeitorDePlanilha/leitorDePlanilha.h"
 #include "../Objetos/Conquista.h"
+#include "../Objetos/Player.h"
 #include "../Objetos/Jogo.h"
+#include "../Utils/utils.h"
+#include "./hash_generico.h"
+#include "../config.h"
 
 using namespace std;
 

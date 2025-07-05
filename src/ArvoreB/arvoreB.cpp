@@ -2,7 +2,6 @@
 #include <string>
 
 #include "arvoreB.h"
-#include "noB.h"
 
 using namespace std;
 
