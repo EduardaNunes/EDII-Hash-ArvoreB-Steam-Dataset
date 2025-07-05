@@ -6,6 +6,7 @@
 #include <vector> 
 
 #include "menu.h"
+#include "../HashGenerico/hash_players.h"
 #include "./ArvoreB/arvoreB.h"
 #include "./LeitorDePlanilha/leitorDePlanilha.h"
 
@@ -91,6 +92,8 @@ void Menu::inicializarTabelaHash()
     //         this->tabelaHash.insere(p);
     //     }
     // }
+    HashPlayers tabelaPlayers;
+    this->tabelaHash = tabelaPlayers.criaHashDePlayers(estrategia);
     cout << "Tabela criada e jogadores carregados!\n";
     
 }
