@@ -18,6 +18,11 @@ class Conquista{
         int getIdJogo();
         string getTitulo();
         string getDescricao();
+
+    friend ostream& operator<<(ostream& os, const Conquista& c) {
+        os << c.titulo;
+        return os;
+    }
 };
 
 #endif 

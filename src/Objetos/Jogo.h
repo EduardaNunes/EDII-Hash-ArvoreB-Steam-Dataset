@@ -31,6 +31,11 @@ class Jogo{
         Conquista getConquistas();
 
         void adicionaConquista(Conquista novaConquista);
+
+    friend ostream& operator<<(ostream& os, const Jogo& jogo) {
+        os << jogo.titulo;
+        return os;
+    }
 };
 
 #endif 

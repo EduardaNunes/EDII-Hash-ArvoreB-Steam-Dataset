@@ -33,7 +33,13 @@ public:
 
     friend ostream &operator<<(ostream &os, const Player &p)
     {
-        os << "ID: " << p.id << ", Country: " << p.pais << ", Created: " << p.dataDeCriacao;
+        os << "==================== PLAYER ====================\n"
+        << "> ID: " << p.id << "\n"
+        << "> País: " << p.pais << "\n"
+        << "> Conta criada em: " << p.dataDeCriacao << "\n"
+        << "> Quantidade de Jogos: " << p.jogos.size() << "\n"
+        << "> Quantidade de Conquistas: " << p.conquistas.size() << "\n"
+        << "================================================";
         return os;
     }
 };
