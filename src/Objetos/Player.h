@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <memory>
 #include "Jogo.h"
 #include "Conquista.h"
 
@@ -15,8 +16,8 @@ private:
     string id;
     string pais;
     string dataDeCriacao;
-    vector<Jogo> jogos;
-    vector<Conquista> conquistas;
+    vector<shared_ptr<Jogo>> jogos;
+    vector<shared_ptr<Conquista>> conquistas;
 
 public:
     Player();
@@ -25,11 +26,11 @@ public:
     string getId() const;
     string getPais() const;
     string getDataDeCriacao() const;
-    vector<Jogo> getJogos() const;
-    vector<Conquista> getConquistas() const;
+    vector<shared_ptr<Jogo>> getJogos() const;
+    vector<shared_ptr<Conquista>> getConquistas() const;
 
-    void addConquista(Conquista novaConquista);
-    void setJogos(vector<Jogo> novosJogos);
+    void addConquista(shared_ptr<Conquista> novaConquista);
+    void setJogos(vector<shared_ptr<Jogo>> novosJogos);
 
     friend ostream &operator<<(ostream &os, const Player &p)
     {

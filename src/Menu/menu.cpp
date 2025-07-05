@@ -292,7 +292,7 @@ void Menu::menuBuscaHash()
     cout << "Digite o ID do jogador: ";
     getline(cin, id);
 
-    Player *p = tabelaHash.busca(id);
+    auto p = tabelaHash.busca(id); // agora é shared_ptr<Player>
     if (p)
     {
         cout << *p << endl;
@@ -328,7 +328,7 @@ void Menu::menuInsercaoHash()
     cout << "Digite a data de criacao (YYYY-MM-DD): ";
     getline(cin, dataCriacao);
 
-    Player novoJogador(id, pais, dataCriacao);
+    auto novoJogador = make_shared<Player>(id, pais, dataCriacao);
     tabelaHash.insere(novoJogador);
     cout << "Jogador inserido com sucesso!\n";
 }

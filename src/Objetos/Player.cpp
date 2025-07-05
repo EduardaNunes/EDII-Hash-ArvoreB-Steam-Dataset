@@ -33,22 +33,22 @@ string Player::getDataDeCriacao() const
     return dataDeCriacao;
 }
 
-vector<Jogo> Player::getJogos() const
+vector<shared_ptr<Jogo>> Player::getJogos() const
 {
     return jogos;
 }
 
-vector<Conquista> Player::getConquistas() const
+vector<shared_ptr<Conquista>> Player::getConquistas() const
 {
     return conquistas;
 }
 
-void Player::addConquista(Conquista novaConquista)
+void Player::addConquista(shared_ptr<Conquista> novaConquista)
 {
     conquistas.push_back(novaConquista);
 }
 
-void Player::setJogos(vector<Jogo> novosJogos)
+void Player::setJogos(vector<shared_ptr<Jogo>> novosJogos)
 {
     jogos = novosJogos;
 }

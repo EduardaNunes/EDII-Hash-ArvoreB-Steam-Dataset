@@ -79,3 +79,41 @@ int LeitorDePlanilha::contadorCSV(const string &caminho) {
 
     return count;
 }
+
+// Nova função: processa cada linha do CSV sem armazenar tudo em memória
+void LeitorDePlanilha::processarCSV(const string& caminhoArquivo, const function<void(const vector<string>&)>& processaLinha) {
+    ifstream arquivo(caminhoArquivo);
+    string linha;
+
+    if (!arquivo.is_open()) {
+        throw runtime_error("Não foi possível abrir o arquivo: " + caminhoArquivo);
+    }
+
+    // Pula o cabeçalho
+    getline(arquivo, linha);
+
+    while (getline(arquivo, linha)) {
+        vector<string> colunas;
+        string campo;
+        bool dentroDeAspas = false;
+
+        for (size_t i = 0; i < linha.size(); ++i) {
+            char c = linha[i];
+            if (c == '"' || c == '\'') {
+                dentroDeAspas = !dentroDeAspas;
+                campo += c;
+            }
+            else if (c == ',' && !dentroDeAspas) {
+                colunas.push_back(limparCampoCSV(campo));
+                campo.clear();
+            }
+            else {
+                campo += c;
+            }
+        }
+        if (!campo.empty() || (!linha.empty() && linha.back() == ',')) {
+            colunas.push_back(limparCampoCSV(campo));
+        }
+        processaLinha(colunas); // Processa a linha imediatamente
+    }
+}

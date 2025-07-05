@@ -42,6 +42,6 @@ string Jogo::getDataDeLancamento(){
     return dataDeLancamento;
 };
 
-void Jogo::adicionaConquista(Conquista novaConquista){
-
+void Jogo::adicionaConquista(shared_ptr<Conquista> novaConquista){
+    conquistas.push_back(novaConquista);
 }

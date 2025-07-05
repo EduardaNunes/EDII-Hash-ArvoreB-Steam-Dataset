@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <functional>  
+#include <memory>
 #include "linked_list.h"
 #include "hash_entry.h"
 
@@ -24,8 +25,8 @@ private:
     int numeroDeColisoes;
     MetodoDeColisao metodoDeColisao;
 
-    vector<LinkedList<T>> encadeamento;
-    vector<HashEntry<T>> sondagemLinear;
+    vector<LinkedList<shared_ptr<T>>> encadeamento;
+    vector<HashEntry<shared_ptr<T>>> sondagemLinear;
 
     int calculaIndexDaHash(const string& chave) const;
     bool ePrimo(int n);
@@ -35,8 +36,8 @@ private:
 public:
     TabelaHash(int tam, MetodoDeColisao metodo);
 
-    void insere(const T& obj);
-    T* busca(const string& id);
+    void insere(const shared_ptr<T>& obj);
+    shared_ptr<T> busca(const string& id);
     void exibirEstatisticas() const;
 };
 
@@ -73,21 +74,21 @@ void TabelaHash<T>::rehash() {
     int novoTamanho = proximoPrimo(tamanho * 2);
     tamanho = novoTamanho;
     if (metodoDeColisao == MetodoDeColisao::ENCADEAMENTO) {
-        vector<LinkedList<T>> novaTabela(novoTamanho);
+        vector<LinkedList<shared_ptr<T>>> novaTabela(novoTamanho);
         for (auto &list : encadeamento) {
-            Node<T> *atual = list.getHead();
+            Node<shared_ptr<T>> *atual = list.getHead();
             while (atual) {
-                int novoIndex = calculaIndexDaHash(atual->data.getId());
+                int novoIndex = calculaIndexDaHash(atual->data->getId());
                 novaTabela[novoIndex].insere(atual->data);
                 atual = atual->proximo;
             }
         }
         encadeamento = move(novaTabela);
     } else {
-        vector<HashEntry<T>> novaTabela(novoTamanho);
+        vector<HashEntry<shared_ptr<T>>> novaTabela(novoTamanho);
         for (auto &entry : sondagemLinear) {
             if (entry.state == EntryState::OCUPADO) {
-                int novoIndex = calculaIndexDaHash(entry.data.getId());
+                int novoIndex = calculaIndexDaHash(entry.data->getId());
                 while (novaTabela[novoIndex].state == EntryState::OCUPADO)
                     novoIndex = (novoIndex + 1) % novoTamanho;
 
@@ -103,17 +104,17 @@ void TabelaHash<T>::rehash() {
 }
 
 template<typename T>
-void TabelaHash<T>::insere(const T& obj) {
-    int index = calculaIndexDaHash(obj.getId());
+void TabelaHash<T>::insere(const shared_ptr<T>& obj) {
+    int index = calculaIndexDaHash(obj->getId());
 
     if (metodoDeColisao == MetodoDeColisao::ENCADEAMENTO) {
-        T* existe = encadeamento[index].busca(obj.getId());
+        shared_ptr<T> existe = encadeamento[index].busca(obj->getId());
         if (existe) {
-            *existe = obj;
+            existe = obj; // sobrescreve o ponteiro armazenado
+            return;
         } else {
             if (!encadeamento[index].eVazio())
                 numeroDeColisoes++;
-
             encadeamento[index].insere(obj);
             numeroDeElementos++;
             if ((float)numeroDeElementos / tamanho > 0.7f)
@@ -123,7 +124,7 @@ void TabelaHash<T>::insere(const T& obj) {
         int indexInicial = index;
         int contador = 0;
         while (sondagemLinear[index].state == EntryState::OCUPADO) {
-            if (sondagemLinear[index].data.getId() == obj.getId()) {
+            if (sondagemLinear[index].data->getId() == obj->getId()) {
                 sondagemLinear[index].data = obj;
                 return;
             }
@@ -145,7 +146,7 @@ void TabelaHash<T>::insere(const T& obj) {
 }
 
 template<typename T>
-T* TabelaHash<T>::busca(const string& id) {
+shared_ptr<T> TabelaHash<T>::busca(const string& id) {
     int index = calculaIndexDaHash(id);
 
     if (metodoDeColisao == MetodoDeColisao::ENCADEAMENTO) {
@@ -154,8 +155,8 @@ T* TabelaHash<T>::busca(const string& id) {
         int indexInicial = index;
         while (sondagemLinear[index].state != EntryState::VAZIO) {
             if (sondagemLinear[index].state == EntryState::OCUPADO &&
-                sondagemLinear[index].data.getId() == id)
-                return &sondagemLinear[index].data;
+                sondagemLinear[index].data->getId() == id)
+                return sondagemLinear[index].data;
 
             index = (index + 1) % tamanho;
             if (index == indexInicial)

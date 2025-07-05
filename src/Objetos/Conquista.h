@@ -2,6 +2,7 @@
 #define CONQUISTA_H
 
 #include <string>
+#include <memory>
 using namespace std;
 
 class Conquista{
@@ -26,4 +27,4 @@ class Conquista{
     }
 };
 
-#endif 
+#endif

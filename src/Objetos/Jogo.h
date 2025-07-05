@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 #include "Conquista.h"
 
 using namespace std;
@@ -16,7 +17,7 @@ class Jogo{
         vector<string> generos;
         vector<string> idiomas;
         string dataDeLancamento;
-        vector<Conquista> conquistas;
+        vector<shared_ptr<Conquista>> conquistas;
 
     public:
         Jogo(string id, string titulo, vector<string> desenvolvedores, vector<string> publishers, vector<string> generos, vector<string> idiomas, string dataDeLancamento);
@@ -29,9 +30,9 @@ class Jogo{
         vector<string> getGeneros();
         vector<string> getIdiomas();
         string getDataDeLancamento();
-        Conquista getConquistas();
+        vector<shared_ptr<Conquista>> getConquistas() const;
 
-        void adicionaConquista(Conquista novaConquista);
+        void adicionaConquista(shared_ptr<Conquista> novaConquista);
 
     friend ostream& operator<<(ostream& os, const Jogo& jogo) {
         os << jogo.titulo;
@@ -39,4 +40,4 @@ class Jogo{
     }
 };
 
-#endif 
+#endif

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <memory>
 
 template <typename T>
 struct Node
@@ -44,13 +45,14 @@ public:
         head = node;
     }
 
-    T *busca(const std::string& id) const
+    // Corrigir busca para retornar T (shared_ptr<T>), não shared_ptr<shared_ptr<T>>
+    T busca(const std::string& id) const
     {
         Node<T> *atual = head;
         while (atual)
         {
-            if (atual->data.getId() == id)
-                return &atual->data;
+            if (atual->data->getId() == id)
+                return atual->data;
             atual = atual->proximo;
         }
         return nullptr;
