@@ -48,7 +48,7 @@ TabelaHash<T>::TabelaHash(int tam, MetodoDeColisao metodo)
 
 template<typename T>
 int TabelaHash<T>::calculaIndexDaHash(const string& chave) const {
-    tam_t valorHash = hash<string>{}(chave);
+    size_t valorHash = hash<string>{}(chave);
     return static_cast<int>(valorHash % tamanho);
 }
 

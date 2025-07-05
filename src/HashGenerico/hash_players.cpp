@@ -17,8 +17,8 @@ Utils utils;
 TabelaHash<Player> HashPlayers::criaHashDePlayers(MetodoDeColisao metodoDeColisao)
 {
     int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_PATH);
-    int tamanhoTabela = static_cast<int>(totalJogadores);
-    tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
+    //int tamanhoTabela = static_cast<int>(totalJogadores);
+    int tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
     TabelaHash<Player> tabelaPlayers(tamanhoTabela, metodoDeColisao);
 
