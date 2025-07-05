@@ -550,6 +550,30 @@ src/ArvoreB/noB.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.s
 .PHONY : src/ArvoreB/noB.cpp.s
 
+src/HashGenerico/hash_players.obj: src/HashGenerico/hash_players.cpp.obj
+.PHONY : src/HashGenerico/hash_players.obj
+
+# target to build an object file
+src/HashGenerico/hash_players.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/HashGenerico/hash_players.cpp.obj
+.PHONY : src/HashGenerico/hash_players.cpp.obj
+
+src/HashGenerico/hash_players.i: src/HashGenerico/hash_players.cpp.i
+.PHONY : src/HashGenerico/hash_players.i
+
+# target to preprocess a source file
+src/HashGenerico/hash_players.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/HashGenerico/hash_players.cpp.i
+.PHONY : src/HashGenerico/hash_players.cpp.i
+
+src/HashGenerico/hash_players.s: src/HashGenerico/hash_players.cpp.s
+.PHONY : src/HashGenerico/hash_players.s
+
+# target to generate assembly for a file
+src/HashGenerico/hash_players.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/HashGenerico/hash_players.cpp.s
+.PHONY : src/HashGenerico/hash_players.cpp.s
+
 src/LeitorDePlanilha/leitorDePlanilha.obj: src/LeitorDePlanilha/leitorDePlanilha.cpp.obj
 .PHONY : src/LeitorDePlanilha/leitorDePlanilha.obj
 
@@ -690,6 +714,9 @@ help:
 	@echo ... src/ArvoreB/noB.obj
 	@echo ... src/ArvoreB/noB.i
 	@echo ... src/ArvoreB/noB.s
+	@echo ... src/HashGenerico/hash_players.obj
+	@echo ... src/HashGenerico/hash_players.i
+	@echo ... src/HashGenerico/hash_players.s
 	@echo ... src/LeitorDePlanilha/leitorDePlanilha.obj
 	@echo ... src/LeitorDePlanilha/leitorDePlanilha.i
 	@echo ... src/LeitorDePlanilha/leitorDePlanilha.s

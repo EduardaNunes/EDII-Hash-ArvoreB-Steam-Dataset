@@ -22,6 +22,7 @@ add_executable(meu_programa
     src/ArvoreB/arvoreB.cpp
     src/ArvoreB/noB.cpp
     src/LeitorDePlanilha/leitorDePlanilha.cpp
+    src/HashGenerico/hash_players.cpp
 )
 
 #target_include_directories(tests PRIVATE src)

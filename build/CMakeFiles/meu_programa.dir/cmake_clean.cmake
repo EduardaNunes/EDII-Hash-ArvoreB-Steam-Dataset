@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/meu_programa.dir/src/ArvoreB/arvoreB.cpp.obj.d"
   "CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj"
   "CMakeFiles/meu_programa.dir/src/ArvoreB/noB.cpp.obj.d"
+  "CMakeFiles/meu_programa.dir/src/HashGenerico/hash_players.cpp.obj"
+  "CMakeFiles/meu_programa.dir/src/HashGenerico/hash_players.cpp.obj.d"
   "CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj"
   "CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj.d"
   "CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj"
