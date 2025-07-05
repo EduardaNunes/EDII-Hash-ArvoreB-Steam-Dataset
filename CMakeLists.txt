@@ -19,6 +19,8 @@ add_executable(meu_programa
     src/main.cpp
     src/Menu/menu.cpp
     src/Objetos/Player.cpp
+    src/Objetos/Conquista.cpp
+    src/Objetos/Jogo.cpp
     src/ArvoreB/arvoreB.cpp
     src/ArvoreB/noB.cpp
     src/LeitorDePlanilha/leitorDePlanilha.cpp

@@ -14,7 +14,7 @@ Jogo::Jogo(string novoId, string novoTitulo, vector<string> novosDesenvolvedores
     dataDeLancamento = novaDataDeLancamento;
 }
 
-string Jogo::getId(){
+string Jogo::getId() const {
     return id;
 };
 

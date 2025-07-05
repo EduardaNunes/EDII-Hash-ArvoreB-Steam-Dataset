@@ -622,6 +622,54 @@ src/Menu/menu.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.s
 .PHONY : src/Menu/menu.cpp.s
 
+src/Objetos/Conquista.obj: src/Objetos/Conquista.cpp.obj
+.PHONY : src/Objetos/Conquista.obj
+
+# target to build an object file
+src/Objetos/Conquista.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Conquista.cpp.obj
+.PHONY : src/Objetos/Conquista.cpp.obj
+
+src/Objetos/Conquista.i: src/Objetos/Conquista.cpp.i
+.PHONY : src/Objetos/Conquista.i
+
+# target to preprocess a source file
+src/Objetos/Conquista.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Conquista.cpp.i
+.PHONY : src/Objetos/Conquista.cpp.i
+
+src/Objetos/Conquista.s: src/Objetos/Conquista.cpp.s
+.PHONY : src/Objetos/Conquista.s
+
+# target to generate assembly for a file
+src/Objetos/Conquista.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Conquista.cpp.s
+.PHONY : src/Objetos/Conquista.cpp.s
+
+src/Objetos/Jogo.obj: src/Objetos/Jogo.cpp.obj
+.PHONY : src/Objetos/Jogo.obj
+
+# target to build an object file
+src/Objetos/Jogo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Jogo.cpp.obj
+.PHONY : src/Objetos/Jogo.cpp.obj
+
+src/Objetos/Jogo.i: src/Objetos/Jogo.cpp.i
+.PHONY : src/Objetos/Jogo.i
+
+# target to preprocess a source file
+src/Objetos/Jogo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Jogo.cpp.i
+.PHONY : src/Objetos/Jogo.cpp.i
+
+src/Objetos/Jogo.s: src/Objetos/Jogo.cpp.s
+.PHONY : src/Objetos/Jogo.s
+
+# target to generate assembly for a file
+src/Objetos/Jogo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\meu_programa.dir\build.make CMakeFiles/meu_programa.dir/src/Objetos/Jogo.cpp.s
+.PHONY : src/Objetos/Jogo.cpp.s
+
 src/Objetos/Player.obj: src/Objetos/Player.cpp.obj
 .PHONY : src/Objetos/Player.obj
 
@@ -723,6 +771,12 @@ help:
 	@echo ... src/Menu/menu.obj
 	@echo ... src/Menu/menu.i
 	@echo ... src/Menu/menu.s
+	@echo ... src/Objetos/Conquista.obj
+	@echo ... src/Objetos/Conquista.i
+	@echo ... src/Objetos/Conquista.s
+	@echo ... src/Objetos/Jogo.obj
+	@echo ... src/Objetos/Jogo.i
+	@echo ... src/Objetos/Jogo.s
 	@echo ... src/Objetos/Player.obj
 	@echo ... src/Objetos/Player.i
 	@echo ... src/Objetos/Player.s

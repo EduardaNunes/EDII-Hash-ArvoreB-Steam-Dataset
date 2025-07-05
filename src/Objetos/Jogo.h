@@ -20,8 +20,9 @@ class Jogo{
 
     public:
         Jogo(string id, string titulo, vector<string> desenvolvedores, vector<string> publishers, vector<string> generos, vector<string> idiomas, string dataDeLancamento);
+        Jogo(){};
 
-        string getId();
+        string getId() const;
         string getTitutlo();
         vector<string> getDesenvolvedores();
         vector<string> getPublishers();

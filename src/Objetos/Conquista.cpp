@@ -10,7 +10,7 @@ Conquista::Conquista(string novoId, string novoIdJogo, string novoTitulo, string
     descricao = novaDescricao;
 }
 
-string Conquista::getId(){
+string Conquista::getId() const {
     return id;
 }
 

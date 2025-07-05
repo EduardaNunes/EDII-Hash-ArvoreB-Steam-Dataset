@@ -13,8 +13,9 @@ class Conquista{
 
     public:
         Conquista(string id, string idJogo, string titulo, string descricao);
+        Conquista(){};
 
-        string getId();
+        string getId() const;
         string getIdJogo();
         string getTitulo();
         string getDescricao();

@@ -13,6 +13,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/HashGenerico/hash_players.cpp" "CMakeFiles/meu_programa.dir/src/HashGenerico/hash_players.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/HashGenerico/hash_players.cpp.obj.d"
   "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/LeitorDePlanilha/leitorDePlanilha.cpp" "CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/LeitorDePlanilha/leitorDePlanilha.cpp.obj.d"
   "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/Menu/menu.cpp" "CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/Menu/menu.cpp.obj.d"
+  "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Conquista.cpp" "CMakeFiles/meu_programa.dir/src/Objetos/Conquista.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/Objetos/Conquista.cpp.obj.d"
+  "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Jogo.cpp" "CMakeFiles/meu_programa.dir/src/Objetos/Jogo.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/Objetos/Jogo.cpp.obj.d"
   "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Player.cpp" "CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj.d"
   "C:/Users/MeuPawDeAsa/Documents/Github/trab01-grupo-diego-eduarda-vanessa/src/main.cpp" "CMakeFiles/meu_programa.dir/src/main.cpp.obj" "gcc" "CMakeFiles/meu_programa.dir/src/main.cpp.obj.d"
   )
