@@ -145,7 +145,59 @@ void Menu::menuHash()
 
 void Menu::menuArvoreB()
 {
-    cout << "\nMenu Arvore B ainda nao implementado.\n";
+    ArvoreB arvoreB(64);
+
+    string entrada;
+    int opcao;
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    do
+    {
+        cout << "=== Menu Arvore B ===" << endl;
+        cout << "1 - Indexar por conquistas" << endl;
+        cout << "2 - Indexar por jogos" << endl;
+        cout << "0 - Voltar" << endl;
+        cout << "Escolha: ";
+        string entrada;
+        getline(cin, entrada);
+        try {
+            opcao = stoi(entrada);
+        } catch (...) {
+            cout << "A opcao precisa ser numerica." << endl;
+            continue;
+        }
+
+        switch (opcao)
+        {
+        case 1:
+        {
+            //arvoreB.indexarConquistas();
+            LeitorDePlanilha leitor;
+            vector<vector<string>> dados = leitor.lerCSV(CSV_PURCHASED_GAMES_TESTE_PATH);
+            int linhaNum = 1;
+            for (const auto& linha : dados) {
+                cout << linhaNum++ << ": ";
+                for (const auto& valor : linha) {
+                    cout << valor << " | ";
+                }
+                cout << "\n";
+            }
+            break;
+        }
+        case 2:
+        {
+            arvoreB.indexarJogos();
+            break;
+        }
+        case 0:
+            cout << "Voltando...\n";
+            break;
+        default:
+            cout << "Opcao invalida.\n";
+        }
+
+    } while (opcao != 0);
 }
 
 void Menu::menuBuscaHash()
