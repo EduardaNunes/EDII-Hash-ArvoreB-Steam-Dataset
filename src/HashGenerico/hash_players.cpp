@@ -29,9 +29,9 @@ TabelaHash<Player> HashPlayers::criaHashDePlayers(MetodoDeColisao metodoDeColisa
     return tabelaPlayers;
 }
 
-void HashPlayers::adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores)
+void HashPlayers::adicionaPlayersNaHash(TabelaHash<Player> &tabelaJogadores)
 {
-    vector<vector<string>> dadosPlayer = leitor.lerCSV(CSV_PLAYERS_TESTE_PATH);
+    vector<vector<string>> dadosPlayer = leitor.lerCSV(CSV_PLAYERS_PATH);
 
     for (const auto &linha : dadosPlayer)
     {
@@ -44,13 +44,13 @@ void HashPlayers::adicionaPlayersNaHash(TabelaHash<Player> tabelaJogadores)
     }
 }
 
-void HashPlayers::adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos)
+void HashPlayers::adicionaJogosNaHash(TabelaHash<Jogo> &tabelaJogos)
 {
-    vector<vector<string>> dadosJogos = leitor.lerCSV(CSV_GAMES_TESTE_PATH);
+    vector<vector<string>> dadosJogos = leitor.lerCSV(CSV_GAMES_PATH);
 
     for (const auto &linha : dadosJogos)
     {
-        string id = (linha.size() > 0 && !linha[0].empty()) ? linha[0] : 0;
+        string id = (linha.size() > 0 && !linha[0].empty()) ? linha[0] : "";
         string titulo = (linha.size() > 1) ? linha[1] : "";
         vector<string> desenvolvedores = (linha.size() > 2) ? utils.split(linha[2], ',') : vector<string>{};
         vector<string> publishers = (linha.size() > 3) ? utils.split(linha[3], ',') : vector<string>{};
@@ -63,7 +63,7 @@ void HashPlayers::adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos)
     }
 }
 
-void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao)
+void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> &tabelaJogadores, MetodoDeColisao metodoDeColisao)
 {
     int totalJogos = leitor.contadorCSV(CSV_GAMES_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalJogos);
@@ -73,7 +73,7 @@ void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores, Me
 
     adicionaJogosNaHash(tabelaJogos);
 
-    vector<vector<string>> dadosCompras = leitor.lerCSV(CSV_PURCHASED_GAMES_TESTE_PATH);
+    vector<vector<string>> dadosCompras = leitor.lerCSV(CSV_PURCHASED_GAMES_PATH);
 
     for (const auto &linha : dadosCompras)
     {
@@ -101,14 +101,14 @@ void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> tabelaJogadores, Me
     }
 }
 
-void HashPlayers::adicionaConquistasNaHash(TabelaHash<Conquista> tabelaConquistas)
+void HashPlayers::adicionaConquistasNaHash(TabelaHash<Conquista> &tabelaConquistas)
 {
-    vector<vector<string>> dadosConquistas = leitor.lerCSV(CSV_ACHIEVEMENTS_TESTE_PATH);
+    vector<vector<string>> dadosConquistas = leitor.lerCSV(CSV_ACHIEVEMENTS_PATH);
 
     for (const auto &linha : dadosConquistas)
     {
         string id = (linha.size() > 0 && !linha[0].empty()) ? linha[0] : "";
-        string idJogo = (linha.size() > 1 && !linha[1].empty()) ? linha[1] : 0;
+        string idJogo = (linha.size() > 1 && !linha[1].empty()) ? linha[1] : "";
         string titulo = (linha.size() > 2) ? linha[2] : "";
         string descricao = (linha.size() > 3) ? linha[3] : "";
 
@@ -117,9 +117,9 @@ void HashPlayers::adicionaConquistasNaHash(TabelaHash<Conquista> tabelaConquista
     }
 }
 
-void HashPlayers::adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadores, MetodoDeColisao metodoDeColisao)
+void HashPlayers::adicionaConquistasNosPlayers(TabelaHash<Player> &tabelaJogadores, MetodoDeColisao metodoDeColisao)
 {
-    int totalConquistas = leitor.contadorCSV(CSV_ACHIEVEMENTS_TESTE_PATH);
+    int totalConquistas = leitor.contadorCSV(CSV_ACHIEVEMENTS_PATH);
     int tamanhoTabela = static_cast<int>(totalConquistas);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
 
@@ -127,7 +127,7 @@ void HashPlayers::adicionaConquistasNosPlayers(TabelaHash<Player> tabelaJogadore
 
     adicionaConquistasNaHash(tabelaConquistas);
 
-    vector<vector<string>> dadosConquistas = leitor.lerCSV(CSV_HISTORY_TESTE_PATH);
+    vector<vector<string>> dadosConquistas = leitor.lerCSV(CSV_HISTORY_PATH);
 
     for (const auto &linha : dadosConquistas)
     {

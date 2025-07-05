@@ -71,6 +71,7 @@ int TabelaHash<T>::proximoPrimo(int n) {
 template<typename T>
 void TabelaHash<T>::rehash() {
     int novoTamanho = proximoPrimo(tamanho * 2);
+    tamanho = novoTamanho;
     if (metodoDeColisao == MetodoDeColisao::ENCADEAMENTO) {
         vector<LinkedList<T>> novaTabela(novoTamanho);
         for (auto &list : encadeamento) {
