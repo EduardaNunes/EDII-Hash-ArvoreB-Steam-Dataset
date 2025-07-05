@@ -9,7 +9,7 @@ using namespace std;
 
 class Jogo{
     private:
-        int id;
+        string id;
         string titulo;
         vector<string> desenvolvedores;
         vector<string> publishers;
@@ -19,9 +19,9 @@ class Jogo{
         vector<Conquista> conquistas;
 
     public:
-        Jogo(int id, string titulo, vector<string> desenvolvedores, vector<string> publishers, vector<string> generos, vector<string> idiomas, string dataDeLancamento);
+        Jogo(string id, string titulo, vector<string> desenvolvedores, vector<string> publishers, vector<string> generos, vector<string> idiomas, string dataDeLancamento);
 
-        int getId();
+        string getId();
         string getTitutlo();
         vector<string> getDesenvolvedores();
         vector<string> getPublishers();

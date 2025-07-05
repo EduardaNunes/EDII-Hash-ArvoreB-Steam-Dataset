@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Jogo::Jogo(int novoId, string novoTitulo, vector<string> novosDesenvolvedores, vector<string> novosPublishers, vector<string> novosGeneros, vector<string> novosIdiomas, string novaDataDeLancamento){
+Jogo::Jogo(string novoId, string novoTitulo, vector<string> novosDesenvolvedores, vector<string> novosPublishers, vector<string> novosGeneros, vector<string> novosIdiomas, string novaDataDeLancamento){
     id = novoId;
     titulo = novoTitulo;
     desenvolvedores = novosDesenvolvedores;
@@ -14,7 +14,7 @@ Jogo::Jogo(int novoId, string novoTitulo, vector<string> novosDesenvolvedores, v
     dataDeLancamento = novaDataDeLancamento;
 }
 
-int Jogo::getId(){
+string Jogo::getId(){
     return id;
 };
 
