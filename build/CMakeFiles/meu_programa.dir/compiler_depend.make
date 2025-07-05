@@ -928,6 +928,7 @@ CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj: C:/Users/diego/OneDrive/
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cstdint \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cstdio \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cstdlib \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ctime \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cwchar \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cwctype \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/assertions.h \
@@ -1434,5 +1435,7 @@ C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/Objeto
 C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Jogo.cpp:
 
 C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/Objetos/Player.cpp:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ctime:
 
 C:/Users/diego/OneDrive/Documentos/trab01-grupo-diego-eduarda-vanessa/src/main.cpp:

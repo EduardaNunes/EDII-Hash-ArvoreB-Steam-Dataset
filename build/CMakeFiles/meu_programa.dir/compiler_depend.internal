@@ -936,6 +936,7 @@ CMakeFiles/meu_programa.dir/src/Objetos/Player.cpp.obj
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cstdint
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cstdio
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cstdlib
+ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ctime
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cwchar
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cwctype
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/assertions.h

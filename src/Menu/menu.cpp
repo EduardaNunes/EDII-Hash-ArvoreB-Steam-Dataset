@@ -305,7 +305,7 @@ void Menu::menuBuscaHash()
 
 void Menu::menuInsercaoHash()
 {
-    string id, pais, dataCriacao;
+    string id, pais;
 
     cout << "\n=== Inserir Jogador ===\n";
     cout << "Digite o ID do jogador: ";
@@ -319,16 +319,14 @@ void Menu::menuInsercaoHash()
     }
     else if (tabelaHash.busca(id) != nullptr)
     {
-        cout << "Jogador já existente!" << endl;
+        cout << "Jogador ja existente!" << endl;
         menuInsercaoHash();
     }
 
     cout << "Digite o pais: ";
     getline(cin, pais);
-    cout << "Digite a data de criacao (YYYY-MM-DD): ";
-    getline(cin, dataCriacao);
-
-    Player novoJogador(id, pais, dataCriacao);
+    
+    Player novoJogador(id, pais);
     tabelaHash.insere(novoJogador);
     cout << "Jogador inserido com sucesso!\n";
 }

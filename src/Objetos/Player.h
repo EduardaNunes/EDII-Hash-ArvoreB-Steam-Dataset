@@ -21,6 +21,7 @@ private:
 public:
     Player();
     Player(string id, string pais, string dataDeCriacao);
+    Player(string id, string pais);
 
     string getId() const;
     string getPais() const;
