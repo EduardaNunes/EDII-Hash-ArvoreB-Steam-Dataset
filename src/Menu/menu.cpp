@@ -314,7 +314,7 @@ void Menu::menuInsercaoHash()
     Utils utils;
     if (!utils.verificaIdJogador(id))
     {
-        cout << "ID de jogador invalido! \n É preciso que ele tenha 17 digitos numericos" << endl;
+        cout << "ID de jogador invalido! \n E preciso que ele tenha 17 digitos numericos" << endl;
         menuInsercaoHash();
     }
     else if (tabelaHash.busca(id) != nullptr)

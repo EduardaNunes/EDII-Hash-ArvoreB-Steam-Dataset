@@ -35,7 +35,7 @@ public:
     {
         os << "==================== PLAYER ====================\n"
         << "> ID: " << p.id << "\n"
-        << "> País: " << p.pais << "\n"
+        << "> Pais: " << p.pais << "\n"
         << "> Conta criada em: " << p.dataDeCriacao << "\n"
         << "> Quantidade de Jogos: " << p.jogos.size() << "\n"
         << "> Quantidade de Conquistas: " << p.conquistas.size() << "\n"
