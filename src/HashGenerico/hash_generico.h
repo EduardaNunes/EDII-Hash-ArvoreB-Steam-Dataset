@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <string>
-#include <functional>  // std::hash
+#include <functional>  
 #include "linked_list.h"
 #include "hash_entry.h"
 
@@ -39,8 +39,6 @@ public:
     T* busca(const string& id);
     void exibirEstatisticas() const;
 };
-
-// -------------------- IMPLEMENTAÇÃO ---------------------
 
 template<typename T>
 TabelaHash<T>::TabelaHash(int size, MetodoDeColisao metodo)
@@ -80,7 +78,7 @@ void TabelaHash<T>::rehash() {
             while (atual) {
                 int novoIndex = calculaIndexDaHash(atual->data.getId());
                 novaTabela[novoIndex].insere(atual->data);
-                atual = atual->next;
+                atual = atual->proximo;
             }
         }
         encadeamento = move(novaTabela);

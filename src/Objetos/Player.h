@@ -22,11 +22,11 @@ public:
     Player();
     Player(string id, string pais, string dataDeCriacao);
 
-    string getId();
-    string getPais();
-    string getDataDeCriacao();
-    vector<Jogo> getJogos();
-    vector<Conquista> getConquistas();
+    string getId() const;
+    string getPais() const;
+    string getDataDeCriacao() const;
+    vector<Jogo> getJogos() const;
+    vector<Conquista> getConquistas() const;
 
     void addConquista(Conquista novaConquista);
     void setJogos(vector<Jogo> novosJogos);

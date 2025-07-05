@@ -18,27 +18,27 @@ Player::Player(string novoId, string novoPais, string novaDataDeCriacao)
     dataDeCriacao = novaDataDeCriacao;
 }
 
-string Player::getId()
+string Player::getId() const
 {
     return id;
 }
 
-string Player::getPais()
+string Player::getPais() const
 {
     return pais;
 }
 
-string Player::getDataDeCriacao()
+string Player::getDataDeCriacao() const
 {
     return dataDeCriacao;
 }
 
-vector<Jogo> Player::getJogos()
+vector<Jogo> Player::getJogos() const
 {
     return jogos;
 }
 
-vector<Conquista> Player::getConquistas()
+vector<Conquista> Player::getConquistas() const
 {
     return conquistas;
 }

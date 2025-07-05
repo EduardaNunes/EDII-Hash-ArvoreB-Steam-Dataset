@@ -61,7 +61,7 @@ public:
         return head == nullptr;
     }
 
-    bool remove(const std::string& id)  // ✅ ID agora é string
+    bool remove(const std::string& id) 
     {
         Node<T> *atual = head;
         Node<T> *prev = nullptr;

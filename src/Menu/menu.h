@@ -1,17 +1,19 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "Hash/hash.h"
+#include "HashGenerico/hash_generico.h"
 #include "../config.h"
+#include "Objetos/Player.h"
 
 class Menu
 {
 private:
-    PlayerHashTable tabelaHash;
+    TabelaHash<Player> tabelaHash;
 
 public: 
+    Menu(); 
     void menuInicial();
-    PlayerHashTable hashColisoes();
+    void inicializarTabelaHash();
     void menuHash();
     void menuArvoreB();
 

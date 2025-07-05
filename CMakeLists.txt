@@ -18,7 +18,6 @@ enable_testing()
 add_executable(meu_programa
     src/main.cpp
     src/Menu/menu.cpp
-    src/Hash/hash.cpp
     src/Objetos/Player.cpp
     src/ArvoreB/arvoreB.cpp
     src/ArvoreB/noB.cpp
