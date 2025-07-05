@@ -7,15 +7,15 @@ using namespace std;
 class Conquista{
     private:
         string id;
-        int idJogo;
+        string idJogo;
         string titulo;
         string descricao;
 
     public:
-        Conquista(string id, int idJogo, string titulo, string descricao);
+        Conquista(string id, string idJogo, string titulo, string descricao);
 
         string getId();
-        int getIdJogo();
+        string getIdJogo();
         string getTitulo();
         string getDescricao();
 
