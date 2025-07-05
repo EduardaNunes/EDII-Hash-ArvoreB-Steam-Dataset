@@ -50,7 +50,7 @@ void HashPlayers::adicionaJogosNaHash(TabelaHash<Jogo> tabelaJogos)
 
     for (const auto &linha : dadosJogos)
     {
-        int id = (linha.size() > 0 && !linha[0].empty()) ? stoi(linha[0]) : 0;
+        string id = (linha.size() > 0 && !linha[0].empty()) ? linha[0] : 0;
         string titulo = (linha.size() > 1) ? linha[1] : "";
         vector<string> desenvolvedores = (linha.size() > 2) ? utils.split(linha[2], ',') : vector<string>{};
         vector<string> publishers = (linha.size() > 3) ? utils.split(linha[3], ',') : vector<string>{};
@@ -108,7 +108,7 @@ void HashPlayers::adicionaConquistasNaHash(TabelaHash<Conquista> tabelaConquista
     for (const auto &linha : dadosConquistas)
     {
         string id = (linha.size() > 0 && !linha[0].empty()) ? linha[0] : "";
-        int idJogo = (linha.size() > 1 && !linha[1].empty()) ? stoi(linha[1]) : 0;
+        string idJogo = (linha.size() > 1 && !linha[1].empty()) ? linha[1] : 0;
         string titulo = (linha.size() > 2) ? linha[2] : "";
         string descricao = (linha.size() > 3) ? linha[3] : "";
 
