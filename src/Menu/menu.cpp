@@ -6,9 +6,6 @@
 #include <vector> 
 
 #include "menu.h"
-#include "../HashGenerico/hash_players.h"
-#include "./ArvoreB/arvoreB.h"
-#include "./LeitorDePlanilha/leitorDePlanilha.h"
 
 using namespace std;
 
@@ -229,6 +226,15 @@ void Menu::menuInsercaoHash()
     cout << "\n=== Inserir Jogador ===\n";
     cout << "Digite o ID do jogador: ";
     getline(cin, id);
+    
+    Utils utils;
+    if(!utils.verificaIdJogador(id)){
+        cout << "ID de jogador invalido! \n É preciso que ele tenha 17 digitos numericos" << endl;
+        menuInsercaoHash();
+    } else if(tabelaHash.busca(id) != nullptr){
+        cout << "Jogador já existente!" << endl;
+        menuInsercaoHash();
+    }
 
     cout << "Digite o pais: ";
     getline(cin, pais);

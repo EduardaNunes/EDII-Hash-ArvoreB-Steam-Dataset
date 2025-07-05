@@ -1,9 +1,13 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "HashGenerico/hash_generico.h"
+#include "../LeitorDePlanilha/leitorDePlanilha.h"
+#include "../HashGenerico/hash_generico.h"
+#include "../HashGenerico/hash_players.h"
+#include "../Objetos/Player.h"
+#include "../ArvoreB/arvoreB.h"
+#include "../Utils/utils.h"
 #include "../config.h"
-#include "Objetos/Player.h"
 
 class Menu
 {
