@@ -13,13 +13,17 @@ class Menu
 {
 private:
     TabelaHash<Player> tabelaHash;
+    ArvoreB arvoreB;
 
 public: 
-    Menu(); 
+    Menu();
+
     void menuInicial();
-    void inicializarTabelaHash();
     void menuHash();
     void menuArvoreB();
+    void menuDeConsultas();
+    
+    void inicializarTabelaHash();
 
     void menuBuscaHash();
     void menuInsercaoHash();

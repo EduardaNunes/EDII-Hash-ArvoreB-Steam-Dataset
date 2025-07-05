@@ -3,13 +3,13 @@
 #include <stdexcept>
 #include <limits>
 #include <cmath>
-#include <vector> 
+#include <vector>
 
 #include "menu.h"
 
 using namespace std;
 
-Menu::Menu() : tabelaHash(1, MetodoDeColisao::ENCADEAMENTO) {}
+Menu::Menu() : tabelaHash(1, MetodoDeColisao::ENCADEAMENTO), arvoreB(64) {}
 
 void Menu::menuInicial()
 {
@@ -51,6 +51,87 @@ void Menu::menuInicial()
     } while (opcao != 0);
 }
 
+void Menu::menuDeConsultas()
+{
+    string entrada, id, minStr, maxStr;
+    int opcao, min, max;
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    do
+    {
+        cout << "\n=== Menu Consultas ===\n";
+        cout << "1 - Buscar jogador\n";
+        cout << "2 - Listar jogadores com mais conquistas\n";
+        cout << "3 - Listar jogos de um jogador\n";
+        cout << "4 - Mostrar top N jogadores com mais conquistas\n";
+        cout << "5 - Mostrar jogadores entre um intervalo de conquistas\n";
+        cout << "6 - Buscar jogadores que possuem determinado jogo\n";
+        cout << "7 - Estatísticas\n";
+        cout << "0 - Voltar\n";
+        cout << "Escolha: ";
+        getline(cin, entrada);
+
+        try
+        {
+            opcao = stoi(entrada);
+        }
+        catch (...)
+        {
+            cout << "A opcao precisa ser numerica." << endl;
+            continue;
+        }
+
+        switch (opcao)
+        {
+        case 1:
+            menuBuscaHash();
+            break;
+        case 2:
+            // adicionar aqui a função
+            break;
+        case 3:
+            cout << "Digite o ID do jogador: ";
+            getline(cin, id);
+            // podemos usar a hash porque o player tem um getJogos (só uma ideia)
+            break;
+        case 4:
+            // adicionar aqui a função
+            break;
+        case 5:
+            cout << "Digite o número mínimo de conquistas: ";
+            getline(cin, minStr);
+            cout << "Digite o número máximo de conquistas: ";
+            getline(cin, maxStr);
+            try
+            {
+                min = stoi(minStr);
+                max = stoi(maxStr);
+            }
+            catch (...)
+            {
+                cout << "O minimo e maximo precisam ser numericos." << endl;
+                continue;
+            }
+            // adicionar aqui a função
+            break;
+        case 6:
+            cout << "Digite o id do jogo: ";
+            getline(cin, id);
+            // adicionar aqui a função
+            break;
+        case 7:
+            // adicionar aqui a função
+            break;
+        case 0:
+            cout << "Voltando...\n";
+            break;
+        default:
+            cout << "Opcao invalida.\n";
+        }
+
+    } while (opcao != 0);
+}
+
 void Menu::inicializarTabelaHash()
 {
     int metodoColisao;
@@ -69,7 +150,7 @@ void Menu::inicializarTabelaHash()
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Opcao invalida. Digite 1 ou 2.\n";
     }
-    
+
     cout << "Criando tabela hash...\n";
 
     MetodoDeColisao estrategia = (metodoColisao == 1) ? MetodoDeColisao::ENCADEAMENTO : MetodoDeColisao::SONDAGEM_LINEAR;
@@ -92,7 +173,6 @@ void Menu::inicializarTabelaHash()
     HashPlayers tabelaPlayers;
     this->tabelaHash = tabelaPlayers.criaHashDePlayers(estrategia);
     cout << "Tabela criada e jogadores carregados!\n";
-    
 }
 
 void Menu::menuHash()
@@ -145,7 +225,6 @@ void Menu::menuHash()
 
 void Menu::menuArvoreB()
 {
-    ArvoreB arvoreB(64);
 
     string entrada;
     int opcao;
@@ -161,9 +240,12 @@ void Menu::menuArvoreB()
         cout << "Escolha: ";
         string entrada;
         getline(cin, entrada);
-        try {
+        try
+        {
             opcao = stoi(entrada);
-        } catch (...) {
+        }
+        catch (...)
+        {
             cout << "A opcao precisa ser numerica." << endl;
             continue;
         }
@@ -172,13 +254,15 @@ void Menu::menuArvoreB()
         {
         case 1:
         {
-            //arvoreB.indexarConquistas();
+            // arvoreB.indexarConquistas();
             LeitorDePlanilha leitor;
             vector<vector<string>> dados = leitor.lerCSV(CSV_PURCHASED_GAMES_TESTE_PATH);
             int linhaNum = 1;
-            for (const auto& linha : dados) {
+            for (const auto &linha : dados)
+            {
                 cout << linhaNum++ << ": ";
-                for (const auto& valor : linha) {
+                for (const auto &valor : linha)
+                {
                     cout << valor << " | ";
                 }
                 cout << "\n";
@@ -226,12 +310,15 @@ void Menu::menuInsercaoHash()
     cout << "\n=== Inserir Jogador ===\n";
     cout << "Digite o ID do jogador: ";
     getline(cin, id);
-    
+
     Utils utils;
-    if(!utils.verificaIdJogador(id)){
+    if (!utils.verificaIdJogador(id))
+    {
         cout << "ID de jogador invalido! \n É preciso que ele tenha 17 digitos numericos" << endl;
         menuInsercaoHash();
-    } else if(tabelaHash.busca(id) != nullptr){
+    }
+    else if (tabelaHash.busca(id) != nullptr)
+    {
         cout << "Jogador já existente!" << endl;
         menuInsercaoHash();
     }
