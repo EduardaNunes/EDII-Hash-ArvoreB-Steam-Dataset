@@ -39,6 +39,21 @@ public:
     void insere(const shared_ptr<T>& obj);
     shared_ptr<T> busca(const string& id);
     void exibirEstatisticas() const;
+
+    template<typename Func>
+    void forEach(Func func) const {
+        if (metodoDeColisao == MetodoDeColisao::ENCADEAMENTO) {
+            for (const auto& lista : encadeamento) {
+                lista.forEach(func);
+            }
+        } else {
+            for (const auto& entry : sondagemLinear) {
+                if (entry.state == EntryState::OCUPADO) {
+                    func(entry.data);
+                }
+            }
+        }
+    }
 };
 
 template<typename T>
