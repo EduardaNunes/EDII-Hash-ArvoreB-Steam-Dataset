@@ -60,7 +60,7 @@ void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> &tabelaJogadores, M
         vector<string> idJogosComprados = (linha.size() > 1) ? utils.split(linha[1], ',') : vector<string>{};
         auto player = tabelaJogadores.busca(idPlayer);
         if (!player)
-            continue;
+            return;
         vector<shared_ptr<Jogo>> jogos = player->getJogos();
         for (auto idJogo : idJogosComprados)
         {
@@ -73,7 +73,7 @@ void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> &tabelaJogadores, M
                     bool jaTem = false;
                     for (const auto &j : jogos)
                     {
-                        if (j.getId() == jogo->getId())
+                        if (j->getId() == jogo->getId())
                         {
                             jaTem = true;
                             break;
