@@ -254,19 +254,6 @@ void Menu::menuArvoreB()
         {
         case 1:
         {
-            // arvoreB.indexarConquistas();
-            LeitorDePlanilha leitor;
-            vector<vector<string>> dados = leitor.lerCSV(CSV_PURCHASED_GAMES_TESTE_PATH);
-            int linhaNum = 1;
-            for (const auto &linha : dados)
-            {
-                cout << linhaNum++ << ": ";
-                for (const auto &valor : linha)
-                {
-                    cout << valor << " | ";
-                }
-                cout << "\n";
-            }
             break;
         }
         case 2:
