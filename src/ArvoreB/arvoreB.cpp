@@ -16,7 +16,7 @@ void ArvoreB::indexarPorJogos(const TabelaHash<Player>& tabelaJogadores) {
     tabelaJogadores.forEach([this](const shared_ptr<Player>& player) {
         if (player) {
             int qtdJogos = static_cast<int>(player->getJogos().size());
-            insere(qtdJogos);
+            insere(qtdJogos, player);
         }
     });
 }
@@ -25,12 +25,39 @@ void ArvoreB::indexarPorConquistas(const TabelaHash<Player>& tabelaJogadores){
     tabelaJogadores.forEach([this](const shared_ptr<Player>& player) {
         if (player) {
             int qtdConquistas = static_cast<int>(player->getConquistas().size());
-            insere(qtdConquistas);
+            insere(qtdConquistas, player);
         }
     });
 }
 
-void ArvoreB::insere(int chave){
+vector<shared_ptr<Player>> ArvoreB::buscaTopJogadores(int quantidade){
+    vector<shared_ptr<Player>> topJogadores;
+    buscaTopJogadoresAuxiliar(raiz, quantidade, topJogadores);
+    return topJogadores;
+}
+
+void ArvoreB::buscaTopJogadoresAuxiliar(NoB* no, int quantidade, vector<shared_ptr<Player>>& jogadores) {
+    if (!no) return;
+
+    for (int i = 0; i < no->chavesPreenchidas; i++) {
+        if (!no->eFolha) {
+            buscaTopJogadoresAuxiliar(no->filhos[i], quantidade, jogadores);
+        }
+
+        if (no->jogadores[i]) {
+            jogadores.push_back(no->jogadores[i]);
+        }
+    }
+
+    if (!no->eFolha) {
+        buscaTopJogadoresAuxiliar(no->filhos[no->chavesPreenchidas], quantidade, jogadores);
+    }
+}
+
+
+
+
+void ArvoreB::insere(int chave, shared_ptr<Player> jogador){
 
     if (raiz->chavesPreenchidas == (ordem - 1)) {
 
@@ -41,62 +68,56 @@ void ArvoreB::insere(int chave){
         raiz = novaRaiz;
     }
 
-    inserirNaoCheio(raiz, chave);
+    inserirNaoCheio(raiz, chave, jogador);
 
 }
 
-void ArvoreB::inserirNaoCheio(NoB* no, int k) {
+void ArvoreB::inserirNaoCheio(NoB* no, int chave, shared_ptr<Player> jogador) {
     int i = no->chavesPreenchidas - 1;
 
     if (no->eFolha) {
-        while (i >= 0 && k < no->chaves[i]) {
-            no->chaves[i + 1] = no->chaves[i];  // desloca pra direita
-            i--;
-        }
-        no->chaves[i + 1] = k;                // insere no local certo
-        no->chavesPreenchidas++;
+        no->addChave(chave, jogador);
+
     } else {
-        while (i >= 0 && k < no->chaves[i]) i--;
+        while (i >= 0 && chave < no->chaves[i]) i--;
         i++;
 
         if (no->filhos[i]->chavesPreenchidas == ordem - 1) {
 
             dividirFilho(no, i, no->filhos[i]);
-            if (k > no->chaves[i]) i++;
+            if (chave > no->chaves[i]) i++;
 
         }
 
-        inserirNaoCheio(no->filhos[i], k); // desce recursivamente
+        inserirNaoCheio(no->filhos[i], chave, jogador); // desce recursivamente
     }
 }
 
-void ArvoreB::dividirFilho(NoB* pai, int i, NoB* y) {
-    NoB* z = new NoB(ordem, y->eFolha);             // novo nó z
-    z->chavesPreenchidas = (ordem - 1) / 2;                // metade das chaves
+void ArvoreB::dividirFilho(NoB* pai, int i, NoB* filho) {
+    NoB* novoFilho = new NoB(ordem, filho->eFolha);            
+    novoFilho->chavesPreenchidas = (ordem - 1) / 2;            // metade das chaves
 
-    for (int j = 0; j < z->chavesPreenchidas; j++)
-        z->chaves[j] = y->chaves[j + (ordem + 1) / 2];  // copia metade para z
+    for (int j = 0; j < novoFilho->chavesPreenchidas; j++)
+        novoFilho->chaves[j] = filho->chaves[j + (ordem + 1) / 2];  // copia metade para novoFilho
 
-    if (!y->eFolha)
-        for (int j = 0; j < z->chavesPreenchidas + 1; j++)
-            z->filhos[j] = y->filhos[j + (ordem + 1) / 2];
+    if (!filho->eFolha)
+        for (int j = 0; j < novoFilho->chavesPreenchidas + 1; j++)
+            novoFilho->filhos[j] = filho->filhos[j + (ordem + 1) / 2];
 
-    y->chavesPreenchidas = (ordem - 1) / 2; // ajusta y (original)
+    filho->chavesPreenchidas = (ordem - 1) / 2; // ajusta filho (original)
 
-    // insere z como novo filho do pai
+    // insere novoFilho como novo filho do pai
     for (int j = pai->chavesPreenchidas; j >= i + 1; j--)
         pai->filhos[j + 1] = pai->filhos[j];
-    pai->filhos[i + 1] = z;
+    pai->filhos[i + 1] = novoFilho;
 
-    // promove chave do meio de y para o pai
+    // promove chave do meio de filho para o pai
     for (int j = pai->chavesPreenchidas - 1; j >= i; j--)
         pai->chaves[j + 1] = pai->chaves[j];
-    pai->chaves[i] = y->chaves[(ordem - 1) / 2];
+    pai->chaves[i] = filho->chaves[(ordem - 1) / 2];
 
     pai->chavesPreenchidas++;
 }
-
-
 
 // Mudar depois de bool para o tipo de informação que será retornada
 bool ArvoreB::busca(int chave){

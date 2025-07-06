@@ -59,8 +59,8 @@ void Menu::menuInicial()
 
 void Menu::menuDeConsultas()
 {
-    string entrada, id, minStr, maxStr;
-    int opcao, min, max;
+    string entrada, id, minStr, maxStr, quantidadeTop;
+    int opcao, min, max, quantidade;
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     do
@@ -69,7 +69,7 @@ void Menu::menuDeConsultas()
         cout << "1 - Buscar jogador\n";
         cout << "2 - Listar jogos de um jogador\n";
         cout << "3 - Listar top N jogadores com mais jogos\n";
-        cout << "4 - Mostrar top N jogadores com mais conquistas\n";
+        cout << "4 - Listar top N jogadores com mais conquistas\n";
         cout << "5 - Mostrar jogadores entre um intervalo de conquistas\n";
         cout << "6 - Buscar jogadores que possuem determinado jogo\n";
         cout << "7 - Estatisticas do sistema\n";
@@ -93,7 +93,7 @@ void Menu::menuDeConsultas()
             menuBuscaHash();
             break;
         case 2:
-                        cout << "Digite o ID do jogador: ";
+            cout << "Digite o ID do jogador: ";
             getline(cin, id);
             {
                 auto p = tabelaHash.busca(id);
@@ -122,7 +122,21 @@ void Menu::menuDeConsultas()
             }
             break;
         case 3:
-            // adicionar aqui a função
+            cout << "Digite a quantidade do top a ser buscado: ";
+            getline(cin, quantidadeTop);
+            
+            try
+            {
+                quantidade = stoi(quantidadeTop);
+            }
+            catch (...)
+            {
+                cout << "A quantidade do top precisa ser numericos." << endl;
+                continue;
+            }
+            
+            imprimeTopJogadores(quantidade);
+
             break;
         case 4:
             // adicionar aqui a função
@@ -202,53 +216,6 @@ void Menu::inicializarArvoreB()
     cout << "Árvore B inicializada com sucesso!\n";
 }
 
-void Menu::menuArvoreB()
-{
-
-    string entrada;
-    int opcao;
-
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-    do
-    {
-        cout << "=== Menu Arvore B ===" << endl;
-        cout << "1 - Indexar por conquistas" << endl;
-        cout << "2 - Indexar por jogos" << endl;
-        cout << "0 - Voltar" << endl;
-        cout << "Escolha: ";
-        string entrada;
-        getline(cin, entrada);
-        try
-        {
-            opcao = stoi(entrada);
-        }
-        catch (...)
-        {
-            cout << "A opcao precisa ser numerica." << endl;
-            continue;
-        }
-
-        switch (opcao)
-        {
-        case 1:
-        {
-            break;
-        }
-        case 2:
-        {
-            break;
-        }
-        case 0:
-            cout << "Voltando...\n";
-            break;
-        default:
-            cout << "Opcao invalida.\n";
-        }
-
-    } while (opcao != 0);
-}
-
 void Menu::menuBuscaHash()
 {
     string id;
@@ -310,4 +277,23 @@ void Menu::menuInsercaoHash()
 
     tabelaHash.insere(novoJogador);
     cout << "Jogador inserido com sucesso!\n";
+}
+
+void Menu::imprimeTopJogadores(int quantidade){
+
+    vector<shared_ptr<Player>> topJogadores = arvoreBJogos.buscaTopJogadores(quantidade);
+
+    cout << "=== Top Jogadores ===\n";
+
+    int i = 1;
+    for (const auto &jogador : topJogadores)
+    {
+        if (jogador)
+        {
+            cout << "=== Top " << i << " ===" << endl;
+            cout << jogador << endl;
+        }
+        i++;
+    }
+
 }

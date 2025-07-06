@@ -10,8 +10,20 @@ NoB::NoB(int ordemArvore, bool novoEFolha) {
     filhos.resize(ordemArvore);
 }
 
-void NoB::addChave(int novaChave){
-    chaves[chavesPreenchidas++] = novaChave;
+void NoB::addChave(int novaChave, shared_ptr<Player> jogador) {
+    int i = chavesPreenchidas - 1;
+    chaves.push_back(0);
+    jogadores.push_back(nullptr);
+
+    while (i >= 0 && novaChave < chaves[i]) {
+        chaves[i + 1] = chaves[i];
+        jogadores[i + 1] = jogadores[i];
+        i--;
+    }
+
+    chaves[i + 1] = novaChave;
+    jogadores[i + 1] = jogador;
+    chavesPreenchidas++;
 }
 
 void NoB::addFilho(NoB* novoFilho){

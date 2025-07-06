@@ -20,7 +20,6 @@ public:
     Menu();
 
     void menuInicial();
-    void menuArvoreB();
     void menuDeConsultas();
     
     void inicializarTabelaHash();
@@ -28,6 +27,8 @@ public:
 
     void menuBuscaHash();
     void menuInsercaoHash();
+
+    void imprimeTopJogadores(int quantidade);
 };
 
 #endif
