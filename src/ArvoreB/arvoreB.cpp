@@ -2,27 +2,35 @@
 #include <string>
 
 #include "arvoreB.h"
+#include "../HashGenerico/hash_generico.h"
+#include "../Objetos/Player.h"
 
 using namespace std;
 
-ArvoreB::ArvoreB(int ordem){
+ArvoreB::ArvoreB(int novaOrdem){
+    ordem = novaOrdem;
     raiz = new NoB(ordem, true); 
 }
 
-void ArvoreB::indexarJogos(){
-
+void ArvoreB::indexarPorJogos(const TabelaHash<Player>& tabelaJogadores) {
+    tabelaJogadores.forEach([this](const shared_ptr<Player>& player) {
+        if (player) {
+            int qtdJogos = static_cast<int>(player->getJogos().size());
+            insere(qtdJogos);
+        }
+    });
 }
 
-void ArvoreB::indexarConquistas(){
-
+void ArvoreB::indexarPorConquistas(const TabelaHash<Player>& tabelaJogadores){
+    tabelaJogadores.forEach([this](const shared_ptr<Player>& player) {
+        if (player) {
+            int qtdConquistas = static_cast<int>(player->getConquistas().size());
+            insere(qtdConquistas);
+        }
+    });
 }
 
 void ArvoreB::insere(int chave){
-
-    if(raiz->eFolha){
-        raiz->addChave(chave);
-        return;
-    }
 
     if (raiz->chavesPreenchidas == (ordem - 1)) {
 
@@ -104,19 +112,14 @@ bool ArvoreB::buscaAuxiliar(NoB* no, int chave){
 
     int i = 0;
     
-    while(i < no->chavesPreenchidas && chave > no->chaves[i]){
-        
-        if(chave == no->chaves[i]) return true;
+    while (i < no->chavesPreenchidas && chave > no->chaves[i]) {
         i++;
-
     }
+
+    if (i < no->chavesPreenchidas && chave == no->chaves[i]) return true;
 
     if(no->eFolha) return false;
     return buscaAuxiliar(no->filhos[i], chave);
-}
-
-void ArvoreB::remove(){
-    
 }
 
 int ArvoreB::getOrdem(){

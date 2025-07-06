@@ -28,6 +28,6 @@ class ArvoreB{
         int getOrdem();
         NoB* getRaiz();
 
-        void indexarJogos();
-        void indexarConquistas();
+        void indexarPorJogos(const TabelaHash<Player>& tabelaJogadores);
+        void indexarPorConquistas(const TabelaHash<Player>& tabelaJogadores);
 };
