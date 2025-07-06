@@ -98,7 +98,29 @@ void Menu::menuDeConsultas()
         case 3:
             cout << "Digite o ID do jogador: ";
             getline(cin, id);
-            // podemos usar a hash porque o player tem um getJogos (só uma ideia)
+            {
+                Player *p = tabelaHash.busca(id);
+                if (p)
+                {
+                    vector<Jogo> jogos = p->getJogos();
+                    if (jogos.empty())
+                    {
+                        cout << "O jogador nao possui jogos cadastrados.\n";
+                    }
+                    else
+                    {
+                        cout << "Jogos do jogador " << id << ":\n";
+                        for (const auto &jogo : jogos)
+                        {
+                            cout << "- " << jogo.getTitutlo() << " (ID: " << jogo.getId() << ")\n";
+                        }
+                    }
+                }
+                else
+                {
+                    cout << "Jogador nao encontrado.\n";
+                }
+            }
             break;
         case 4:
             // adicionar aqui a função

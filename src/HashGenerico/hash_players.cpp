@@ -7,7 +7,7 @@ using namespace std;
 LeitorDePlanilha leitor;
 Utils utils;
 
-void HashPlayers::populaTabelaComPlayers(TabelaHash<Player>& tabelaAlvo, MetodoDeColisao metodoDeColisao)
+void HashPlayers::populaTabelaComPlayers(TabelaHash<Player> &tabelaAlvo, MetodoDeColisao metodoDeColisao)
 {
     cout << "Populando tabela com jogadores...\n";
     adicionaPlayersNaHash(tabelaAlvo);
@@ -53,7 +53,7 @@ void HashPlayers::adicionaJogosNaHash(TabelaHash<Jogo> &tabelaJogos)
     }
 }
 
-void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player>& tabelaJogadores, MetodoDeColisao metodoDeColisao)
+void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> &tabelaJogadores, MetodoDeColisao metodoDeColisao)
 {
     int totalJogos = leitor.contadorCSV(CSV_GAMES_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(ceil(static_cast<double>(totalJogos) / 0.7));
@@ -65,27 +65,39 @@ void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player>& tabelaJogadores, M
 
     for (const auto &linha : dadosCompras)
     {
-        string idPlayer = (linha.size() > 0 && !linha[0].empty()) ? linha[0] : "";
+        string idPlayer = (linha.size() > 0 && !linha[0].empty()) ? leitor.limparCampoCSV(linha[0]) : "";
         vector<string> idJogosComprados = (linha.size() > 1) ? utils.split(linha[1], ',') : vector<string>{};
 
         Player *player = tabelaJogadores.busca(idPlayer);
-        vector<Jogo> jogos;
+        if (!player)
+            continue;
+        vector<Jogo> jogos = player->getJogos();
 
-        for (const auto &idJogo : idJogosComprados)
+        for (auto idJogo : idJogosComprados)
         {
+            idJogo = leitor.limparCampoCSV(idJogo);
             if (!idJogo.empty())
             {
                 Jogo *jogo = tabelaJogos.busca(idJogo);
-
                 if (jogo)
                 {
-                    jogos.push_back(*jogo);
+                    bool jaTem = false;
+                    for (const auto &j : jogos)
+                    {
+                        if (j.getId() == jogo->getId())
+                        {
+                            jaTem = true;
+                            break;
+                        }
+                    }
+                    if (!jaTem)
+                    {
+                        jogos.push_back(*jogo);
+                    }
                 }
             }
         }
-
-        if (player)
-            player->setJogos(jogos);
+        player->setJogos(jogos);
     }
 }
 

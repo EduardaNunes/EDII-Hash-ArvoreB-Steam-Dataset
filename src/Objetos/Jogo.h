@@ -23,7 +23,7 @@ class Jogo{
         Jogo(){};
 
         string getId() const;
-        string getTitutlo();
+        string getTitutlo() const;
         vector<string> getDesenvolvedores();
         vector<string> getPublishers();
         vector<string> getGeneros();
