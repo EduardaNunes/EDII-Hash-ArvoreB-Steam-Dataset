@@ -155,9 +155,9 @@ void Menu::menuDeConsultas()
             imprimeTopJogadores(quantidade, TipoDeIndexacao::CONQUISTAS);
             break;
         case 5:
-            cout << "Digite o número mínimo de conquistas: ";
+            cout << "Digite o numero minimo de conquistas: ";
             getline(cin, minStr);
-            cout << "Digite o número máximo de conquistas: ";
+            cout << "Digite o numero maximo de conquistas: ";
             getline(cin, maxStr);
             try
             {
