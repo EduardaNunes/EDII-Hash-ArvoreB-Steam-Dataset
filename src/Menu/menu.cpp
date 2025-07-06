@@ -9,7 +9,7 @@
 
 using namespace std;
 
-Menu::Menu() : tabelaHash(1, MetodoDeColisao::ENCADEAMENTO), arvoreB(64) {}
+Menu::Menu() : tabelaHash(1, MetodoDeColisao::ENCADEAMENTO), arvoreBJogos(64), arvoreBConquistas(64) {}
 
 void Menu::menuInicial()
 {
@@ -67,8 +67,8 @@ void Menu::menuDeConsultas()
     {
         cout << "\n=== Menu Consultas ===\n";
         cout << "1 - Buscar jogador\n";
-        cout << "2 - Listar jogadores com mais conquistas\n";
-        cout << "3 - Listar jogos de um jogador\n";
+        cout << "2 - Listar jogos de um jogador\n";
+        cout << "3 - Listar top N jogadores com mais jogos\n";
         cout << "4 - Mostrar top N jogadores com mais conquistas\n";
         cout << "5 - Mostrar jogadores entre um intervalo de conquistas\n";
         cout << "6 - Buscar jogadores que possuem determinado jogo\n";
@@ -93,10 +93,7 @@ void Menu::menuDeConsultas()
             menuBuscaHash();
             break;
         case 2:
-            // adicionar aqui a função
-            break;
-        case 3:
-            cout << "Digite o ID do jogador: ";
+                        cout << "Digite o ID do jogador: ";
             getline(cin, id);
             {
                 auto p = tabelaHash.busca(id);
@@ -123,6 +120,9 @@ void Menu::menuDeConsultas()
                     cout << "Jogador nao encontrado.\n";
                 }
             }
+            break;
+        case 3:
+            // adicionar aqui a função
             break;
         case 4:
             // adicionar aqui a função
@@ -193,8 +193,13 @@ void Menu::inicializarTabelaHash()
 
 void Menu::inicializarArvoreB()
 {
-    // adicionar lógica de inicialização da árvore B
-    cout << "Inicializando Arvore B...\n";
+    cout << "Indexando jogadores por quantidade de jogos na Árvore B...\n";
+    arvoreBJogos.indexarPorJogos(tabelaHash);
+
+    cout << "Indexando jogadores por quantidade de conquistas na Árvore B...\n";
+    arvoreBConquistas.indexarPorConquistas(tabelaHash);
+
+    cout << "Árvore B inicializada com sucesso!\n";
 }
 
 void Menu::menuArvoreB()
@@ -232,7 +237,6 @@ void Menu::menuArvoreB()
         }
         case 2:
         {
-            arvoreB.indexarJogos();
             break;
         }
         case 0:

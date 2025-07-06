@@ -13,7 +13,8 @@ class Menu
 {
 private:
     TabelaHash<Player> tabelaHash;
-    ArvoreB arvoreB;
+    ArvoreB arvoreBJogos;
+    ArvoreB arvoreBConquistas;
 
 public: 
     Menu();
