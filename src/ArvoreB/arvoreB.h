@@ -28,6 +28,7 @@ private:
     void dividirFilho(NoB *pai, int i, NoB *y);
 
     void buscaTopJogadoresAuxiliar(NoB *no, int quantidade, vector<shared_ptr<Player>> &jogadores);
+    void buscaPorIntervaloAuxiliar(NoB* no, int min, int max, vector<shared_ptr<Player>>& jogadores);
 
 public:
     ArvoreB(int ordem);
@@ -42,4 +43,6 @@ public:
     void indexarPorConquistas(const TabelaHash<Player> &tabelaJogadores);
 
     vector<shared_ptr<Player>> buscaTopJogadores(int quantidade);
+    vector<shared_ptr<Player>> buscaPorIntervalo(int min, int max);
+
 };

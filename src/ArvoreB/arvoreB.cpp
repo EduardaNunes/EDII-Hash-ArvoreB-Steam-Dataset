@@ -60,6 +60,33 @@ void ArvoreB::buscaTopJogadoresAuxiliar(NoB* no, int quantidade, vector<shared_p
     }
 }
 
+vector<shared_ptr<Player>> ArvoreB::buscaPorIntervalo(int min, int max) {
+    vector<shared_ptr<Player>> jogadores;
+    buscaPorIntervaloAuxiliar(raiz, min, max, jogadores);
+    return jogadores;
+}
+
+void ArvoreB::buscaPorIntervaloAuxiliar(NoB* no, int min, int max, vector<shared_ptr<Player>>& jogadores) {
+    if (!no) return;
+
+    int i;
+    for (i = 0; i < no->chavesPreenchidas; i++) {
+        // Se não for folha, visita subárvore esquerda antes da chave
+        if (!no->eFolha) {
+            buscaPorIntervaloAuxiliar(no->filhos[i], min, max, jogadores);
+        }
+
+        int chave = no->chaves[i];
+        if (chave >= min && chave <= max && no->jogadores[i]) {
+            jogadores.push_back(no->jogadores[i]);
+        }
+    }
+
+    // Último filho à direita
+    if (!no->eFolha) {
+        buscaPorIntervaloAuxiliar(no->filhos[i], min, max, jogadores);
+    }
+}
 
 void ArvoreB::insere(int chave, shared_ptr<Player> jogador){
 

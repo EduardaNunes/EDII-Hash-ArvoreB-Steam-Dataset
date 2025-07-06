@@ -70,9 +70,10 @@ void Menu::menuDeConsultas()
         cout << "2 - Listar jogos de um jogador\n";
         cout << "3 - Listar top N jogadores com mais jogos\n";
         cout << "4 - Listar top N jogadores com mais conquistas\n";
-        cout << "5 - Mostrar jogadores entre um intervalo de conquistas\n";
-        cout << "6 - Buscar jogadores que possuem determinado jogo\n";
-        cout << "7 - Estatisticas do sistema\n";
+        cout << "5 - Mostrar jogadores entre um intervalo de jogos\n";
+        cout << "6 - Mostrar jogadores entre um intervalo de conquistas\n";
+        cout << "7 - Buscar jogadores que possuem determinado jogo\n";
+        cout << "8 - Estatisticas do sistema\n";
         cout << "0 - Voltar\n";
         cout << "Escolha: ";
         getline(cin, entrada);
@@ -155,6 +156,24 @@ void Menu::menuDeConsultas()
             imprimeTopJogadores(quantidade, TipoDeIndexacao::CONQUISTAS);
             break;
         case 5:
+            cout << "Digite o numero minimo de jogos: ";
+            getline(cin, minStr);
+            cout << "Digite o numero maximo de jogos: ";
+            getline(cin, maxStr);
+            try
+            {
+                min = stoi(minStr);
+                max = stoi(maxStr);
+            }
+            catch (...)
+            {
+                cout << "O minimo e maximo precisam ser numericos." << endl;
+                continue;
+            }
+            
+            imprimeIntervaloDeJogadores(min, max, TipoDeIndexacao::JOGOS);
+            break;
+        case 6:
             cout << "Digite o numero minimo de conquistas: ";
             getline(cin, minStr);
             cout << "Digite o numero maximo de conquistas: ";
@@ -169,14 +188,15 @@ void Menu::menuDeConsultas()
                 cout << "O minimo e maximo precisam ser numericos." << endl;
                 continue;
             }
-            // adicionar aqui a função
+            
+            imprimeIntervaloDeJogadores(min, max, TipoDeIndexacao::CONQUISTAS);
             break;
-        case 6:
+        case 7:
             cout << "Digite o id do jogo: ";
             getline(cin, id);
             // adicionar aqui a função
             break;
-        case 7:
+        case 8:
             // adicionar aqui a função
             break;
         case 0:
@@ -326,5 +346,38 @@ void Menu::imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo){
         i++;
     }
     cout << "================================================\n";
+
+}
+
+void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo){
+
+    vector<shared_ptr<Player>> intervaloDeJogadores;
+
+    switch (tipo)
+    {
+    case TipoDeIndexacao::JOGOS:
+        intervaloDeJogadores = arvoreBJogos.buscaPorIntervalo(min, max);
+        break;
+    
+    case TipoDeIndexacao::CONQUISTAS:
+        intervaloDeJogadores = arvoreBConquistas.buscaPorIntervalo(min, max);
+        break;
+    default:
+        cout << "Tipo de indexacao invalido!" << endl;
+        return;
+    }
+
+    cout << "\n=================== INTERVALO ==================" << endl;
+
+    for (const auto &jogador : intervaloDeJogadores)
+    {
+        if (jogador)
+        {
+            cout << *jogador << endl;
+        }
+    }
+    cout << "\n================================================"
+    << "\nNumero de jogadores encontrados: " << intervaloDeJogadores.size()
+    << "\n================================================\n";
 
 }

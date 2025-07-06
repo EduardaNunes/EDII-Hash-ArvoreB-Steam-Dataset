@@ -16,10 +16,6 @@ private:
     ArvoreB arvoreBJogos;
     ArvoreB arvoreBConquistas;
 
-public: 
-    Menu();
-
-    void menuInicial();
     void menuDeConsultas();
     
     void inicializarTabelaHash();
@@ -29,6 +25,13 @@ public:
     void menuInsercaoHash();
 
     void imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo);
+    void imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo);
+
+
+public: 
+    Menu();
+
+    void menuInicial();
 };
 
 #endif
