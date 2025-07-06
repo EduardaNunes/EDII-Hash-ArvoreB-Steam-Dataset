@@ -67,30 +67,6 @@ public:
         return head == nullptr;
     }
 
-    // Remove um nó da lista pelo ID
-    bool remove(const std::string &id)
-    {
-        Node<T> *atual = head;
-        Node<T> *prev = nullptr;
-
-        while (atual)
-        {
-            if (atual->data.getId() == id)
-            {
-                if (prev)
-                    prev->proximo = atual->proximo;
-                else
-                    head = atual->proximo;
-
-                delete atual;
-                return true;
-            }
-            prev = atual;
-            atual = atual->proximo;
-        }
-        return false;
-    }
-
     // realiza uma operação para cada elemento da lista
     template <typename Func>
     void forEach(Func func) const
