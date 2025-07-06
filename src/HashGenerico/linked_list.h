@@ -85,6 +85,15 @@ public:
         }
         return false;
     }
+
+    template<typename Func>
+    void forEach(Func func) const {
+        Node<T> *atual = head;
+        while (atual) {
+            func(atual->data);
+            atual = atual->proximo;
+        }
+    }
 };
 
 #endif
