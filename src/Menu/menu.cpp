@@ -93,7 +93,7 @@ void Menu::menuDeConsultas()
             menuBuscaHash();
             break;
         case 2:
-            cout << "Digite o ID do jogador: ";
+            cout << "\nDigite o ID do jogador: ";
             getline(cin, id);
             {
                 auto p = tabelaHash.busca(id);
@@ -122,9 +122,9 @@ void Menu::menuDeConsultas()
             }
             break;
         case 3:
-            cout << "Digite a quantidade do top a ser buscado: ";
+            cout << "\nDigite a quantidade do top a ser buscado: ";
             getline(cin, quantidadeTop);
-            
+
             try
             {
                 quantidade = stoi(quantidadeTop);
@@ -135,11 +135,24 @@ void Menu::menuDeConsultas()
                 continue;
             }
             
-            imprimeTopJogadores(quantidade);
+            imprimeTopJogadores(quantidade, TipoDeIndexacao::JOGOS);
 
             break;
         case 4:
-            // adicionar aqui a função
+            cout << "\nDigite a quantidade do top a ser buscado: ";
+            getline(cin, quantidadeTop);
+
+            try
+            {
+                quantidade = stoi(quantidadeTop);
+            }
+            catch (...)
+            {
+                cout << "A quantidade do top precisa ser numericos." << endl;
+                continue;
+            }
+            
+            imprimeTopJogadores(quantidade, TipoDeIndexacao::CONQUISTAS);
             break;
         case 5:
             cout << "Digite o número mínimo de conquistas: ";
@@ -207,13 +220,13 @@ void Menu::inicializarTabelaHash()
 
 void Menu::inicializarArvoreB()
 {
-    cout << "Indexando jogadores por quantidade de jogos na Árvore B...\n";
+    cout << "Indexando jogadores por quantidade de jogos na Arvore B...\n";
     arvoreBJogos.indexarPorJogos(tabelaHash);
 
-    cout << "Indexando jogadores por quantidade de conquistas na Árvore B...\n";
+    cout << "Indexando jogadores por quantidade de conquistas na Arvore B...\n";
     arvoreBConquistas.indexarPorConquistas(tabelaHash);
 
-    cout << "Árvore B inicializada com sucesso!\n";
+    cout << "Arvores B construida com sucesso!\n";
 }
 
 void Menu::menuBuscaHash()
@@ -279,21 +292,39 @@ void Menu::menuInsercaoHash()
     cout << "Jogador inserido com sucesso!\n";
 }
 
-void Menu::imprimeTopJogadores(int quantidade){
+void Menu::imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo){
 
-    vector<shared_ptr<Player>> topJogadores = arvoreBJogos.buscaTopJogadores(quantidade);
+    vector<shared_ptr<Player>> topJogadores;
 
-    cout << "=== Top Jogadores ===\n";
+    if(tipo == TipoDeIndexacao::JOGOS) {
+        topJogadores = arvoreBJogos.buscaTopJogadores(quantidade);
+    }
+
+    else if(tipo == TipoDeIndexacao::CONQUISTAS) {
+        topJogadores = arvoreBConquistas.buscaTopJogadores(quantidade);
+    }
+
+    else{
+        cout << "Tipo de indexacao invalido!" << endl;
+        return;
+    }
+
+    cout << endl;
 
     int i = 1;
     for (const auto &jogador : topJogadores)
     {
         if (jogador)
         {
-            cout << "=== Top " << i << " ===" << endl;
-            cout << jogador << endl;
+            cout << "==================== Top " << i << " ====================\n"
+            << "> ID: " << jogador->getId() << "\n"
+            << "> Pais: " << jogador->getPais() << "\n"
+            << "> Conta criada em: " << jogador->getDataDeCriacao() << "\n"
+            << "> Quantidade de Jogos: " << jogador->getJogos().size() << "\n"
+            << "> Quantidade de Conquistas: " << jogador->getConquistas().size() << "\n";
         }
         i++;
     }
+    cout << "================================================\n";
 
 }

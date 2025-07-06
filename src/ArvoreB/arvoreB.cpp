@@ -37,24 +37,28 @@ vector<shared_ptr<Player>> ArvoreB::buscaTopJogadores(int quantidade){
 }
 
 void ArvoreB::buscaTopJogadoresAuxiliar(NoB* no, int quantidade, vector<shared_ptr<Player>>& jogadores) {
-    if (!no) return;
+    if (!no || jogadores.size() >= quantidade) return;
 
-    for (int i = 0; i < no->chavesPreenchidas; i++) {
-        if (!no->eFolha) {
-            buscaTopJogadoresAuxiliar(no->filhos[i], quantidade, jogadores);
+    for (int i = no->chavesPreenchidas - 1; i >= 0; i--) {
+        // Primeiro os filhos da direita (para ordem decrescente)
+        if (!no->eFolha && jogadores.size() < quantidade) {
+            buscaTopJogadoresAuxiliar(no->filhos[i + 1], quantidade, jogadores);
         }
+
+        if (jogadores.size() >= quantidade) return;
 
         if (no->jogadores[i]) {
             jogadores.push_back(no->jogadores[i]);
         }
+
+        if (jogadores.size() >= quantidade) return;
     }
 
-    if (!no->eFolha) {
-        buscaTopJogadoresAuxiliar(no->filhos[no->chavesPreenchidas], quantidade, jogadores);
+    // Visita o último filho da esquerda
+    if (!no->eFolha && jogadores.size() < quantidade) {
+        buscaTopJogadoresAuxiliar(no->filhos[0], quantidade, jogadores);
     }
 }
-
-
 
 
 void ArvoreB::insere(int chave, shared_ptr<Player> jogador){

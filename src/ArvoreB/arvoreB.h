@@ -6,6 +6,11 @@
 
 using namespace std;
 
+enum class TipoDeIndexacao {
+    JOGOS,
+    CONQUISTAS
+};
+
 class NoB;
 
 class ArvoreB{

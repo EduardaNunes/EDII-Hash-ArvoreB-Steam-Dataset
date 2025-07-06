@@ -28,7 +28,7 @@ public:
     void menuBuscaHash();
     void menuInsercaoHash();
 
-    void imprimeTopJogadores(int quantidade);
+    void imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo);
 };
 
 #endif
