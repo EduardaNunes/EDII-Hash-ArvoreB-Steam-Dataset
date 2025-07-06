@@ -13,12 +13,16 @@ Menu::Menu() : tabelaHash(1, MetodoDeColisao::ENCADEAMENTO), arvoreB(64) {}
 
 void Menu::menuInicial()
 {
+    inicializarTabelaHash();
+    inicializarArvoreB();
+
     int opcao;
     do
     {
-        cout << "=== Menu Inicial ===" << endl;
-        cout << "1 - Hash" << endl;
-        cout << "2 - Arvore B" << endl;
+        cout << "\n=== Menu Inicial ===" << endl;
+        cout << "1 - Inserir novo jogador" << endl;
+        cout << "2 - Abrir o menu de consultas" << endl;
+        cout << "3 - Exibir estatisticas da Hash" << endl;
         cout << "0 - Sair" << endl;
         cout << "Escolha: ";
         cin >> opcao;
@@ -34,12 +38,14 @@ void Menu::menuInicial()
         {
         case 1:
         {
-            inicializarTabelaHash();
-            menuHash();
+            menuInsercaoHash();
             break;
         }
         case 2:
-            menuArvoreB();
+            menuDeConsultas();
+            break;
+        case 3:
+            tabelaHash.exibirEstatisticas();
             break;
         case 0:
             cout << "Saindo...\n";
@@ -66,7 +72,7 @@ void Menu::menuDeConsultas()
         cout << "4 - Mostrar top N jogadores com mais conquistas\n";
         cout << "5 - Mostrar jogadores entre um intervalo de conquistas\n";
         cout << "6 - Buscar jogadores que possuem determinado jogo\n";
-        cout << "7 - Estatísticas\n";
+        cout << "7 - Estatisticas do sistema\n";
         cout << "0 - Voltar\n";
         cout << "Escolha: ";
         getline(cin, entrada);
@@ -92,7 +98,31 @@ void Menu::menuDeConsultas()
         case 3:
             cout << "Digite o ID do jogador: ";
             getline(cin, id);
-            // podemos usar a hash porque o player tem um getJogos (só uma ideia)
+            {
+                auto p = tabelaHash.busca(id);
+                if (p)
+                {
+                    vector<shared_ptr<Jogo>> jogos = p->getJogos();
+                    if (jogos.empty())
+                    {
+                        cout << "O jogador nao possui jogos cadastrados.\n";
+                    }
+                    else
+                    {
+                        cout << "Jogos do jogador " << id << ":\n";
+                        for (const auto &jogo : jogos)
+                        {
+                            if (jogo) {
+                                cout << "- " << jogo->getTitutlo() << " (ID: " << jogo->getId() << ")\n";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    cout << "Jogador nao encontrado.\n";
+                }
+            }
             break;
         case 4:
             // adicionar aqui a função
@@ -155,72 +185,16 @@ void Menu::inicializarTabelaHash()
 
     MetodoDeColisao estrategia = (metodoColisao == 1) ? MetodoDeColisao::ENCADEAMENTO : MetodoDeColisao::SONDAGEM_LINEAR;
 
-    // LeitorDePlanilha leitor;
-    // int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_PATH);
-    // int tamanhoTabela = static_cast<int>(ceil(totalJogadores / 0.7));
+    HashPlayers geradorDePlayers;
 
-    // this->tabelaHash = TabelaHash<Player>(tamanhoTabela, estrategia);
-
-    // vector<vector<string>> dados = leitor.lerCSV(CSV_PLAYERS_PATH);
-    // for (size_t i = 1; i < dados.size(); i++)
-    // {
-    //     if (dados[i].size() >= 3 && !dados[i][0].empty())
-    //     {
-    //         Player p(dados[i][0], dados[i][1], dados[i][2]);
-    //         this->tabelaHash.insere(p);
-    //     }
-    // }
-    HashPlayers tabelaPlayers;
-    this->tabelaHash = tabelaPlayers.criaHashDePlayers(estrategia);
+    geradorDePlayers.populaTabelaComPlayers(this->tabelaHash, estrategia);
     cout << "Tabela criada e jogadores carregados!\n";
 }
 
-void Menu::menuHash()
+void Menu::inicializarArvoreB()
 {
-    string entrada;
-    int opcao;
-
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-    do
-    {
-        cout << "\n=== Menu Hash ===\n";
-        cout << "1 - Buscar jogador\n";
-        cout << "2 - Inserir jogador\n";
-        cout << "3 - Mostrar estatisticas\n";
-        cout << "0 - Voltar\n";
-        cout << "Escolha: ";
-        getline(cin, entrada);
-
-        try
-        {
-            opcao = stoi(entrada);
-        }
-        catch (...)
-        {
-            cout << "A opcao precisa ser numerica." << endl;
-            continue;
-        }
-
-        switch (opcao)
-        {
-        case 1:
-            menuBuscaHash();
-            break;
-        case 2:
-            menuInsercaoHash();
-            break;
-        case 3:
-            tabelaHash.exibirEstatisticas();
-            break;
-        case 0:
-            cout << "Voltando...\n";
-            break;
-        default:
-            cout << "Opcao invalida.\n";
-        }
-
-    } while (opcao != 0);
+    // adicionar lógica de inicialização da árvore B
+    cout << "Inicializando Arvore B...\n";
 }
 
 void Menu::menuArvoreB()
@@ -292,30 +266,44 @@ void Menu::menuBuscaHash()
 
 void Menu::menuInsercaoHash()
 {
-    string id, pais, dataCriacao;
+    string id, pais;
+    Utils utils;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     cout << "\n=== Inserir Jogador ===\n";
-    cout << "Digite o ID do jogador: ";
-    getline(cin, id);
 
-    Utils utils;
-    if (!utils.verificaIdJogador(id))
+    while (true)
     {
-        cout << "ID de jogador invalido! \n É preciso que ele tenha 17 digitos numericos" << endl;
-        menuInsercaoHash();
-    }
-    else if (tabelaHash.busca(id) != nullptr)
-    {
-        cout << "Jogador já existente!" << endl;
-        menuInsercaoHash();
+        cout << "Digite o ID do jogador: (para voltar ao menu anterior, digite '0')";
+        getline(cin, id);
+
+        if (id == "0")
+        {
+            cout << "Voltando ao menu anterior...\n";
+            return;
+        }
+
+        if (!utils.verificaIdJogador(id))
+        {
+            cout << "ID de jogador invalido! E preciso que ele tenha 17 digitos numericos.\n";
+            continue;
+        }
+
+        if (tabelaHash.busca(id) != nullptr)
+        {
+            cout << "Jogador com este ID ja existe!\n";
+            continue;
+        }
+
+        break;
     }
 
     cout << "Digite o pais: ";
     getline(cin, pais);
-    cout << "Digite a data de criacao (YYYY-MM-DD): ";
-    getline(cin, dataCriacao);
 
-    auto novoJogador = make_shared<Player>(id, pais, dataCriacao);
+    auto novoJogador = make_shared<Player>(id, pais);
+    //Player novoJogador(id, pais);
+
     tabelaHash.insere(novoJogador);
     cout << "Jogador inserido com sucesso!\n";
 }

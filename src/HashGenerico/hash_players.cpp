@@ -7,19 +7,16 @@ using namespace std;
 LeitorDePlanilha leitor;
 Utils utils;
 
-TabelaHash<Player> HashPlayers::criaHashDePlayers(MetodoDeColisao metodoDeColisao)
+void HashPlayers::populaTabelaComPlayers(TabelaHash<Player> &tabelaAlvo, MetodoDeColisao metodoDeColisao)
 {
-    int totalJogadores = leitor.contadorCSV(CSV_PLAYERS_PATH);
-    //int tamanhoTabela = static_cast<int>(totalJogadores);
-    int tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
+    cout << "Populando tabela com jogadores...\n";
+    adicionaPlayersNaHash(tabelaAlvo);
 
-    TabelaHash<Player> tabelaPlayers(tamanhoTabela, metodoDeColisao);
+    cout << "Adicionando jogos aos jogadores...\n";
+    adicionaJogosNosPlayers(tabelaAlvo, metodoDeColisao);
 
-    adicionaPlayersNaHash(tabelaPlayers);
-    adicionaJogosNosPlayers(tabelaPlayers, metodoDeColisao);
-    adicionaConquistasNosPlayers(tabelaPlayers, metodoDeColisao);
-
-    return tabelaPlayers;
+    cout << "Adicionando conquistas aos jogadores...\n";
+    adicionaConquistasNosPlayers(tabelaAlvo, metodoDeColisao);
 }
 
 void HashPlayers::adicionaPlayersNaHash(TabelaHash<Player> &tabelaJogadores)
@@ -62,15 +59,30 @@ void HashPlayers::adicionaJogosNosPlayers(TabelaHash<Player> &tabelaJogadores, M
         string idPlayer = (linha.size() > 0 && !linha[0].empty()) ? linha[0] : "";
         vector<string> idJogosComprados = (linha.size() > 1) ? utils.split(linha[1], ',') : vector<string>{};
         auto player = tabelaJogadores.busca(idPlayer);
-        vector<shared_ptr<Jogo>> jogos;
-        for (const auto &idJogo : idJogosComprados)
+        if (!player)
+            continue;
+        vector<shared_ptr<Jogo>> jogos = player->getJogos();
+        for (auto idJogo : idJogosComprados)
         {
+            idJogo = leitor.limparCampoCSV(idJogo);
             if (!idJogo.empty())
             {
                 auto jogo = tabelaJogos.busca(idJogo);
                 if (jogo)
                 {
-                    jogos.push_back(jogo);
+                    bool jaTem = false;
+                    for (const auto &j : jogos)
+                    {
+                        if (j.getId() == jogo->getId())
+                        {
+                            jaTem = true;
+                            break;
+                        }
+                    }
+                    if (!jaTem)
+                    {
+                        jogos.push_back(jogo);
+                    }
                 }
             }
         }
@@ -94,7 +106,7 @@ void HashPlayers::adicionaConquistasNaHash(TabelaHash<Conquista> &tabelaConquist
 
 void HashPlayers::adicionaConquistasNosPlayers(TabelaHash<Player> &tabelaJogadores, MetodoDeColisao metodoDeColisao)
 {
-    int totalConquistas = leitor.contadorCSV(CSV_ACHIEVEMENTS_PATH);
+    int totalConquistas = leitor.contadorCSV(CSV_ACHIEVEMENTS_TESTE_PATH);
     int tamanhoTabela = static_cast<int>(totalConquistas);
     tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
     TabelaHash<Conquista> tabelaConquistas(tamanhoTabela, metodoDeColisao);

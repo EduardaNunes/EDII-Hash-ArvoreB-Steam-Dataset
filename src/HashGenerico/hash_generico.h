@@ -170,7 +170,7 @@ template<typename T>
 void TabelaHash<T>::exibirEstatisticas() const {
     cout << "Tamanho da Tabela: " << tamanho << endl;
     cout << "Elementos: " << numeroDeElementos << endl;
-    cout << "Colisões: " << numeroDeColisoes << endl;
+    cout << "Colisoes: " << numeroDeColisoes << endl;
     cout << "Fator de Carga: " << (float)numeroDeElementos / tamanho << endl;
 }
 

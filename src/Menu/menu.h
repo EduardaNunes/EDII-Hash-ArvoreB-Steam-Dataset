@@ -19,11 +19,11 @@ public:
     Menu();
 
     void menuInicial();
-    void menuHash();
     void menuArvoreB();
     void menuDeConsultas();
     
     void inicializarTabelaHash();
+    void inicializarArvoreB();
 
     void menuBuscaHash();
     void menuInsercaoHash();

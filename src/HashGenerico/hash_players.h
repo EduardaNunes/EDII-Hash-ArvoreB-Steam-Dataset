@@ -19,5 +19,5 @@ class HashPlayers
 
     public:
         HashPlayers(){}
-        TabelaHash<Player> criaHashDePlayers(MetodoDeColisao metodoDeColisao);
+        void populaTabelaComPlayers(TabelaHash<Player>& tabelaAlvo, MetodoDeColisao metodoDeColisao); 
 };
