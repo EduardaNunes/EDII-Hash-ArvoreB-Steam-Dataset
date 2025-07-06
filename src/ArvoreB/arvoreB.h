@@ -6,36 +6,40 @@
 
 using namespace std;
 
-enum class TipoDeIndexacao {
+// Enum para definir os tipos de indexação da árvore B
+enum class TipoDeIndexacao
+{
     JOGOS,
     CONQUISTAS
 };
 
+// Declaração antecipada da classe NoB para evitar dependências circulares
 class NoB;
 
-class ArvoreB{
-    private:
-        int ordem;
-        NoB* raiz;
+// Classe ArvoreB representa uma árvore B genérica, que pode ser usada para indexar jogadores por jogos ou conquistas.
+class ArvoreB
+{
+private:
+    int ordem;
+    NoB *raiz;
 
-        bool buscaAuxiliar(NoB* no, int chave);
-        void inserirNaoCheio(NoB* no, int chave, shared_ptr<Player> jogador);
-        void dividirFilho(NoB* pai, int i, NoB* y);
+    bool buscaAuxiliar(NoB *no, int chave);
+    void inserirNaoCheio(NoB *no, int chave, shared_ptr<Player> jogador);
+    void dividirFilho(NoB *pai, int i, NoB *y);
 
-        void buscaTopJogadoresAuxiliar(NoB* no, int quantidade, vector<shared_ptr<Player>>& jogadores);
+    void buscaTopJogadoresAuxiliar(NoB *no, int quantidade, vector<shared_ptr<Player>> &jogadores);
 
-    public:
+public:
+    ArvoreB(int ordem);
 
-        ArvoreB(int ordem);
+    bool busca(int chave);
+    void insere(int chave, shared_ptr<Player> jogador);
 
-        bool busca(int chave);
-        void insere(int chave,shared_ptr<Player> jogador);
+    int getOrdem();
+    NoB *getRaiz();
 
-        int getOrdem();
-        NoB* getRaiz();
+    void indexarPorJogos(const TabelaHash<Player> &tabelaJogadores);
+    void indexarPorConquistas(const TabelaHash<Player> &tabelaJogadores);
 
-        void indexarPorJogos(const TabelaHash<Player>& tabelaJogadores);
-        void indexarPorConquistas(const TabelaHash<Player>& tabelaJogadores);
-
-        vector<shared_ptr<Player>> buscaTopJogadores(int quantidade);
+    vector<shared_ptr<Player>> buscaTopJogadores(int quantidade);
 };

@@ -3,7 +3,9 @@
 
 using namespace std;
 
-NoB::NoB(int ordemArvore, bool novoEFolha) {
+// Construtor da classe NoB, que inicializa o nó com a ordem da árvore e se é folha ou não
+NoB::NoB(int ordemArvore, bool novoEFolha)
+{
     eFolha = novoEFolha;
     chavesPreenchidas = 0;
     chaves.resize(ordemArvore - 1);
@@ -11,11 +13,14 @@ NoB::NoB(int ordemArvore, bool novoEFolha) {
     filhos.resize(ordemArvore);
 }
 
-void NoB::addChave(int novaChave, shared_ptr<Player> jogador) {
+// Método para adicionar uma nova chave e o jogador associado ao nó
+void NoB::addChave(int novaChave, shared_ptr<Player> jogador)
+{
     int i = chavesPreenchidas - 1;
 
     // desloca os elementos para a direita dentro do vetor
-    while (i >= 0 && novaChave < chaves[i]) {
+    while (i >= 0 && novaChave < chaves[i])
+    {
         chaves[i + 1] = chaves[i];
         jogadores[i + 1] = jogadores[i];
         i--;
@@ -26,11 +31,14 @@ void NoB::addChave(int novaChave, shared_ptr<Player> jogador) {
     chavesPreenchidas++;
 }
 
-
-void NoB::addFilho(NoB* novoFilho){
+// Método para adicionar um novo filho ao nó
+void NoB::addFilho(NoB *novoFilho)
+{
     filhos.push_back(novoFilho);
 }
 
-void NoB::setEFolha(bool novoEFolha){
+// Método para definir se o nó é uma folha ou não
+void NoB::setEFolha(bool novoEFolha)
+{
     eFolha = novoEFolha;
 }

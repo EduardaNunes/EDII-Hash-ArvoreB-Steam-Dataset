@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include <algorithm> 
+#include <algorithm>
 #include <cctype>
 
 using namespace std;
@@ -14,6 +14,7 @@ class Utils
 public:
     Utils() {};
 
+    // Função para dividir uma string em tokens com base em um delimitador
     vector<string> split(const string &str, char delimitador)
     {
         vector<string> tokens;
@@ -32,10 +33,11 @@ public:
         return tokens;
     }
 
+    // Função para verificar se uma string é um ID de jogador válido
     bool verificaIdJogador(const string &s)
     {
         return s.length() == 17 && all_of(s.begin(), s.end(), ::isdigit);
     }
 };
 
-#endif 
+#endif

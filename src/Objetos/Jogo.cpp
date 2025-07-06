@@ -4,7 +4,8 @@
 
 using namespace std;
 
-Jogo::Jogo(string novoId, string novoTitulo, vector<string> novosDesenvolvedores, vector<string> novosPublishers, vector<string> novosGeneros, vector<string> novosIdiomas, string novaDataDeLancamento){
+Jogo::Jogo(string novoId, string novoTitulo, vector<string> novosDesenvolvedores, vector<string> novosPublishers, vector<string> novosGeneros, vector<string> novosIdiomas, string novaDataDeLancamento)
+{
     id = novoId;
     titulo = novoTitulo;
     desenvolvedores = novosDesenvolvedores;
@@ -14,34 +15,42 @@ Jogo::Jogo(string novoId, string novoTitulo, vector<string> novosDesenvolvedores
     dataDeLancamento = novaDataDeLancamento;
 }
 
-string Jogo::getId() const {
+string Jogo::getId() const
+{
     return id;
 };
 
-string Jogo::getTitutlo() const{
+string Jogo::getTitutlo() const
+{
     return titulo;
 };
 
-vector<string> Jogo::getDesenvolvedores(){
+vector<string> Jogo::getDesenvolvedores()
+{
     return desenvolvedores;
 };
 
-vector<string> Jogo::getPublishers(){
+vector<string> Jogo::getPublishers()
+{
     return publishers;
 };
 
-vector<string> Jogo::getGeneros(){
+vector<string> Jogo::getGeneros()
+{
     return generos;
 };
 
-vector<string> Jogo::getIdiomas(){
+vector<string> Jogo::getIdiomas()
+{
     return idiomas;
 };
 
-string Jogo::getDataDeLancamento(){
+string Jogo::getDataDeLancamento()
+{
     return dataDeLancamento;
 };
 
-void Jogo::adicionaConquista(shared_ptr<Conquista> novaConquista){
+void Jogo::adicionaConquista(shared_ptr<Conquista> novaConquista)
+{
     conquistas.push_back(novaConquista);
 }

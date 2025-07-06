@@ -1,3 +1,4 @@
+// arquivo para definir os caminhos dos arquivos CSV utilizados no projeto
 #define CSV_ACHIEVEMENTS_PATH "../steam/achievements.csv"
 #define CSV_GAMES_PATH "../steam/games.csv"
 #define CSV_HISTORY_PATH "../steam/history.csv"

@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 
+// template para o nó da lista encadeada
 template <typename T>
 struct Node
 {
@@ -13,6 +14,7 @@ struct Node
     Node(T d) : data(d), proximo(nullptr) {}
 };
 
+// Classe LinkedList que implementa uma lista encadeada genérica
 template <typename T>
 class LinkedList
 {
@@ -21,7 +23,7 @@ private:
 
 public:
     LinkedList() : head(nullptr) {}
-    
+
     Node<T> *getHead() const
     {
         return head;
@@ -38,6 +40,7 @@ public:
         }
     }
 
+    // Insere um novo nó no início da lista
     void insere(T data)
     {
         Node<T> *node = new Node<T>(data);
@@ -45,8 +48,8 @@ public:
         head = node;
     }
 
-    // Corrigir busca para retornar T (shared_ptr<T>), não shared_ptr<shared_ptr<T>>
-    T busca(const std::string& id) const
+    // Busca um nó na lista pelo ID
+    T busca(const std::string &id) const
     {
         Node<T> *atual = head;
         while (atual)
@@ -58,12 +61,14 @@ public:
         return nullptr;
     }
 
+    // Verifica se a lista está vazia
     bool eVazio() const
     {
         return head == nullptr;
     }
 
-    bool remove(const std::string& id) 
+    // Remove um nó da lista pelo ID
+    bool remove(const std::string &id)
     {
         Node<T> *atual = head;
         Node<T> *prev = nullptr;
@@ -86,10 +91,13 @@ public:
         return false;
     }
 
-    template<typename Func>
-    void forEach(Func func) const {
+    // realiza uma operação para cada elemento da lista
+    template <typename Func>
+    void forEach(Func func) const
+    {
         Node<T> *atual = head;
-        while (atual) {
+        while (atual)
+        {
             func(atual->data);
             atual = atual->proximo;
         }

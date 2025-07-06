@@ -8,16 +8,17 @@
 
 using namespace std;
 
+// HashPlayers é uma classe responsável por popular uma tabela hash com jogadores, jogos e conquistas.
 class HashPlayers
 {
-    private:
-        void adicionaPlayersNaHash(TabelaHash<Player> &tabelaJogadores);
-        void adicionaJogosNaHash(TabelaHash<Jogo> &tabelaJogos);
-        void adicionaJogosNosPlayers(TabelaHash<Player> &tabelaJogadores, MetodoDeColisao metodoDeColisao);
-        void adicionaConquistasNaHash(TabelaHash<Conquista> &tabelaConquistas);
-        void adicionaConquistasNosPlayers(TabelaHash<Player> &tabelaJogadores, MetodoDeColisao metodoDeColisao);
+private:
+    void adicionaPlayersNaHash(TabelaHash<Player> &tabelaJogadores);
+    void adicionaJogosNaHash(TabelaHash<Jogo> &tabelaJogos);
+    void adicionaJogosNosPlayers(TabelaHash<Player> &tabelaJogadores, MetodoDeColisao metodoDeColisao);
+    void adicionaConquistasNaHash(TabelaHash<Conquista> &tabelaConquistas);
+    void adicionaConquistasNosPlayers(TabelaHash<Player> &tabelaJogadores, MetodoDeColisao metodoDeColisao);
 
-    public:
-        HashPlayers(){}
-        void populaTabelaComPlayers(TabelaHash<Player>& tabelaAlvo, MetodoDeColisao metodoDeColisao); 
+public:
+    HashPlayers() {}
+    void populaTabelaComPlayers(TabelaHash<Player> &tabelaAlvo, MetodoDeColisao metodoDeColisao);
 };

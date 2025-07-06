@@ -9,7 +9,7 @@
 #include "Conquista.h"
 
 using namespace std;
-
+// A classe Player representa um jogador no sistema, contendo informações de ID, país, data de criação da conta, jogos associados e conquistas obtidas.
 class Player
 {
 private:
@@ -36,12 +36,12 @@ public:
     friend ostream &operator<<(ostream &os, const Player &p)
     {
         os << "==================== PLAYER ====================\n"
-        << "> ID: " << p.id << "\n"
-        << "> Pais: " << p.pais << "\n"
-        << "> Conta criada em: " << p.dataDeCriacao << "\n"
-        << "> Quantidade de Jogos: " << p.jogos.size() << "\n"
-        << "> Quantidade de Conquistas: " << p.conquistas.size() << "\n"
-        << "================================================";
+           << "> ID: " << p.id << "\n"
+           << "> Pais: " << p.pais << "\n"
+           << "> Conta criada em: " << p.dataDeCriacao << "\n"
+           << "> Quantidade de Jogos: " << p.jogos.size() << "\n"
+           << "> Quantidade de Conquistas: " << p.conquistas.size() << "\n"
+           << "================================================";
         return os;
     }
 };
