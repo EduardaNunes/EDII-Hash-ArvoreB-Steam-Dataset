@@ -11,8 +11,10 @@
 
 using namespace std;
 
+// Construtor da classe Menu, inicializa as tabelas hash e a árvore B
 Menu::Menu() : tabelaHash(1, MetodoDeColisao::ENCADEAMENTO), hashJogos(1, MetodoDeColisao::ENCADEAMENTO), arvoreBJogos(64), arvoreBConquistas(64) {}
 
+// menuInicial é o ponto de entrada do programa, onde o usuário pode escolher opções para interagir com o sistema
 void Menu::menuInicial()
 {
     inicializarTabelaHashPlayers();
@@ -60,6 +62,7 @@ void Menu::menuInicial()
     } while (opcao != 0);
 }
 
+// menuDeConsultas exibe um menu com opções de consultas sobre jogadores, jogos e conquistas
 void Menu::menuDeConsultas()
 {
     string entrada, id, minStr, maxStr, quantidadeTop;
@@ -230,6 +233,7 @@ void Menu::menuDeConsultas()
     } while (opcao != 0);
 }
 
+// Inicializa a tabela hash de jogadores com dados pré-carregados
 void Menu::inicializarTabelaHashPlayers()
 {
     int metodoColisao;
@@ -259,15 +263,16 @@ void Menu::inicializarTabelaHashPlayers()
     cout << "Tabela criada e jogadores carregados!\n";
 }
 
+// Inicializa a tabela hash de jogos com dados pré-carregados
 void Menu::inicializarTabelaHashJogos()
 {
     cout << "Criando tabela hash para jogos...\n";
     HashPlayers hashPlayersUtil;
-    // Cria a hash de jogos para jogadores apenas uma vez, ao iniciar o sistema
     hashPlayersUtil.criaHashJogosParaJogadores(hashJogos, tabelaHash);
     cout << "Tabela hash de jogos criada com sucesso!\n";
 }
 
+// Inicializa a árvore B com os jogadores indexados por jogos e conquistas
 void Menu::inicializarArvoreB()
 {
     cout << "Indexando jogadores por quantidade de jogos na Arvore B...\n";
@@ -279,6 +284,7 @@ void Menu::inicializarArvoreB()
     cout << "Arvores B construidas com sucesso!\n";
 }
 
+// menuBuscaHash permite ao usuário buscar um jogador pelo ID
 void Menu::menuBuscaHash()
 {
     string id;
@@ -287,7 +293,7 @@ void Menu::menuBuscaHash()
     cout << "Digite o ID do jogador: ";
     getline(cin, id);
 
-    auto p = tabelaHash.busca(id); // agora é shared_ptr<Player>
+    auto p = tabelaHash.busca(id);
     if (p)
     {
         cout << *p << endl;
@@ -298,6 +304,7 @@ void Menu::menuBuscaHash()
     }
 }
 
+// menuInsercaoHash permite ao usuário inserir um novo jogador na tabela hash
 void Menu::menuInsercaoHash()
 {
     string id, pais;
@@ -336,12 +343,12 @@ void Menu::menuInsercaoHash()
     getline(cin, pais);
 
     auto novoJogador = make_shared<Player>(id, pais);
-    // Player novoJogador(id, pais);
 
     tabelaHash.insere(novoJogador);
     cout << "Jogador inserido com sucesso!\n";
 }
 
+// imprimeTopJogadores exibe os top N jogadores com mais jogos ou conquistas, dependendo do tipo de indexação
 void Menu::imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo)
 {
 
@@ -392,6 +399,7 @@ void Menu::imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo)
 
 }
 
+// imprimeIntervaloDeJogadores exibe jogadores dentro de um intervalo de jogos ou conquistas, dependendo do tipo de indexação
 void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo)
 {
 
@@ -435,6 +443,7 @@ void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo)
 
 }
 
+// imprimeEstatisticasJogos exibe estatísticas gerais do sistema, como média de jogos e conquistas por jogador, e ranking de países com mais jogadores
 void Menu::imprimeEstatisticasJogos() {
     int totalJogadores = 0;
     int totalJogos = 0;
@@ -467,7 +476,6 @@ void Menu::imprimeEstatisticasJogos() {
     cout << " - Media de conquistas por jogador: " << mediaConquistas << endl;
     cout << "===========================================\n";
 
-    // Transforma em vetor e ordena por quantidade de pessoas por país
     vector<pair<string, int>> rankingPaises(jogadoresPorPais.begin(), jogadoresPorPais.end());
     sort(rankingPaises.begin(), rankingPaises.end(), [](const auto& a, const auto& b) {
         return b.second < a.second;
@@ -483,6 +491,7 @@ void Menu::imprimeEstatisticasJogos() {
 
 }
 
+// imprimeTopJogos exibe os jogos mais adquiridos, mostrando o título e a quantidade de jogadores que os possuem
 void Menu::imprimeTopJogos(int quantidade) {
 
     unordered_map<string, pair<string, int>> jogoFrequencia;  // id -> {titulo, contagem}
@@ -522,6 +531,7 @@ void Menu::imprimeTopJogos(int quantidade) {
     cout << "================================================\n";
 }
 
+// imprimeJogadoresDoJogo exibe os jogadores que possuem um determinado jogo, identificado pelo ID
 void Menu::imprimeJogadoresDoJogo(const string &id)
 {
     auto p = hashJogos.busca(id);
@@ -535,6 +545,7 @@ void Menu::imprimeJogadoresDoJogo(const string &id)
     }
 }
 
+// imprimeJogosOuConquistasDoJogador exibe os jogos ou conquistas de um jogador, dependendo do tipo de indexação
 void Menu::imprimeJogosOuConquistasDoJogador(const string& id, TipoDeIndexacao tipo)
 {
     auto p = tabelaHash.busca(id);
