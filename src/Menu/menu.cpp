@@ -564,7 +564,7 @@ void Menu::imprimeJogosOuConquistasDoJogador(const string& id, TipoDeIndexacao t
             if (jogos[i])
             {
                 cout << setw(4) << (i + 1) << " "
-                     <<  jogos[i]->getTitutlo() << endl;
+                     <<  jogos[i]->getTitulo() << endl;
             }
         }
 
