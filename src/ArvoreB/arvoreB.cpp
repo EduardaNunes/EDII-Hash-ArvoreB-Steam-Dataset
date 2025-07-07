@@ -7,11 +7,13 @@
 
 using namespace std;
 
+// Construtor da ArvoreB
 ArvoreB::ArvoreB(int novaOrdem){
     ordem = novaOrdem;
     raiz = new NoB(ordem, true); 
 }
 
+// Busca um jogador na árvore B pela chave
 void ArvoreB::indexarPorJogos(const TabelaHash<Player>& tabelaJogadores) {
     tabelaJogadores.forEach([this](const shared_ptr<Player>& player) {
         if (player) {
@@ -21,6 +23,7 @@ void ArvoreB::indexarPorJogos(const TabelaHash<Player>& tabelaJogadores) {
     });
 }
 
+// Indexa jogadores na árvore B com base no número de conquistas
 void ArvoreB::indexarPorConquistas(const TabelaHash<Player>& tabelaJogadores){
     tabelaJogadores.forEach([this](const shared_ptr<Player>& player) {
         if (player) {
@@ -29,13 +32,14 @@ void ArvoreB::indexarPorConquistas(const TabelaHash<Player>& tabelaJogadores){
         }
     });
 }
-
+// Busca um jogador na árvore B pela chave
 vector<shared_ptr<Player>> ArvoreB::buscaTopJogadores(int quantidade){
     vector<shared_ptr<Player>> topJogadores;
     buscaTopJogadoresAuxiliar(raiz, quantidade, topJogadores);
     return topJogadores;
 }
 
+// Função auxiliar para buscar os top jogadores na árvore B
 void ArvoreB::buscaTopJogadoresAuxiliar(NoB* no, int quantidade, vector<shared_ptr<Player>>& jogadores) {
     if (!no || jogadores.size() >= quantidade) return;
 
@@ -60,12 +64,14 @@ void ArvoreB::buscaTopJogadoresAuxiliar(NoB* no, int quantidade, vector<shared_p
     }
 }
 
+// Busca jogadores por intervalo de chaves na árvore B
 vector<shared_ptr<Player>> ArvoreB::buscaPorIntervalo(int min, int max) {
     vector<shared_ptr<Player>> jogadores;
     buscaPorIntervaloAuxiliar(raiz, min, max, jogadores);
     return jogadores;
 }
 
+// Função auxiliar para buscar jogadores por intervalo de chaves na árvore B
 void ArvoreB::buscaPorIntervaloAuxiliar(NoB* no, int min, int max, vector<shared_ptr<Player>>& jogadores) {
     if (!no) return;
 
@@ -88,6 +94,7 @@ void ArvoreB::buscaPorIntervaloAuxiliar(NoB* no, int min, int max, vector<shared
     }
 }
 
+// Insere um novo jogador na árvore B
 void ArvoreB::insere(int chave, shared_ptr<Player> jogador){
 
     if (raiz->chavesPreenchidas == (ordem - 1)) {
@@ -103,6 +110,7 @@ void ArvoreB::insere(int chave, shared_ptr<Player> jogador){
 
 }
 
+// Insere um jogador em um nó que não está cheio
 void ArvoreB::inserirNaoCheio(NoB* no, int chave, shared_ptr<Player> jogador) {
     int i = no->chavesPreenchidas - 1;
 
@@ -124,6 +132,7 @@ void ArvoreB::inserirNaoCheio(NoB* no, int chave, shared_ptr<Player> jogador) {
     }
 }
 
+// Divide um filho de um nó quando ele está cheio
 void ArvoreB::dividirFilho(NoB* pai, int i, NoB* filho) {
     NoB* novoFilho = new NoB(ordem, filho->eFolha);            
     novoFilho->chavesPreenchidas = (ordem - 1) / 2;            // metade das chaves
@@ -150,6 +159,7 @@ void ArvoreB::dividirFilho(NoB* pai, int i, NoB* filho) {
     pai->chavesPreenchidas++;
 }
 
+// Busca um jogador na árvore B pela chave
 shared_ptr<Player> ArvoreB::busca(int chave) {
     if (raiz->chavesPreenchidas == 0) {
         return nullptr;
@@ -157,6 +167,7 @@ shared_ptr<Player> ArvoreB::busca(int chave) {
     return buscaAuxiliar(raiz, chave);
 }
 
+// Função auxiliar para buscar um jogador na árvore B
 shared_ptr<Player> ArvoreB::buscaAuxiliar(NoB* no, int chave) {
     int i = 0;
 
@@ -175,11 +186,12 @@ shared_ptr<Player> ArvoreB::buscaAuxiliar(NoB* no, int chave) {
     return buscaAuxiliar(no->filhos[i], chave);
 }
 
-
+// Retorna a ordem da árvore B
 int ArvoreB::getOrdem(){
     return ordem;
 }
 
+// Retorna a raiz da árvore B
 NoB* ArvoreB::getRaiz(){
     return raiz;
 }

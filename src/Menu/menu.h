@@ -9,6 +9,7 @@
 #include "../Utils/utils.h"
 #include "../config.h"
 
+// classe menu que gerencia a interação com o usuário
 class Menu
 {
 private:
