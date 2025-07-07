@@ -39,8 +39,8 @@ public:
         os << "\n==================================== PLAYER ====================================\n";
         os << left
         << setw(23) << "ID"
-        << setw(15) << "País"
-        << setw(20) << "Data de Criação"
+        << setw(15) << "Pais"
+        << setw(20) << "Data de Criacao"
         << setw(10) << "Jogos"
         << "Conquistas" << endl;
 
