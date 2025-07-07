@@ -429,8 +429,8 @@ void Menu::imprimeEstatisticasJogos() {
 
     cout << "\n=========== ESTATÍSTICAS GERAIS ===========\n";
     cout << fixed << setprecision(2);
-    cout << " - Média de jogos por jogador:      " << mediaJogos << endl;
-    cout << " - Média de conquistas por jogador: " << mediaConquistas << endl;
+    cout << " - Media de jogos por jogador:      " << mediaJogos << endl;
+    cout << " - Media de conquistas por jogador: " << mediaConquistas << endl;
     cout << "===========================================\n";
 
     // Transforma em vetor e ordena por quantidade de pessoas por país
@@ -439,7 +439,7 @@ void Menu::imprimeEstatisticasJogos() {
         return b.second < a.second;
     });
 
-    cout << "\n====== TOP 5 PAÍSES COM MAIS JOGADORES ======\n";
+    cout << "\n====== TOP 5 PAISES COM MAIS JOGADORES ======\n";
     for (int i = 0; i < min(5, static_cast<int>(rankingPaises.size())); ++i) {
         cout << " " << setw(2) << (i + 1) << ". "
             << setw(20) << left << rankingPaises[i].first
