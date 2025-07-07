@@ -495,7 +495,7 @@ void Menu::imprimeTopJogos(int quantidade) {
         for (const auto& jogo : jogos) {
             if (!jogo) continue;
             string id = jogo->getId();
-            string titulo = jogo->getTitutlo();
+            string titulo = jogo->getTitulo();
 
             auto& entrada = jogoFrequencia[id];
             entrada.first = titulo;      // título

@@ -20,7 +20,7 @@ string Jogo::getId() const
     return id;
 };
 
-string Jogo::getTitutlo() const
+string Jogo::getTitulo() const
 {
     return titulo;
 };
