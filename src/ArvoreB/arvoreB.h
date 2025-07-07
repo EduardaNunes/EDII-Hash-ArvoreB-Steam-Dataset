@@ -23,7 +23,7 @@ private:
     int ordem;
     NoB *raiz;
 
-    bool buscaAuxiliar(NoB *no, int chave);
+    shared_ptr<Player> buscaAuxiliar(NoB *no, int chave);
     void inserirNaoCheio(NoB *no, int chave, shared_ptr<Player> jogador);
     void dividirFilho(NoB *pai, int i, NoB *y);
 
@@ -33,7 +33,7 @@ private:
 public:
     ArvoreB(int ordem);
 
-    bool busca(int chave);
+    shared_ptr<Player> busca(int chave);
     void insere(int chave, shared_ptr<Player> jogador);
 
     int getOrdem();

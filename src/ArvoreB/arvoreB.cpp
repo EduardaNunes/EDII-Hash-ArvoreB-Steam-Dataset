@@ -150,29 +150,31 @@ void ArvoreB::dividirFilho(NoB* pai, int i, NoB* filho) {
     pai->chavesPreenchidas++;
 }
 
-// Mudar depois de bool para o tipo de informação que será retornada
-bool ArvoreB::busca(int chave){
-
-    if(raiz->chavesPreenchidas == 0){
-        return false;
+shared_ptr<Player> ArvoreB::busca(int chave) {
+    if (raiz->chavesPreenchidas == 0) {
+        return nullptr;
     }
-
     return buscaAuxiliar(raiz, chave);
 }
 
-bool ArvoreB::buscaAuxiliar(NoB* no, int chave){
-
+shared_ptr<Player> ArvoreB::buscaAuxiliar(NoB* no, int chave) {
     int i = 0;
-    
+
     while (i < no->chavesPreenchidas && chave > no->chaves[i]) {
         i++;
     }
 
-    if (i < no->chavesPreenchidas && chave == no->chaves[i]) return true;
+    if (i < no->chavesPreenchidas && chave == no->chaves[i]) {
+        return no->jogadores[i]; // retorna o jogador encontrado
+    }
 
-    if(no->eFolha) return false;
+    if (no->eFolha) {
+        return nullptr; // não encontrou
+    }
+
     return buscaAuxiliar(no->filhos[i], chave);
 }
+
 
 int ArvoreB::getOrdem(){
     return ordem;
