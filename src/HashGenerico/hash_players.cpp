@@ -133,3 +133,29 @@ void HashPlayers::adicionaConquistasNosPlayers(TabelaHash<Player> &tabelaJogador
         if (player && conquista)
             player->addConquista(conquista); });
 }
+
+// Cria uma tabela hash que relaciona jogos e jogadores, onde cada jogo tem uma lista de jogadores que o possuem
+void HashPlayers::criaHashJogosParaJogadores(TabelaHash<JogadoresDoJogo> &tabelaJogos, const TabelaHash<Player> &tabelaPlayers)
+{
+    int totalJogos = leitor.contadorCSV(CSV_GAMES_PATH);
+    int tamanhoTabela = static_cast<int>(totalJogos);
+    tamanhoTabela = static_cast<int>(ceil(tamanhoTabela / 0.7));
+    tabelaJogos = TabelaHash<JogadoresDoJogo>(tamanhoTabela, MetodoDeColisao::ENCADEAMENTO);
+
+    tabelaPlayers.forEach([&](const shared_ptr<Player> &player) {
+        for (const auto &jogo : player->getJogos()) {
+            if (jogo) {
+                string idJogo = jogo->getId();
+                auto jogadoresDoJogo = tabelaJogos.busca(idJogo);
+
+                if (!jogadoresDoJogo) {
+                    jogadoresDoJogo = make_shared<JogadoresDoJogo>();
+                    jogadoresDoJogo->idJogo = idJogo;
+                    tabelaJogos.insere(jogadoresDoJogo);
+                }
+
+                jogadoresDoJogo->addJogador(player->getId());
+            }
+        }
+    });
+}

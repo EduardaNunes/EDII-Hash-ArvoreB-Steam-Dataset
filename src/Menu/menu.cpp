@@ -9,11 +9,12 @@
 
 using namespace std;
 
-Menu::Menu() : tabelaHash(1, MetodoDeColisao::ENCADEAMENTO), arvoreBJogos(64), arvoreBConquistas(64) {}
+Menu::Menu() : tabelaHash(1, MetodoDeColisao::ENCADEAMENTO), hashJogos(1, MetodoDeColisao::ENCADEAMENTO), arvoreBJogos(64), arvoreBConquistas(64) {}
 
 void Menu::menuInicial()
 {
-    inicializarTabelaHash();
+    inicializarTabelaHashPlayers();
+    inicializarTabelaHashJogos();
     inicializarArvoreB();
 
     int opcao;
@@ -110,7 +111,8 @@ void Menu::menuDeConsultas()
                         cout << "Jogos do jogador " << id << ":\n";
                         for (const auto &jogo : jogos)
                         {
-                            if (jogo) {
+                            if (jogo)
+                            {
                                 cout << "- " << jogo->getTitutlo() << " (ID: " << jogo->getId() << ")\n";
                             }
                         }
@@ -135,7 +137,7 @@ void Menu::menuDeConsultas()
                 cout << "A quantidade do top precisa ser numericos." << endl;
                 continue;
             }
-            
+
             imprimeTopJogadores(quantidade, TipoDeIndexacao::JOGOS);
 
             break;
@@ -152,7 +154,7 @@ void Menu::menuDeConsultas()
                 cout << "A quantidade do top precisa ser numericos." << endl;
                 continue;
             }
-            
+
             imprimeTopJogadores(quantidade, TipoDeIndexacao::CONQUISTAS);
             break;
         case 5:
@@ -170,7 +172,7 @@ void Menu::menuDeConsultas()
                 cout << "O minimo e maximo precisam ser numericos." << endl;
                 continue;
             }
-            
+
             imprimeIntervaloDeJogadores(min, max, TipoDeIndexacao::JOGOS);
             break;
         case 6:
@@ -188,13 +190,13 @@ void Menu::menuDeConsultas()
                 cout << "O minimo e maximo precisam ser numericos." << endl;
                 continue;
             }
-            
+
             imprimeIntervaloDeJogadores(min, max, TipoDeIndexacao::CONQUISTAS);
             break;
         case 7:
             cout << "Digite o id do jogo: ";
             getline(cin, id);
-            // adicionar aqui a função
+            imprimeJogadoresDoJogo(id);
             break;
         case 8:
             // adicionar aqui a função
@@ -209,7 +211,7 @@ void Menu::menuDeConsultas()
     } while (opcao != 0);
 }
 
-void Menu::inicializarTabelaHash()
+void Menu::inicializarTabelaHashPlayers()
 {
     int metodoColisao;
     while (true)
@@ -236,6 +238,15 @@ void Menu::inicializarTabelaHash()
 
     geradorDePlayers.populaTabelaComPlayers(this->tabelaHash, estrategia);
     cout << "Tabela criada e jogadores carregados!\n";
+}
+
+void Menu::inicializarTabelaHashJogos()
+{
+    cout << "Criando tabela hash para jogos...\n";
+    HashPlayers hashPlayersUtil;
+    // Cria a hash de jogos para jogadores apenas uma vez, ao iniciar o sistema
+    hashPlayersUtil.criaHashJogosParaJogadores(hashJogos, tabelaHash);
+    cout << "Tabela hash de jogos criada com sucesso!\n";
 }
 
 void Menu::inicializarArvoreB()
@@ -306,25 +317,29 @@ void Menu::menuInsercaoHash()
     getline(cin, pais);
 
     auto novoJogador = make_shared<Player>(id, pais);
-    //Player novoJogador(id, pais);
+    // Player novoJogador(id, pais);
 
     tabelaHash.insere(novoJogador);
     cout << "Jogador inserido com sucesso!\n";
 }
 
-void Menu::imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo){
+void Menu::imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo)
+{
 
     vector<shared_ptr<Player>> topJogadores;
 
-    if(tipo == TipoDeIndexacao::JOGOS) {
+    if (tipo == TipoDeIndexacao::JOGOS)
+    {
         topJogadores = arvoreBJogos.buscaTopJogadores(quantidade);
     }
 
-    else if(tipo == TipoDeIndexacao::CONQUISTAS) {
+    else if (tipo == TipoDeIndexacao::CONQUISTAS)
+    {
         topJogadores = arvoreBConquistas.buscaTopJogadores(quantidade);
     }
 
-    else{
+    else
+    {
         cout << "Tipo de indexacao invalido!" << endl;
         return;
     }
@@ -337,19 +352,32 @@ void Menu::imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo){
         if (jogador)
         {
             cout << "==================== Top " << i << " ====================\n"
-            << "> ID: " << jogador->getId() << "\n"
-            << "> Pais: " << jogador->getPais() << "\n"
-            << "> Conta criada em: " << jogador->getDataDeCriacao() << "\n"
-            << "> Quantidade de Jogos: " << jogador->getJogos().size() << "\n"
-            << "> Quantidade de Conquistas: " << jogador->getConquistas().size() << "\n";
+                 << "> ID: " << jogador->getId() << "\n"
+                 << "> Pais: " << jogador->getPais() << "\n"
+                 << "> Conta criada em: " << jogador->getDataDeCriacao() << "\n"
+                 << "> Quantidade de Jogos: " << jogador->getJogos().size() << "\n"
+                 << "> Quantidade de Conquistas: " << jogador->getConquistas().size() << "\n";
         }
         i++;
     }
     cout << "================================================\n";
-
 }
 
-void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo){
+void Menu::imprimeJogadoresDoJogo(const string &id)
+{
+    auto p = hashJogos.busca(id);
+    if (p && !p->jogadores.empty())
+    {
+        p->imprimeJogadores();
+    }
+    else
+    {
+        cout << "Nenhum jogador possui este jogo ou jogo nao encontrado.\n";
+    }
+}
+
+void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo)
+{
 
     vector<shared_ptr<Player>> intervaloDeJogadores;
 
@@ -358,7 +386,7 @@ void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo){
     case TipoDeIndexacao::JOGOS:
         intervaloDeJogadores = arvoreBJogos.buscaPorIntervalo(min, max);
         break;
-    
+
     case TipoDeIndexacao::CONQUISTAS:
         intervaloDeJogadores = arvoreBConquistas.buscaPorIntervalo(min, max);
         break;
@@ -377,7 +405,6 @@ void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo){
         }
     }
     cout << "\n================================================"
-    << "\nNumero de jogadores encontrados: " << intervaloDeJogadores.size()
-    << "\n================================================\n";
-
+         << "\nNumero de jogadores encontrados: " << intervaloDeJogadores.size()
+         << "\n================================================\n";
 }

@@ -13,12 +13,14 @@ class Menu
 {
 private:
     TabelaHash<Player> tabelaHash;
+    TabelaHash<JogadoresDoJogo> hashJogos;
     ArvoreB arvoreBJogos;
     ArvoreB arvoreBConquistas;
 
     void menuDeConsultas();
     
-    void inicializarTabelaHash();
+    void inicializarTabelaHashPlayers();
+    void inicializarTabelaHashJogos();
     void inicializarArvoreB();
 
     void menuBuscaHash();
@@ -26,7 +28,7 @@ private:
 
     void imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo);
     void imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo);
-
+    void imprimeJogadoresDoJogo(const string &id);
 
 public: 
     Menu();
