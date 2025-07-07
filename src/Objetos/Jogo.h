@@ -25,7 +25,7 @@ public:
     Jogo() {};
 
     string getId() const;
-    string getTitutlo() const;
+    string getTitulo() const;
     vector<string> getDesenvolvedores();
     vector<string> getPublishers();
     vector<string> getGeneros();
