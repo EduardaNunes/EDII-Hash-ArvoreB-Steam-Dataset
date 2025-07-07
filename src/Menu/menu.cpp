@@ -128,72 +128,89 @@ void Menu::menuDeConsultas()
             }
             break;
         case 3:
-            cout << "\nDigite a quantidade do top a ser buscado: ";
-            getline(cin, quantidadeTop);
-
-            try
-            {
-                quantidade = stoi(quantidadeTop);
+            while (true) {
+                cout << "\nDigite a quantidade do top a ser buscado: ";
+                getline(cin, quantidadeTop);
+                try {
+                    quantidade = stoi(quantidadeTop);
+                    if (quantidade <= 0) {
+                        cout << "A quantidade deve ser um numero positivo.\n";
+                        continue;
+                    }
+                } catch (...) {
+                    cout << "A quantidade do top precisa ser numerica.\n";
+                    continue;
+                }
+                break;
             }
-            catch (...)
-            {
-                cout << "A quantidade do top precisa ser numericos." << endl;
-                continue;
-            }
-
             imprimeTopJogadores(quantidade, TipoDeIndexacao::JOGOS);
-
             break;
         case 4:
-            cout << "\nDigite a quantidade do top a ser buscado: ";
-            getline(cin, quantidadeTop);
-
-            try
-            {
-                quantidade = stoi(quantidadeTop);
+            while (true) {
+                cout << "\nDigite a quantidade do top a ser buscado: ";
+                getline(cin, quantidadeTop);
+                try {
+                    quantidade = stoi(quantidadeTop);
+                    if (quantidade <= 0) {
+                        cout << "A quantidade deve ser um nemero positivo.\n";
+                        continue;
+                    }
+                } catch (...) {
+                    cout << "A quantidade do top precisa ser numerica.\n";
+                    continue;
+                }
+                break;
             }
-            catch (...)
-            {
-                cout << "A quantidade do top precisa ser numericos." << endl;
-                continue;
-            }
-
             imprimeTopJogadores(quantidade, TipoDeIndexacao::CONQUISTAS);
             break;
         case 5:
-            cout << "Digite o numero minimo de jogos: ";
-            getline(cin, minStr);
-            cout << "Digite o numero maximo de jogos: ";
-            getline(cin, maxStr);
-            try
-            {
-                min = stoi(minStr);
-                max = stoi(maxStr);
+            while (true) {
+                cout << "Digite o numero minimo de jogos: ";
+                getline(cin, minStr);
+                cout << "Digite o numero maximo de jogos: ";
+                getline(cin, maxStr);
+                try {
+                    min = stoi(minStr);
+                    max = stoi(maxStr);
+                    if (min < 0 || max < 0) {
+                        cout << "Os valores minimo e maximo devem ser positivos.\n";
+                        continue;
+                    }
+                    if (min > max) {
+                        cout << "O valor minimo nao pode ser maior que o maximo.\n";
+                        continue;
+                    }
+                } catch (...) {
+                    cout << "O minimo e maximo precisam ser numericos.\n";
+                    continue;
+                }
+                break;
             }
-            catch (...)
-            {
-                cout << "O minimo e maximo precisam ser numericos." << endl;
-                continue;
-            }
-
             imprimeIntervaloDeJogadores(min, max, TipoDeIndexacao::JOGOS);
             break;
         case 6:
-            cout << "Digite o numero minimo de conquistas: ";
-            getline(cin, minStr);
-            cout << "Digite o numero maximo de conquistas: ";
-            getline(cin, maxStr);
-            try
-            {
-                min = stoi(minStr);
-                max = stoi(maxStr);
+            while (true) {
+                cout << "Digite o numero minimo de conquistas: ";
+                getline(cin, minStr);
+                cout << "Digite o numero maximo de conquistas: ";
+                getline(cin, maxStr);
+                try {
+                    min = stoi(minStr);
+                    max = stoi(maxStr);
+                    if (min < 0 || max < 0) {
+                        cout << "Os valores minimo e maximo devem ser positivos.\n";
+                        continue;
+                    }
+                    if (min > max) {
+                        cout << "O valor minimo nao pode ser maior que o maximo.\n";
+                        continue;
+                    }
+                } catch (...) {
+                    cout << "O minimo e maximo precisam ser numericos.\n";
+                    continue;
+                }
+                break;
             }
-            catch (...)
-            {
-                cout << "O minimo e maximo precisam ser numericos." << endl;
-                continue;
-            }
-
             imprimeIntervaloDeJogadores(min, max, TipoDeIndexacao::CONQUISTAS);
             break;
         case 7:
@@ -520,4 +537,17 @@ void Menu::imprimeTopJogos(int quantidade) {
             << "| Jogadores: " << ranking[i].second << endl;
     }
     cout << "================================================\n";
+}
+
+void Menu::imprimeJogadoresDoJogo(const string &id)
+{
+    auto p = hashJogos.busca(id);
+    if (p && !p->jogadores.empty())
+    {
+        p->imprimeJogadores();
+    }
+    else
+    {
+        cout << "Nenhum jogador possui este jogo ou jogo nao encontrado.\n";
+    }
 }
