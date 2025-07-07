@@ -4,6 +4,8 @@
 #include <limits>
 #include <cmath>
 #include <vector>
+#include <unordered_map>
+#include <iomanip>
 
 #include "menu.h"
 
@@ -74,7 +76,8 @@ void Menu::menuDeConsultas()
         cout << "5 - Mostrar jogadores entre um intervalo de jogos\n";
         cout << "6 - Mostrar jogadores entre um intervalo de conquistas\n";
         cout << "7 - Buscar jogadores que possuem determinado jogo\n";
-        cout << "8 - Estatisticas do sistema\n";
+        cout << "8 - Mostrar Top N jogos adquiridos\n";
+        cout << "9 - Estatisticas do sistema\n";
         cout << "0 - Voltar\n";
         cout << "Escolha: ";
         getline(cin, entrada);
@@ -199,7 +202,23 @@ void Menu::menuDeConsultas()
             imprimeJogadoresDoJogo(id);
             break;
         case 8:
-            // adicionar aqui a função
+            cout << "\nDigite a quantidade do top a ser buscado: ";
+            getline(cin, quantidadeTop);
+
+            try
+            {
+                quantidade = stoi(quantidadeTop);
+            }
+            catch (...)
+            {
+                cout << "A quantidade do top precisa ser numericos." << endl;
+                continue;
+            }
+            imprimeTopJogos(quantidade);
+            break;
+        case 9:
+            cout << "Calculando estatisticas do sistema...\n";
+            imprimeEstatisticasJogos();
             break;
         case 0:
             cout << "Voltando...\n";
@@ -257,7 +276,7 @@ void Menu::inicializarArvoreB()
     cout << "Indexando jogadores por quantidade de conquistas na Arvore B...\n";
     arvoreBConquistas.indexarPorConquistas(tabelaHash);
 
-    cout << "Arvores B construida com sucesso!\n";
+    cout << "Arvores B construidas com sucesso!\n";
 }
 
 void Menu::menuBuscaHash()
@@ -344,36 +363,33 @@ void Menu::imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo)
         return;
     }
 
-    cout << endl;
+    cout << "\n========================================= TOP " << quantidade << " JOGADORES =========================================\n";
+    cout << left
+        << setw(4)  << ""
+        << setw(23) << "ID"
+        << setw(25) << "Pais"
+        << setw(22) << "DataCriacao"
+        << setw(10) << "Jogos"
+        << "Conquistas" << endl;
 
-    int i = 1;
-    for (const auto &jogador : topJogadores)
-    {
-        if (jogador)
-        {
-            cout << "==================== Top " << i << " ====================\n"
-                 << "> ID: " << jogador->getId() << "\n"
-                 << "> Pais: " << jogador->getPais() << "\n"
-                 << "> Conta criada em: " << jogador->getDataDeCriacao() << "\n"
-                 << "> Quantidade de Jogos: " << jogador->getJogos().size() << "\n"
-                 << "> Quantidade de Conquistas: " << jogador->getConquistas().size() << "\n";
-        }
-        i++;
-    }
-    cout << "================================================\n";
-}
+    cout << string(100, '-') << endl;
 
-void Menu::imprimeJogadoresDoJogo(const string &id)
-{
-    auto p = hashJogos.busca(id);
-    if (p && !p->jogadores.empty())
-    {
-        p->imprimeJogadores();
+
+    for (int i = 0; i < static_cast<int>(topJogadores.size()); ++i) {
+        const auto& jogador = topJogadores[i];
+        if (!jogador) continue;
+
+        cout << setw(4)  << (i + 1)
+            << setw(23) << jogador->getId()
+            << setw(25) << jogador->getPais()
+            << setw(22) << jogador->getDataDeCriacao()
+            << setw(10) << jogador->getJogos().size()
+            << jogador->getConquistas().size() << endl;
+
     }
-    else
-    {
-        cout << "Nenhum jogador possui este jogo ou jogo nao encontrado.\n";
-    }
+
+    cout << string(100, '=') << "\n";
+
 }
 
 void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo)
@@ -395,16 +411,113 @@ void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo)
         return;
     }
 
-    cout << "\n=================== INTERVALO ==================" << endl;
+    cout << "\n=========== JOGADORES NO INTERVALO ============\n";
 
-    for (const auto &jogador : intervaloDeJogadores)
-    {
-        if (jogador)
-        {
-            cout << *jogador << endl;
+    for (size_t i = 0; i < intervaloDeJogadores.size(); ++i) {
+        const auto& jogador = intervaloDeJogadores[i];
+        if (!jogador) continue;
+
+        cout << " " << setw(2) << (i + 1) << ". "
+             << setw(25) << left << jogador->getId();
+
+        if (tipo == TipoDeIndexacao::JOGOS) {
+            cout << "| Qtd Jogos: " << jogador->getJogos().size();
+        } else if (tipo == TipoDeIndexacao::CONQUISTAS) {
+            cout << "| Qtd Conquistas: " << jogador->getConquistas().size();
         }
+
+        cout << endl;
     }
-    cout << "\n================================================"
-         << "\nNumero de jogadores encontrados: " << intervaloDeJogadores.size()
-         << "\n================================================\n";
+
+    cout << "================================================\n";
+    cout << "Total de jogadores encontrados: " << intervaloDeJogadores.size() << "\n";
+    cout << "================================================\n";
+
+}
+
+void Menu::imprimeEstatisticasJogos() {
+    int totalJogadores = 0;
+    int totalJogos = 0;
+    int totalConquistas = 0;
+    unordered_map<string, int> jogadoresPorPais;
+
+    tabelaHash.forEach([&](const shared_ptr<Player>& player) {
+        if (!player) return;
+
+        string pais = player->getPais();
+        if (!pais.empty()) {
+            jogadoresPorPais[pais]++;
+        }
+
+        totalJogadores++;
+
+        const auto& jogos = player->getJogos();
+        totalJogos += static_cast<int>(jogos.size());
+
+        const auto& conquistas = player->getConquistas();
+        totalConquistas += static_cast<int>(conquistas.size());
+    });
+
+    double mediaJogos = totalJogadores > 0 ? static_cast<double>(totalJogos) / totalJogadores : 0;
+    double mediaConquistas = totalJogadores > 0 ? static_cast<double>(totalConquistas) / totalJogadores : 0;
+
+    cout << "\n=========== ESTATISTICAS GERAIS ===========\n";
+    cout << fixed << setprecision(2);
+    cout << " - Media de jogos por jogador:      " << mediaJogos << endl;
+    cout << " - Media de conquistas por jogador: " << mediaConquistas << endl;
+    cout << "===========================================\n";
+
+    // Transforma em vetor e ordena por quantidade de pessoas por país
+    vector<pair<string, int>> rankingPaises(jogadoresPorPais.begin(), jogadoresPorPais.end());
+    sort(rankingPaises.begin(), rankingPaises.end(), [](const auto& a, const auto& b) {
+        return b.second < a.second;
+    });
+
+    cout << "\n====== TOP 5 PAISES COM MAIS JOGADORES ======\n";
+    for (int i = 0; i < min(5, static_cast<int>(rankingPaises.size())); ++i) {
+        cout << " " << setw(2) << (i + 1) << ". "
+            << setw(20) << left << rankingPaises[i].first
+            << "| Jogadores: " << rankingPaises[i].second << endl;
+    }
+    cout << "=============================================\n";
+
+}
+
+void Menu::imprimeTopJogos(int quantidade) {
+
+    unordered_map<string, pair<string, int>> jogoFrequencia;  // id -> {titulo, contagem}
+
+    tabelaHash.forEach([&](const shared_ptr<Player>& player) {
+        if (!player) return;
+
+        const auto& jogos = player->getJogos();
+
+        for (const auto& jogo : jogos) {
+            if (!jogo) continue;
+            string id = jogo->getId();
+            string titulo = jogo->getTitutlo();
+
+            auto& entrada = jogoFrequencia[id];
+            entrada.first = titulo;      // título
+            entrada.second += 1;         // contagem
+        }
+    });
+
+    // Converte para vetor e ordena por contagem
+    vector<pair<string, int>> ranking; // {titulo, contagem}
+    for (const auto& par : jogoFrequencia) {
+        ranking.emplace_back(par.second.first, par.second.second);
+    }
+
+    sort(ranking.begin(), ranking.end(), [](const auto& a, const auto& b) {
+        return a.second > b.second;
+    });
+
+    cout << "\n============== TOP JOGOS ADQUIRIDOS ============\n";
+    for (int i = 0; i < min(quantidade, static_cast<int>(ranking.size())); ++i) {
+        cout << " " << setw(2) << (i + 1) << ". "
+            << setw(45) << left << ranking[i].first
+            << "| Jogadores: " << ranking[i].second << endl;
+    }
+    cout << "================================================\n";
 }
