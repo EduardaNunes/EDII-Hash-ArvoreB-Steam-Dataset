@@ -26,6 +26,8 @@ private:
 
     void imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo);
     void imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo);
+    void imprimeEstatisticasJogos();
+    void imprimeTopJogos(int quantidade);
 
 
 public: 
