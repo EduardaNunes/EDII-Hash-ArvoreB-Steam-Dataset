@@ -348,23 +348,32 @@ void Menu::imprimeTopJogadores(int quantidade, TipoDeIndexacao tipo){
         return;
     }
 
-    cout << endl;
+    cout << "\n========================================= TOP " << quantidade << " JOGADORES =========================================\n";
+    cout << left
+        << setw(4)  << ""
+        << setw(23) << "ID"
+        << setw(25) << "Pais"
+        << setw(22) << "DataCriacao"
+        << setw(10) << "Jogos"
+        << "Conquistas" << endl;
 
-    int i = 1;
-    for (const auto &jogador : topJogadores)
-    {
-        if (jogador)
-        {
-            cout << "==================== Top " << i << " ====================\n"
-            << "> ID: " << jogador->getId() << "\n"
-            << "> Pais: " << jogador->getPais() << "\n"
-            << "> Conta criada em: " << jogador->getDataDeCriacao() << "\n"
-            << "> Quantidade de Jogos: " << jogador->getJogos().size() << "\n"
-            << "> Quantidade de Conquistas: " << jogador->getConquistas().size() << "\n";
-        }
-        i++;
+    cout << string(100, '-') << endl;
+
+
+    for (int i = 0; i < static_cast<int>(topJogadores.size()); ++i) {
+        const auto& jogador = topJogadores[i];
+        if (!jogador) continue;
+
+        cout << setw(4)  << (i + 1)
+            << setw(23) << jogador->getId()
+            << setw(25) << jogador->getPais()
+            << setw(22) << jogador->getDataDeCriacao()
+            << setw(10) << jogador->getJogos().size()
+            << jogador->getConquistas().size() << endl;
+
     }
-    cout << "================================================\n";
+
+    cout << string(100, '=') << "\n";
 
 }
 
@@ -386,18 +395,27 @@ void Menu::imprimeIntervaloDeJogadores(int min, int max, TipoDeIndexacao tipo){
         return;
     }
 
-    cout << "\n=================== INTERVALO ==================" << endl;
+    cout << "\n=========== JOGADORES NO INTERVALO ============\n";
 
-    for (const auto &jogador : intervaloDeJogadores)
-    {
-        if (jogador)
-        {
-            cout << *jogador << endl;
+    for (size_t i = 0; i < intervaloDeJogadores.size(); ++i) {
+        const auto& jogador = intervaloDeJogadores[i];
+        if (!jogador) continue;
+
+        cout << " " << setw(2) << (i + 1) << ". "
+             << setw(25) << left << jogador->getId();
+
+        if (tipo == TipoDeIndexacao::JOGOS) {
+            cout << "| Qtd Jogos: " << jogador->getJogos().size();
+        } else if (tipo == TipoDeIndexacao::CONQUISTAS) {
+            cout << "| Qtd Conquistas: " << jogador->getConquistas().size();
         }
+
+        cout << endl;
     }
-    cout << "\n================================================"
-    << "\nNumero de jogadores encontrados: " << intervaloDeJogadores.size()
-    << "\n================================================\n";
+
+    cout << "================================================\n";
+    cout << "Total de jogadores encontrados: " << intervaloDeJogadores.size() << "\n";
+    cout << "================================================\n";
 
 }
 
@@ -427,7 +445,7 @@ void Menu::imprimeEstatisticasJogos() {
     double mediaJogos = totalJogadores > 0 ? static_cast<double>(totalJogos) / totalJogadores : 0;
     double mediaConquistas = totalJogadores > 0 ? static_cast<double>(totalConquistas) / totalJogadores : 0;
 
-    cout << "\n=========== ESTATÍSTICAS GERAIS ===========\n";
+    cout << "\n=========== ESTATISTICAS GERAIS ===========\n";
     cout << fixed << setprecision(2);
     cout << " - Media de jogos por jogador:      " << mediaJogos << endl;
     cout << " - Media de conquistas por jogador: " << mediaConquistas << endl;
