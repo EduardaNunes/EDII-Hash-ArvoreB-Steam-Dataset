@@ -31,6 +31,8 @@ private:
     void imprimeEstatisticasJogos();
     void imprimeTopJogos(int quantidade);
     void imprimeJogadoresDoJogo(const string &id);
+    void imprimeJogosOuConquistasDoJogador(const string& id, TipoDeIndexacao tipo);
+
 
 public: 
     Menu();

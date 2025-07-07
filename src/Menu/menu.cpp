@@ -69,15 +69,16 @@ void Menu::menuDeConsultas()
     do
     {
         cout << "\n=== Menu Consultas ===\n";
-        cout << "1 - Buscar jogador\n";
-        cout << "2 - Listar jogos de um jogador\n";
-        cout << "3 - Listar top N jogadores com mais jogos\n";
-        cout << "4 - Listar top N jogadores com mais conquistas\n";
-        cout << "5 - Mostrar jogadores entre um intervalo de jogos\n";
-        cout << "6 - Mostrar jogadores entre um intervalo de conquistas\n";
-        cout << "7 - Buscar jogadores que possuem determinado jogo\n";
-        cout << "8 - Mostrar Top N jogos adquiridos\n";
-        cout << "9 - Estatisticas do sistema\n";
+        cout << " 1 - Buscar jogador\n";
+        cout << " 2 - Listar jogos de um jogador\n";
+        cout << " 3 - Listar conquistas de um jogador\n";
+        cout << " 4 - Listar top N jogadores com mais jogos\n";
+        cout << " 5 - Listar top N jogadores com mais conquistas\n";
+        cout << " 6 - Mostrar jogadores entre um intervalo de jogos\n";
+        cout << " 7 - Mostrar jogadores entre um intervalo de conquistas\n";
+        cout << " 8 - Buscar jogadores que possuem determinado jogo\n";
+        cout << " 9 - Mostrar Top N jogos adquiridos\n";
+        cout << "10 - Estatisticas do sistema\n";
         cout << "0 - Voltar\n";
         cout << "Escolha: ";
         getline(cin, entrada);
@@ -98,36 +99,18 @@ void Menu::menuDeConsultas()
             menuBuscaHash();
             break;
         case 2:
-            cout << "\nDigite o ID do jogador: ";
-            getline(cin, id);
-            {
-                auto p = tabelaHash.busca(id);
-                if (p)
-                {
-                    vector<shared_ptr<Jogo>> jogos = p->getJogos();
-                    if (jogos.empty())
-                    {
-                        cout << "O jogador nao possui jogos cadastrados.\n";
-                    }
-                    else
-                    {
-                        cout << "Jogos do jogador " << id << ":\n";
-                        for (const auto &jogo : jogos)
-                        {
-                            if (jogo)
-                            {
-                                cout << "- " << jogo->getTitutlo() << " (ID: " << jogo->getId() << ")\n";
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    cout << "Jogador nao encontrado.\n";
-                }
-            }
+                cout << "\nDigite o ID do jogador: ";
+                getline(cin, id);
+
+                imprimeJogosOuConquistasDoJogador(id, TipoDeIndexacao::JOGOS);
             break;
         case 3:
+                cout << "\nDigite o ID do jogador: ";
+                getline(cin, id);
+
+                imprimeJogosOuConquistasDoJogador(id, TipoDeIndexacao::CONQUISTAS);
+            break;
+        case 4:
             while (true) {
                 cout << "\nDigite a quantidade do top a ser buscado: ";
                 getline(cin, quantidadeTop);
@@ -145,7 +128,7 @@ void Menu::menuDeConsultas()
             }
             imprimeTopJogadores(quantidade, TipoDeIndexacao::JOGOS);
             break;
-        case 4:
+        case 5:
             while (true) {
                 cout << "\nDigite a quantidade do top a ser buscado: ";
                 getline(cin, quantidadeTop);
@@ -163,7 +146,7 @@ void Menu::menuDeConsultas()
             }
             imprimeTopJogadores(quantidade, TipoDeIndexacao::CONQUISTAS);
             break;
-        case 5:
+        case 6:
             while (true) {
                 cout << "Digite o numero minimo de jogos: ";
                 getline(cin, minStr);
@@ -188,7 +171,7 @@ void Menu::menuDeConsultas()
             }
             imprimeIntervaloDeJogadores(min, max, TipoDeIndexacao::JOGOS);
             break;
-        case 6:
+        case 7:
             while (true) {
                 cout << "Digite o numero minimo de conquistas: ";
                 getline(cin, minStr);
@@ -213,12 +196,12 @@ void Menu::menuDeConsultas()
             }
             imprimeIntervaloDeJogadores(min, max, TipoDeIndexacao::CONQUISTAS);
             break;
-        case 7:
+        case 8:
             cout << "Digite o id do jogo: ";
             getline(cin, id);
             imprimeJogadoresDoJogo(id);
             break;
-        case 8:
+        case 9:
             cout << "\nDigite a quantidade do top a ser buscado: ";
             getline(cin, quantidadeTop);
 
@@ -233,7 +216,7 @@ void Menu::menuDeConsultas()
             }
             imprimeTopJogos(quantidade);
             break;
-        case 9:
+        case 10:
             cout << "Calculando estatisticas do sistema...\n";
             imprimeEstatisticasJogos();
             break;
@@ -537,6 +520,158 @@ void Menu::imprimeTopJogos(int quantidade) {
             << "| Jogadores: " << ranking[i].second << endl;
     }
     cout << "================================================\n";
+}
+
+void Menu::imprimeJogadoresDoJogo(const string &id)
+{
+    auto p = hashJogos.busca(id);
+    if (p && !p->jogadores.empty())
+    {
+        p->imprimeJogadores();
+    }
+    else
+    {
+        cout << "Nenhum jogador possui este jogo ou jogo nao encontrado.\n";
+    }
+}
+
+void Menu::imprimeJogosOuConquistasDoJogador(const string& id, TipoDeIndexacao tipo)
+{
+    auto p = tabelaHash.busca(id);
+
+    if (!p)
+    {
+        cout << "\nJogador não encontrado.\n";
+        return;
+    }
+
+    if (tipo == TipoDeIndexacao::JOGOS)
+    {
+        auto jogos = p->getJogos();
+
+        if (jogos.empty())
+        {
+            cout << "\nO jogador não possui jogos cadastrados.\n";
+            return;
+        }
+
+        cout << endl << string(41, '=') << "JOGOS DO JOGADOR" << string(41, '=') << endl;
+        cout << left << setw(4) << "Titulo" <<  endl;
+        cout << string(100, '-') << endl;
+
+        for (size_t i = 0; i < jogos.size(); ++i)
+        {
+            if (jogos[i])
+            {
+                cout << setw(4) << (i + 1) << " "
+                     <<  jogos[i]->getTitutlo() << endl;
+            }
+        }
+
+        cout << string(100, '=') << endl;
+        cout << "Total de jogos: " << jogos.size() << endl;
+        cout << string(100, '=') << endl;
+    }
+    else if (tipo == TipoDeIndexacao::CONQUISTAS)
+    {
+        auto conquistas = p->getConquistas();
+
+        if (conquistas.empty())
+        {
+            cout << "\nO jogador não possui conquistas cadastradas.\n";
+            return;
+        }
+
+        cout << endl << string(48, '=') << "CONQUISTAS DO JOGADOR" << string(49, '=') << endl;
+        cout << left << setw(4) << "Nome da Conquista" << endl;
+        cout << string(100, '-') << endl;
+
+        for (size_t i = 0; i < conquistas.size(); ++i)
+        {
+            cout << setw(4) << (i + 1) << " "
+                 << conquistas[i]->getTitulo() << endl;
+        }
+
+        cout << string(100, '=') << endl;
+        cout << "Total de conquistas: " << conquistas.size() << endl;
+        cout << string(100, '=') << endl;
+    }
+}
+
+void Menu::imprimeJogadoresDoJogo(const string &id)
+{
+    auto p = hashJogos.busca(id);
+    if (p && !p->jogadores.empty())
+    {
+        p->imprimeJogadores();
+    }
+    else
+    {
+        cout << "Nenhum jogador possui este jogo ou jogo nao encontrado.\n";
+    }
+}
+
+void Menu::imprimeJogosOuConquistasDoJogador(const string& id, TipoDeIndexacao tipo)
+{
+    auto p = tabelaHash.busca(id);
+
+    if (!p)
+    {
+        cout << "\nJogador não encontrado.\n";
+        return;
+    }
+
+    if (tipo == TipoDeIndexacao::JOGOS)
+    {
+        auto jogos = p->getJogos();
+
+        if (jogos.empty())
+        {
+            cout << "\nO jogador não possui jogos cadastrados.\n";
+            return;
+        }
+
+        cout << endl << string(41, '=') << "JOGOS DO JOGADOR" << string(41, '=') << endl;
+        cout << left << setw(4) << "Titulo" <<  endl;
+        cout << string(100, '-') << endl;
+
+        for (size_t i = 0; i < jogos.size(); ++i)
+        {
+            if (jogos[i])
+            {
+                cout << setw(4) << (i + 1) << " "
+                     <<  jogos[i]->getTitutlo() << endl;
+            }
+        }
+
+        cout << string(100, '=') << endl;
+        cout << "Total de jogos: " << jogos.size() << endl;
+        cout << string(100, '=') << endl;
+    }
+    else if (tipo == TipoDeIndexacao::CONQUISTAS)
+    {
+        auto conquistas = p->getConquistas();
+
+        if (conquistas.empty())
+        {
+            cout << "\nO jogador não possui conquistas cadastradas.\n";
+            return;
+        }
+
+        cout << endl << string(48, '=') << "CONQUISTAS DO JOGADOR" << string(49, '=') << endl;
+        cout << left << setw(4) << "Nome da Conquista" << endl;
+        cout << string(100, '-') << endl;
+
+        for (size_t i = 0; i < conquistas.size(); ++i)
+        {
+            cout << setw(4) << (i + 1) << " "
+                 << conquistas[i]->getTitulo() << endl;
+        }
+
+        cout << string(100, '=') << endl;
+        cout << "Total de conquistas: " << conquistas.size() << endl;
+        cout << string(100, '=') << endl;
+    }
 }
 
 void Menu::imprimeJogadoresDoJogo(const string &id)
