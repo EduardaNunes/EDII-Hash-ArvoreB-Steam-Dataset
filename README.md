@@ -1,6 +1,12 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/jnYLGS_4)
 # DCC012 - Estrutura de Dados II
-## Trabalho Prático 
+## Sistema de Análise de Perfis de Jogadores 2025
+
+### Descrição
+Neste trabalho prático, você deverá desenvolver um sistema de análise e consulta de perfis de jogadores utilizando o dataset "Gaming Profiles 2025: Steam, PlayStation, Xbox". O objetivo é implementar estruturas eficientes de armazenamento e busca utilizando tabelas hash e árvores B para gerenciar um grande volume de dados de perfis de jogadores.
+
+### Dataset
+O dataset contém informações sobre perfis de jogadores nas plataformas Steam, PlayStation e Xbox. Você deverá baixar somente o dataset da steam no seguinte link: https://www.kaggle.com/datasets/artyomkruglov/gaming-profiles-2025-steam-playstation-xbox/data. 
 
 ### Membros do Grupo
 Diego Pereira Betti
